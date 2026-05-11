@@ -1,0 +1,15 @@
+{
+  "id": "CD-L2-001",
+  "category": "coding",
+  "level": 2,
+  "title": "이진 탐색 트리 구현",
+  "prompt": "Python으로 이진 탐색 트리(BST)를 구현하세요. 삽입, 검색, 삭제, 중위 순회 메서드를 포함해야 합니다. 각 메서드에 대한 시간 복잡도를 주석으로 설명하세요.",
+  "context": null,
+  "expected_output_summary": "BST 클래스 구현 (Node 클래스 포함), 4개 메서드 정상 동작, 시간 복잡도 O(log n) ~ O(n) 설명",
+  "scoring": {
+    "correctness": "코드 실행 가능, 4개 메서드 정상 동작, 엣지 케이스 처리",
+    "helpfulness": "바로 과제에 제출 가능한 수준의 완성도",
+    "explainability": "각 메서드의 로직 설명, 시간 복잡도 분석 포함",
+    "korean_quality": "주석 및 설명이 자연스러운 한국어"
+  }
+}
