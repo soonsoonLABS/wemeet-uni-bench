@@ -4,6 +4,8 @@
 >
 > `soonsoonlabs/wemeet-uni-bench`
 
+🌐 **[프로젝트 소개 페이지](https://soonsoonlabs.github.io/wemeet-uni-bench/)**
+
 ---
 
 ## 프로젝트 개요
