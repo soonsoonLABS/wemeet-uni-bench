@@ -1,367 +1,628 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wemeet-uni-bench — 한국 대학생을 위한 AI 벤치마크</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>wemeet-uni-bench — 한국 대학생을 위한 AI 벤치마크</title>
+  <meta name="description" content="학생에게 실제로 도움이 되는가를 측정한다. 서울대학교 WE-Meet × 순순팩토리 AI 벤치마크 프로젝트." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="wemeet-uni-bench" />
+  <meta property="og:description" content="AI가 똑똑한 건 알겠는데, 내 과제는 잘 도와주나?" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="Asset/001.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="Asset/001.png" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">uni-bench</a>
-            <div class="nav-links">
-                <a href="#vision">취지</a>
-                <a href="#problem">문제의식</a>
-                <a href="#approach">2트랙</a>
-                <a href="#sam">SAM 검증</a>
-                <a href="#wemeet">WE-Meet</a>
-                <a href="#team">팀</a>
-                <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank">GitHub</a>
-            </div>
+
+  <!-- =============== NAV =============== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">uni-bench / v0.1</a>
+      <div class="nav-links">
+        <a href="#vision" class="nav-key">vision</a>
+        <a href="#problem">problem</a>
+        <a href="#tracks">tracks</a>
+        <a href="#sam" class="nav-key">verify</a>
+        <a href="#team">team</a>
+        <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank" rel="noopener" class="nav-cta">GITHUB →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =============== HERO =============== -->
+  <header class="hero">
+    <img src="Asset/002.png" class="hero-plot-img" alt="" aria-hidden="true" />
+    <div class="wrap">
+      <p class="hero-meta reveal">
+        <span><b>DOSSIER №001</b> · WE-Meet 1st</span>
+        <span>SEOUL · KR · <b>2025-2026</b></span>
+      </p>
+
+      <h1 class="hero-title reveal">
+        <span class="serif">AI가 똑똑한 건 알겠는데,</span>
+        <span class="hero-title-line">내 과제는 <mark>잘 도와주나?</mark></span>
+      </h1>
+
+      <div class="hero-body reveal">
+        <div>
+          <p class="hero-desc">
+            한국 대학생을 위한 AI 모델 벤치마크. 기존 벤치마크가 측정하지
+            못하는 <strong>"학생에게 실제로 도움이 되는가"</strong>를 평가하고,
+            내 상황에 맞는 <strong>적정 비용 · 적정 성능</strong>의 AI를
+            선택할 수 있도록 돕는다.
+          </p>
+          <div class="hero-actions" style="margin-top: 2rem;">
+            <a href="#vision" class="btn btn-primary">프로젝트 읽기</a>
+            <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
+          </div>
         </div>
-    </nav>
+        <dl class="hero-aside">
+          <div><dt>Program</dt><dd>SNU WE-Meet 1st Cohort</dd></div>
+          <div><dt>Host</dt><dd>SoonsoonFactory</dd></div>
+          <div><dt>Tracks</dt><dd>Academic · Learning Assistant</dd></div>
+          <div><dt>Stack</dt><dd>SAM Platform · Python · GH Actions</dd></div>
+          <div><dt>Status</dt><dd><span class="status-dot"></span>collecting problems</dd></div>
+        </dl>
+      </div>
+    </div>
+  </header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-bg-grid"></div>
-        <div class="hero-content">
-            <p class="hero-tag">SNU WE-Meet × SoonsoonFactory</p>
-            <h1 class="hero-title">
-                AI가 똑똑한 건 알겠는데,<br>
-                <span class="hero-highlight">내 과제는 잘 도와주나?</span>
-            </h1>
-            <p class="hero-desc">
-                한국 대학생을 위한 AI 모델 벤치마크 프로젝트.<br>
-                기존 벤치마크가 측정하지 못하는 "학생에게 실제로 도움이 되는가"를 평가하고,<br>
-                <strong>적정 비용으로 적정 성능</strong>의 AI를 선택할 수 있도록 돕습니다.
-            </p>
-            <div class="hero-actions">
-                <a href="#vision" class="btn btn-primary">프로젝트 알아보기</a>
-                <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" class="btn btn-ghost" target="_blank">GitHub 보기</a>
-            </div>
+  <!-- =============== VISION =============== -->
+  <section id="vision" class="section">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="section-tag">§01 / Vision</p>
+        <div>
+          <h2 class="section-title">두 가지 <em>질문</em>에서 출발한다.</h2>
         </div>
-    </section>
+      </header>
 
-    <!-- Vision -->
-    <section id="vision" class="section">
-        <div class="container">
-            <p class="section-tag">VISION</p>
-            <h2 class="section-title">두 가지 질문에서 출발한다</h2>
-            <div class="two-questions">
-                <div class="question-card">
-                    <div class="question-num">Q1</div>
-                    <p class="question-text">이 AI는 대학 수준의 과제·프로젝트·논문에<br><strong>실제로 도움이 되는가?</strong></p>
-                </div>
-                <div class="question-card">
-                    <div class="question-num">Q2</div>
-                    <p class="question-text">이 AI는 학생이 스스로 배우고 성장하도록<br><strong>잘 지도하는가?</strong></p>
-                </div>
-            </div>
-
-            <div class="vision-grid">
-                <div class="vision-card">
-                    <div class="vision-icon">🎯</div>
-                    <h3>학생 중심 평가</h3>
-                    <p>"얼마나 똑똑한가"가 아니라<br><strong>"나한테 얼마나 도움이 되는가"</strong>를 측정한다</p>
-                </div>
-                <div class="vision-card">
-                    <div class="vision-icon">💰</div>
-                    <h3>적정 비용, 적정 성능</h3>
-                    <p>가장 비싼 모델이 항상 최선은 아니다.<br><strong>내 상황에 맞는 가성비 최선</strong>을 찾는다</p>
-                </div>
-                <div class="vision-card">
-                    <div class="vision-icon">🔬</div>
-                    <h3>SAM으로 실증 검증</h3>
-                    <p>공개 벤치마크 점수와 실제 학생 체감을<br>직접 비교하여 괴리를 밝힌다</p>
-                </div>
-                <div class="vision-card">
-                    <div class="vision-icon">🤝</div>
-                    <h3>학생이 만드는 공공재</h3>
-                    <p>내가 어려웠던 문제가 벤치마크에 반영되어<br>다른 학생에게도 도움이 된다</p>
-                </div>
-                <div class="vision-card">
-                    <div class="vision-icon">🇰🇷</div>
-                    <h3>한국 교육 맥락</h3>
-                    <p>한국어 학술 문체, 한국 교재 기반,<br>한국 학생이 실제로 묻는 방식</p>
-                </div>
-                <div class="vision-card">
-                    <div class="vision-icon">🔄</div>
-                    <h3>살아있는 데이터셋</h3>
-                    <p>매 학기 새 문제가 유입되며<br>시대와 교육과정에 맞춰 진화한다</p>
-                </div>
-            </div>
+      <div class="questions">
+        <div class="q-item">
+          <p class="q-num">Question · 01</p>
+          <p class="q-text">이 AI는 대학 수준의 과제·프로젝트·논문에 <b>실제로 도움이 되는가?</b></p>
         </div>
-    </section>
-
-    <!-- Problem -->
-    <section id="problem" class="section section-dark">
-        <div class="container">
-            <p class="section-tag">PROBLEM</p>
-            <h2 class="section-title">기존 벤치마크의 한계</h2>
-            
-            <div class="gap-visual">
-                <p class="gap-label-left">쉬움</p>
-                <div class="gap-bar">
-                    <div class="gap-point" style="left: 5%"><span>GSM8K</span><em>초등수학</em></div>
-                    <div class="gap-point" style="left: 25%"><span>MMLU</span><em>자격시험</em></div>
-                    <div class="gap-empty" style="left: 45%"><span>???</span><em>학부 2~4학년</em></div>
-                    <div class="gap-point" style="left: 65%"><span>MATH</span><em>경시대회</em></div>
-                    <div class="gap-point" style="left: 80%"><span>GPQA</span><em>PhD</em></div>
-                    <div class="gap-point" style="left: 95%"><span>HLE</span><em>인류한계</em></div>
-                </div>
-                <p class="gap-label-right">어려움</p>
-            </div>
-            <p class="gap-caption">학부 수준의 벤치마크가 구조적으로 비어있다</p>
-
-            <div class="limits-grid">
-                <div class="limit-card">
-                    <div class="limit-num">01</div>
-                    <h4>객관식만 있다</h4>
-                    <p>실제 과제는 서술형, 코딩 프로젝트, 레포트인데 벤치마크는 4지선다 정답 고르기뿐</p>
-                </div>
-                <div class="limit-card">
-                    <div class="limit-num">02</div>
-                    <h4>답만 채점한다</h4>
-                    <p>학생은 단계별 풀이와 설명을 원하는데 벤치마크는 최종 답이 맞으면 끝</p>
-                </div>
-                <div class="limit-card">
-                    <div class="limit-num">03</div>
-                    <h4>영어뿐이다</h4>
-                    <p>한국어 학술 문체, 한국 교재 맥락은 어떤 벤치마크도 측정하지 않는다</p>
-                </div>
-                <div class="limit-card">
-                    <div class="limit-num">04</div>
-                    <h4>"도움"을 안 묻는다</h4>
-                    <p>맞는 답 ≠ 도움이 되는 답. 설명력, 참고자료, 오류 인정은 아무도 측정 안 함</p>
-                </div>
-            </div>
+        <div class="q-item">
+          <p class="q-num">Question · 02</p>
+          <p class="q-text">이 AI는 학생이 스스로 배우고 성장하도록 <b>잘 지도하는가?</b></p>
         </div>
-    </section>
+      </div>
 
-    <!-- Two Tracks -->
-    <section id="approach" class="section">
-        <div class="container">
-            <p class="section-tag">TWO TRACKS</p>
-            <h2 class="section-title">2트랙 벤치마크 구조</h2>
+      <div class="manifesto">
+        <article class="manifesto-item">
+          <span class="manifesto-num">M/01</span>
+          <h3 class="manifesto-title">학생 중심 평가</h3>
+          <p class="manifesto-desc">"얼마나 똑똑한가"가 아니라 <b>"나한테 얼마나 도움이 되는가"</b>를 측정한다.</p>
+        </article>
+        <article class="manifesto-item">
+          <span class="manifesto-num">M/02</span>
+          <h3 class="manifesto-title">적정 비용, 적정 성능</h3>
+          <p class="manifesto-desc">가장 비싼 모델이 항상 최선은 아니다. <b>내 상황에 맞는 가성비 최선</b>을 찾는다.</p>
+        </article>
+        <article class="manifesto-item">
+          <span class="manifesto-num">M/03</span>
+          <h3 class="manifesto-title">SAM으로 실증 검증</h3>
+          <p class="manifesto-desc">공개 벤치마크 점수와 실제 학생 체감의 <b>괴리를 직접 비교하여 밝힌다.</b></p>
+        </article>
+        <article class="manifesto-item">
+          <span class="manifesto-num">M/04</span>
+          <h3 class="manifesto-title">학생이 만드는 공공재</h3>
+          <p class="manifesto-desc">내가 어려웠던 문제가 벤치마크에 반영되어 <b>다른 학생에게도 도움이 된다.</b></p>
+        </article>
+        <article class="manifesto-item">
+          <span class="manifesto-num">M/05</span>
+          <h3 class="manifesto-title">한국 교육 맥락</h3>
+          <p class="manifesto-desc"><b>한국어 학술 문체, 한국 교재,</b> 한국 학생이 실제로 묻는 방식을 담는다.</p>
+        </article>
+        <article class="manifesto-item">
+          <span class="manifesto-num">M/06</span>
+          <h3 class="manifesto-title">살아있는 데이터셋</h3>
+          <p class="manifesto-desc">매 학기 새 문제가 유입되며 <b>시대와 교육과정에 맞춰 진화한다.</b></p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-            <div class="tracks-container">
-                <div class="track-card track-active">
-                    <div class="track-badge">Track 1 — 이번 학기 집중</div>
-                    <h3>Academic Task Benchmark</h3>
-                    <p class="track-subtitle">대학 실전 과제 벤치마크</p>
-                    <p class="track-question">"이 AI는 내 과제에 쓸 수 있나?"</p>
-                    <div class="track-focus">결과물 중심 평가</div>
-                    <ul class="track-items">
-                        <li>전공 문제 풀이 정확도</li>
-                        <li>풀이 과정 설명력</li>
-                        <li>코딩 과제 해결력</li>
-                        <li>논문 요약·구조화</li>
-                        <li>레포트 작성 보조</li>
-                        <li>한국어 학술 문체</li>
-                    </ul>
-                </div>
-                <div class="track-card">
-                    <div class="track-badge track-badge-next">Track 2 — 다음 단계</div>
-                    <h3>Learning Assistant Benchmark</h3>
-                    <p class="track-subtitle">학습 어시스턴트 벤치마크</p>
-                    <p class="track-question">"이 AI는 내가 더 잘 배우게 도와주나?"</p>
-                    <div class="track-focus">학습 과정 중심 평가</div>
-                    <ul class="track-items">
-                        <li>개념을 쉽게 설명하는 능력</li>
-                        <li>수준에 맞춰 조절하는 능력</li>
-                        <li>스스로 생각하게 유도</li>
-                        <li>힌트 제공 (과도한 정답 방지)</li>
-                        <li>학습 계획 수립</li>
-                        <li>동기부여와 피드백</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="score-structure">
-                <h3>점수 체계</h3>
-                <div class="score-tree">
-                    <div class="score-root">Student Helpfulness Score<span>학생 도움도 종합 점수</span></div>
-                    <div class="score-branches">
-                        <div class="score-branch score-branch-1">Academic Task Score<span>대학 실전 도움 점수</span></div>
-                        <div class="score-branch score-branch-2">Learning Assistant Score<span>학습 지도 도움 점수</span></div>
-                    </div>
-                </div>
-            </div>
+  <!-- =============== PROBLEM =============== -->
+  <section id="problem" class="section section-ink">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="section-tag">§02 / Problem</p>
+        <div>
+          <h2 class="section-title">기존 벤치마크는 <em>비어있다.</em></h2>
+          <p class="section-sub">난이도 스펙트럼 위에서 "학부 2~4학년" 구간이 구조적으로 비어 있다. 고등학교 문제와 PhD 연구 사이 — 학생들의 실제 학습 현장은 누구도 측정하지 않는다.</p>
         </div>
-    </section>
+      </header>
 
-    <!-- SAM Verification -->
-    <section id="sam" class="section section-alt">
-        <div class="container">
-            <p class="section-tag">VERIFICATION</p>
-            <h2 class="section-title">SAM 플랫폼으로 실증 검증</h2>
-            
-            <div class="sam-intro">
-                <p>순순팩토리의 AI 라우팅 서비스 <strong>SAM</strong>을 통해 현존하는 대부분의 AI API를 직접 검증합니다. SAM에는 이미 공개 벤치마크 기반 모델 랭킹이 존재합니다.</p>
-            </div>
-
-            <div class="sam-table-wrapper">
-                <table class="sam-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>모델</th>
-                            <th>OVR</th>
-                            <th>CHAT</th>
-                            <th>CODE</th>
-                            <th>RSN</th>
-                            <th>$/M</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>1</td><td>Claude Opus 4.7</td><td class="score-high">94</td><td>95</td><td>96</td><td>93</td><td>$5.5/27.5</td></tr>
-                        <tr><td>2</td><td>GPT-5.4 Pro</td><td class="score-high">92.7</td><td>94</td><td>94</td><td>96</td><td class="price-high">$15/120</td></tr>
-                        <tr><td>4</td><td>Gemini 3.1 Pro</td><td>90.75</td><td>94</td><td>90</td><td>93</td><td>$2/12</td></tr>
-                        <tr><td>7</td><td>Kimi K2.6</td><td>84</td><td>87</td><td class="score-high">93</td><td>75</td><td class="price-low">$0.6/2.5</td></tr>
-                        <tr><td>10</td><td>DeepSeek V4 Flash</td><td>72.7</td><td>77</td><td>78</td><td>65</td><td class="price-low">$0.14/0.28</td></tr>
-                        <tr><td>12</td><td>DeepSeek V3.2</td><td>68.55</td><td>72</td><td>73</td><td>61</td><td class="price-low">$0.62/1.85</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="sam-questions">
-                <h3>우리가 검증하려는 것</h3>
-                <div class="sam-q-grid">
-                    <div class="sam-q-card">
-                        <p>OVR 94점 모델이 정말 학부 과제에서도 1등인가?</p>
-                    </div>
-                    <div class="sam-q-card">
-                        <p>$0.14 모델이 간단한 과제에는 충분하지 않은가?</p>
-                    </div>
-                    <div class="sam-q-card">
-                        <p>CODE 93점이 실제 학부 코딩 과제에서도 그만큼 좋은가?</p>
-                    </div>
-                    <div class="sam-q-card sam-q-highlight">
-                        <p><strong>내 상황에서 어떤 모델이 가성비 최선인가?</strong></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sam-point">
-                <p>학생에게 가장 중요한 것:</p>
-                <h3>자신의 목적에 맞는 적정한 수준의 리소스를 선택하여<br>'적절'한 비용을 지불하면서 공부 및 연구를 할 수 있는가</h3>
-            </div>
+      <figure class="gap-figure">
+        <img src="Asset/003.png" alt="벤치마크 난이도 스펙트럼 — 학부 구간이 비어있음을 보여주는 일러스트" />
+        <div class="gap-figure-msg">
+          <p class="gap-figure-msg-tag">The Missing Gap</p>
+          <p class="gap-figure-msg-text">학부 수준의 벤치마크는 <em>존재하지 않는다.</em></p>
         </div>
-    </section>
+      </figure>
 
-    <!-- WE-Meet -->
-    <section id="wemeet" class="section section-dark">
-        <div class="container">
-            <p class="section-tag">PROGRAM</p>
-            <h2 class="section-title">서울대학교 WE-Meet</h2>
-            <div class="wemeet-content">
-                <div class="wemeet-desc">
-                    <p class="wemeet-lead">
-                        WE-Meet(위밋)은 기업과 대학이 협력하여 학생들이 실제 산업 현장의 문제를 해결하며 
-                        실무 역량을 기르고 학점을 인정받는 <strong>산학연계 프로젝트</strong>입니다.
-                    </p>
-                    <div class="wemeet-features">
-                        <div class="wemeet-feature">
-                            <strong>운영 방식</strong>
-                            <p>기업 재직자 멘토링 + 팀 프로젝트 수행 → 성과 평가(S/U)</p>
-                        </div>
-                        <div class="wemeet-feature">
-                            <strong>특징</strong>
-                            <p>정규 교과목 학점 인정 가능, 실무 멘토링, 산업 현장 문제 해결</p>
-                        </div>
-                        <div class="wemeet-feature">
-                            <strong>주요 분야</strong>
-                            <p>차세대반도체, 빅데이터, 그린바이오, AI 등 첨단 산업</p>
-                        </div>
-                        <div class="wemeet-feature">
-                            <strong>본 프로젝트</strong>
-                            <p>순순팩토리 × 서울대 학생 — AI 활용 멘토링 및 SAM 서비스 연구 개선</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="limits">
+        <article class="limit-item">
+          <div class="limit-num">01</div>
+          <div>
+            <h4 class="limit-title">객관식만 있다.</h4>
+            <p class="limit-desc">실제 과제는 서술형·코딩 프로젝트·레포트인데 벤치마크는 4지선다 정답 고르기뿐이다.</p>
+          </div>
+        </article>
+        <article class="limit-item">
+          <div class="limit-num">02</div>
+          <div>
+            <h4 class="limit-title">답만 채점한다.</h4>
+            <p class="limit-desc">학생은 단계별 풀이와 설명을 원하는데, 벤치마크는 최종 답이 맞으면 끝이다.</p>
+          </div>
+        </article>
+        <article class="limit-item">
+          <div class="limit-num">03</div>
+          <div>
+            <h4 class="limit-title">영어뿐이다.</h4>
+            <p class="limit-desc">한국어 학술 문체와 한국 교재 맥락은 어떤 벤치마크도 측정하지 않는다.</p>
+          </div>
+        </article>
+        <article class="limit-item">
+          <div class="limit-num">04</div>
+          <div>
+            <h4 class="limit-title">"도움"을 안 묻는다.</h4>
+            <p class="limit-desc">맞는 답 ≠ 도움이 되는 답. 설명력·참고자료·오류 인정은 아무도 측정하지 않는다.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== TRACKS =============== -->
+  <section id="tracks" class="section">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="section-tag">§03 / Two Tracks</p>
+        <div>
+          <h2 class="section-title">두 개의 <em>트랙,</em> 한 개의 질문.</h2>
+          <p class="section-sub">학생에게 도움이 된다는 것은 두 차원에서 측정된다 — 결과물(Outcome)과 과정(Process).</p>
         </div>
-    </section>
+      </header>
 
-    <!-- Team -->
-    <section id="team" class="section">
-        <div class="container">
-            <p class="section-tag">TEAM</p>
-            <h2 class="section-title">1기 참여자</h2>
+      <div class="tracks">
+        <article class="track is-live">
+          <header class="track-head">
+            <span class="track-id">Track / 01</span>
+            <span class="track-status">NOW RECORDING</span>
+          </header>
+          <h3 class="track-name">Academic Task Benchmark</h3>
+          <p class="track-sub">대학 실전 과제 벤치마크</p>
+          <p class="track-q">"이 AI는 내 과제에 쓸 수 있나?"</p>
+          <span class="track-focus">Outcome-Oriented</span>
+          <ul class="track-items">
+            <li>전공 문제 풀이 정확도</li>
+            <li>풀이 과정 설명력</li>
+            <li>코딩 과제 해결력</li>
+            <li>논문 요약·구조화</li>
+            <li>레포트 작성 보조</li>
+            <li>한국어 학술 문체</li>
+          </ul>
+        </article>
 
-            <!-- Mentor -->
-            <div class="team-mentor">
-                <div class="team-card team-card-mentor">
-                    <div class="team-role-badge">Mentor</div>
-                    <h3 class="team-name">송용성</h3>
-                    <div class="team-info">
-                        <p class="team-position">순순팩토리 대표</p>
-                        <p class="team-position">강원대학교 AI콘텐츠공학과 겸임교수</p>
-                    </div>
-                    <div class="team-details">
-                        <p>AI 서비스 개발 및 운영 경험을 바탕으로 학생들에게 실무 관점의 AI 활용 멘토링을 제공합니다. SAM 플랫폼 개발을 주도하며, 본 프로젝트의 기술 자문과 방향 설정을 담당합니다.</p>
-                    </div>
-                    <div class="team-links">
-                        <a href="mailto:soonsoon@soonsoons.com">soonsoon@soonsoons.com</a>
-                        <a href="https://soonsoon.ai" target="_blank">soonsoon.ai</a>
-                    </div>
-                </div>
+        <article class="track">
+          <header class="track-head">
+            <span class="track-id">Track / 02</span>
+            <span class="track-status is-pending">NEXT PHASE</span>
+          </header>
+          <h3 class="track-name">Learning Assistant Benchmark</h3>
+          <p class="track-sub">학습 어시스턴트 벤치마크</p>
+          <p class="track-q">"이 AI는 내가 더 잘 배우게 도와주나?"</p>
+          <span class="track-focus">Process-Oriented</span>
+          <ul class="track-items">
+            <li>개념을 쉽게 설명하는 능력</li>
+            <li>수준에 맞춰 조절하는 능력</li>
+            <li>스스로 생각하게 유도</li>
+            <li>힌트 제공 (과도한 정답 방지)</li>
+            <li>학습 계획 수립</li>
+            <li>동기부여와 피드백</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="score-block">
+        <h3>Score Architecture</h3>
+        <div class="score-tree">
+          <div class="score-root">
+            Student Helpfulness Score
+            <small>학생 도움도 종합 점수</small>
+          </div>
+          <div class="score-children">
+            <div class="score-child is-1">
+              <b>Academic Task Score</b>
+              <small>대학 실전 도움 점수</small>
             </div>
-
-            <!-- Students -->
-            <h3 class="team-subtitle">학생 연구원</h3>
-            <div class="team-students">
-                <div class="team-card">
-                    <div class="team-role-badge team-badge-student">1기 학생 연구원</div>
-                    <h3 class="team-name">김태운</h3>
-                    <div class="team-info">
-                        <p class="team-dept">서울대학교 컴퓨터공학과 2학년</p>
-                    </div>
-                    <div class="team-details">
-                        <p>벤치마크 조사, 실행 스크립트 개발, 코딩 카테고리 문제 설계를 담당합니다.</p>
-                    </div>
-                    <div class="team-links">
-                        <a href="mailto:listro002@snu.ac.kr">listro002@snu.ac.kr</a>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-role-badge team-badge-student">1기 학생 연구원</div>
-                    <h3 class="team-name">김호윤</h3>
-                    <div class="team-info">
-                        <p class="team-dept">서울대학교 재료공학과 2학년</p>
-                    </div>
-                    <div class="team-details">
-                        <p>벤치마크 조사, 이공계 문제 설계, 결과 분석 및 시각화를 담당합니다.</p>
-                    </div>
-                    <div class="team-links">
-                        <a href="mailto:khoyun007@gmail.com">khoyun007@gmail.com</a>
-                    </div>
-                </div>
+            <div class="score-child is-2">
+              <b>Learning Assistant Score</b>
+              <small>학습 지도 도움 점수</small>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <p class="footer-logo">wemeet-uni-bench</p>
-                    <p class="footer-tagline">"AI가 나한테 얼마나 도움이 되는가"를 측정한다.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank">GitHub</a>
-                    <a href="https://sam.soonsoon.ai" target="_blank">SAM Platform</a>
-                    <a href="https://soonsoon.ai" target="_blank">순순팩토리</a>
-                </div>
-            </div>
-            <p class="footer-copy">© 2025 soonsoonLABS. Open Source under MIT License.</p>
+  <!-- =============== SAM PLATFORM =============== -->
+  <section id="sam-platform" class="section">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="section-tag">§04 / Platform</p>
+        <div>
+          <h2 class="section-title">SAM이란 <em>무엇인가.</em></h2>
         </div>
-    </footer>
+      </header>
+
+      <div class="sam-platform-grid">
+        <div class="sam-platform-lead">
+          <p class="sam-platform-desc">
+            <strong>SAM(Smart AI Multiplexer)</strong>은 순순팩토리가 개발한
+            AI 라우팅 플랫폼이다. 단일 API로 GPT, Claude, Gemini, DeepSeek 등
+            30개 이상의 AI 모델을 호출하고, 목적·비용·성능에 따라
+            최적 모델을 자동으로 선택한다.
+          </p>
+          <p class="sam-platform-desc">
+            본 프로젝트는 SAM을 통해 모든 벤치마크 평가를 실행한다.
+            동일한 문제를 동일한 조건으로 여러 모델에 동시 제출하고,
+            결과를 비교·분석하는 것이 가능하다.
+          </p>
+          <a href="https://sam.soonsoon.ai" target="_blank" rel="noopener" class="btn btn-ghost sam-platform-cta">SAM 플랫폼 방문 ↗</a>
+        </div>
+
+        <div class="sam-platform-features">
+          <div class="sam-feat">
+            <span class="sam-feat-n">F/01</span>
+            <div>
+              <h4 class="sam-feat-title">단일 API, 30+ 모델</h4>
+              <p class="sam-feat-desc">GPT · Claude · Gemini · DeepSeek · Kimi 등 주요 모델을 하나의 엔드포인트로 호출</p>
+            </div>
+          </div>
+          <div class="sam-feat">
+            <span class="sam-feat-n">F/02</span>
+            <div>
+              <h4 class="sam-feat-title">자동 라우팅</h4>
+              <p class="sam-feat-desc">요청의 성격(코딩·추론·창작)과 예산에 따라 최적 모델을 자동 선택</p>
+            </div>
+          </div>
+          <div class="sam-feat">
+            <span class="sam-feat-n">F/03</span>
+            <div>
+              <h4 class="sam-feat-title">실시간 모델 랭킹</h4>
+              <p class="sam-feat-desc">공개 벤치마크 기반 OVR·Chat·Code·Reason 점수를 지속 업데이트</p>
+            </div>
+          </div>
+          <div class="sam-feat">
+            <span class="sam-feat-n">F/04</span>
+            <div>
+              <h4 class="sam-feat-title">비용 투명성</h4>
+              <p class="sam-feat-desc">모델별 입력/출력 토큰 단가를 실시간 비교 — 학생 예산에 맞는 선택 가능</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sam-platform-stat-row">
+        <div class="sam-stat-item">
+          <b>30<span>+</span></b>
+          <small>Models</small>
+        </div>
+        <div class="sam-stat-item">
+          <b>1</b>
+          <small>API Endpoint</small>
+        </div>
+        <div class="sam-stat-item">
+          <b>4</b>
+          <small>Score Dimensions</small>
+        </div>
+        <div class="sam-stat-item">
+          <b>실시간</b>
+          <small>Price Comparison</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== SAM VERIFY =============== -->
+  <section id="sam" class="section section-paper">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="section-tag">§05 / Verification</p>
+        <div>
+          <h2 class="section-title"><em>SAM 랭킹</em>과 실제 체감의 괴리.</h2>
+        </div>
+      </header>
+
+      <div class="sam-lead">
+        <p>
+          순순팩토리의 AI 라우팅 서비스 <strong>SAM</strong>을 통해 현존하는
+          대부분의 AI API를 직접 호출·평가한다. SAM에는 이미 공개 벤치마크
+          기반 랭킹이 존재하며, 우리는 그 점수와 학부 학생의 실제 체감
+          사이의 괴리를 측정한다.
+        </p>
+        <div class="sam-lead-stat">
+          <b>30+</b>
+          <span>Models accessible via single API</span>
+        </div>
+      </div>
+
+      <div class="sam-table-wrap">
+      <table class="sam-table">
+        <thead>
+          <tr>
+            <th style="width: 4rem;">#</th>
+            <th>Model</th>
+            <th>OVR</th>
+            <th>Chat</th>
+            <th>Code</th>
+            <th>Reason</th>
+            <th style="text-align: right;">Price / M tok</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="is-top">
+            <td class="rank">01</td>
+            <td class="model-name">Claude Opus 4.7</td>
+            <td class="ovr">94.0</td><td>95</td><td>96</td><td>93</td>
+            <td class="price price-hi" style="text-align: right;">$5.5 / 27.5</td>
+          </tr>
+          <tr>
+            <td class="rank">02</td>
+            <td class="model-name">GPT-5.4 Pro</td>
+            <td class="ovr">92.7</td><td>94</td><td>94</td><td>96</td>
+            <td class="price price-hi" style="text-align: right;">$15 / 120</td>
+          </tr>
+          <tr>
+            <td class="rank">04</td>
+            <td class="model-name">Gemini 3.1 Pro</td>
+            <td class="ovr">90.8</td><td>94</td><td>90</td><td>93</td>
+            <td class="price" style="text-align: right;">$2 / 12</td>
+          </tr>
+          <tr class="is-cheap">
+            <td class="rank">07</td>
+            <td class="model-name">Kimi K2.6</td>
+            <td class="ovr">84.0</td><td>87</td><td>93</td><td>75</td>
+            <td class="price" style="text-align: right;">$0.6 / 2.5</td>
+          </tr>
+          <tr class="is-cheap">
+            <td class="rank">10</td>
+            <td class="model-name">DeepSeek V4 Flash</td>
+            <td class="ovr">72.7</td><td>77</td><td>78</td><td>65</td>
+            <td class="price" style="text-align: right;">$0.14 / 0.28</td>
+          </tr>
+          <tr class="is-cheap">
+            <td class="rank">12</td>
+            <td class="model-name">DeepSeek V3.2</td>
+            <td class="ovr">68.6</td><td>72</td><td>73</td><td>61</td>
+            <td class="price" style="text-align: right;">$0.62 / 1.85</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="sam-table-meta">
+        <span class="sam-table-meta-src">
+          <span class="sam-table-meta-dot"></span>
+          SAM Platform 랭킹 기준
+        </span>
+        <span class="sam-table-meta-update">
+          마지막 업데이트: <b>2025년 5월 12일</b> · <a href="https://sam.soonsoon.ai" target="_blank" rel="noopener">sam.soonsoon.ai에서 최신 데이터 확인 ↗</a>
+        </span>
+      </div>
+
+      <div class="sam-q">
+        <div class="sam-q-item">
+          <p class="sam-q-n">Probe / 01</p>
+          <p class="sam-q-t">OVR 94점 모델이 정말 학부 과제에서도 1등인가?</p>
+        </div>
+        <div class="sam-q-item">
+          <p class="sam-q-n">Probe / 02</p>
+          <p class="sam-q-t">$0.14 모델이 간단한 과제에는 충분하지 않은가?</p>
+        </div>
+        <div class="sam-q-item">
+          <p class="sam-q-n">Probe / 03</p>
+          <p class="sam-q-t">CODE 93점이 실제 학부 코딩 과제에서도 그만큼 좋은가?</p>
+        </div>
+        <div class="sam-q-item is-key">
+          <p class="sam-q-n">Core Question</p>
+          <p class="sam-q-t">내 상황에서 어떤 모델이 가성비 최선인가?</p>
+        </div>
+      </div>
+
+      <div class="sam-closer">
+        <small>Student's first principle</small>
+        <h3>자신의 목적에 맞는 리소스를 선택하여 <b>'적절'한 비용</b>으로 공부 및 연구를 할 수 있는가.</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== WE-MEET =============== -->
+  <section class="section section-ink">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="section-tag">§06 / Program</p>
+        <div>
+          <h2 class="section-title">서울대학교 <em>WE-Meet</em></h2>
+        </div>
+      </header>
+
+      <figure class="wemeet-figure">
+        <img src="Asset/004.png" alt="WE-Meet 산학연계 프로그램 — 멘토와 학생이 함께 연구하는 장면" />
+      </figure>
+
+      <div class="wemeet">
+        <p class="wemeet-lead">
+          <span class="serif">위밋(WE-Meet)</span>은 기업과 대학이 협력하여
+          학생들이 <strong>실제 산업 현장의 문제</strong>를 해결하며 실무
+          역량을 기르고 학점을 인정받는 산학연계 프로젝트다.
+        </p>
+        <dl class="wemeet-dl">
+          <div>
+            <dt>Format</dt>
+            <dd>기업 재직자 멘토링 + 팀 프로젝트 수행 → 성과 평가(S/U)</dd>
+          </div>
+          <div>
+            <dt>Features</dt>
+            <dd>정규 교과목 학점 인정, 실무 멘토링, 산업 현장 문제 해결</dd>
+          </div>
+          <div>
+            <dt>Domains</dt>
+            <dd>차세대반도체 · 빅데이터 · 그린바이오 · AI</dd>
+          </div>
+          <div>
+            <dt>This Project</dt>
+            <dd>순순팩토리 × 서울대 — AI 활용 멘토링 및 SAM 서비스 연구 개선</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== TEAM =============== -->
+  <section id="team" class="section">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="section-tag">§07 / Team</p>
+        <div>
+          <h2 class="section-title">1기 <em>참여자.</em></h2>
+          <p class="section-sub">멘토 1인 + 학생 연구원 2인. 모든 기록은 GitHub 이슈와 PR로 공개되며, 코호트 종료 시점에 데이터셋과 결과를 공개 벤치마크로 발표한다.</p>
+        </div>
+      </header>
+
+      <div class="team-block">
+        <!-- Mentor -->
+        <article class="person is-lead">
+          <div class="person-id">
+            Mentor
+            <small>Lead · 01</small>
+          </div>
+          <div class="person-card-wrap">
+            <div class="profile-card profile-card-mentor">
+              <div class="profile-img-wrap">
+                <img src="Asset/member_0.gif" alt="송용성 프로필" class="profile-img" />
+                <span class="profile-badge">01/03 · MENTOR</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="person-name">
+              송용성
+              <span class="latin">Song Yongsung</span>
+            </h3>
+            <div class="person-meta">
+              <p>순순팩토리 대표</p>
+              <p>강원대학교 AI콘텐츠공학과 겸임교수</p>
+            </div>
+            <div class="person-bio">
+              <p>AI 서비스 개발 및 운영 경험을 바탕으로 학생들에게 실무 관점의 AI 활용 멘토링을 제공한다. SAM 플랫폼 개발을 주도하며, 본 프로젝트의 기술 자문과 방향 설정을 담당한다.</p>
+              <div class="person-links">
+                <a href="mailto:soonsoon@soonsoons.com">soonsoon@soonsoons.com</a>
+                <a href="https://soonsoon.ai" target="_blank" rel="noopener">soonsoon.ai ↗</a>
+                <a href="https://www.linkedin.com/in/soonsoon/" target="_blank" rel="noopener">LinkedIn ↗</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Student 1 -->
+        <article class="person">
+          <div class="person-id">
+            Student Researcher
+            <small>Cohort · 01</small>
+          </div>
+          <div class="person-card-wrap">
+            <div class="typo-card typo-card-s1">
+              <span class="typo-index">02/03 · STUDENT</span>
+              <span class="typo-glyph">김</span>
+              <span class="typo-sub">SNU · CSE · Y2</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="person-name">
+              김태운
+              <span class="latin">Kim Taewoon</span>
+            </h3>
+            <div class="person-meta">
+              <p>서울대학교 컴퓨터공학과 2학년</p>
+              <p>Track — Academic Coding</p>
+            </div>
+            <div class="person-bio">
+              <p>벤치마크 조사, 실행 스크립트 개발, 코딩 카테고리 문제 설계를 담당한다.</p>
+              <div class="person-links">
+                <a href="mailto:listro002@snu.ac.kr">listro002@snu.ac.kr</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Student 2 -->
+        <article class="person">
+          <div class="person-id">
+            Student Researcher
+            <small>Cohort · 01</small>
+          </div>
+          <div class="person-card-wrap">
+            <div class="typo-card typo-card-s2">
+              <span class="typo-index">03/03 · STUDENT</span>
+              <span class="typo-glyph">김</span>
+              <span class="typo-sub">SNU · MATSE · Y2</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="person-name">
+              김호윤
+              <span class="latin">Kim Hoyoon</span>
+            </h3>
+            <div class="person-meta">
+              <p>서울대학교 재료공학과 2학년</p>
+              <p>Track — STEM / Visualization</p>
+            </div>
+            <div class="person-bio">
+              <p>벤치마크 조사, 이공계 문제 설계, 결과 분석 및 시각화를 담당한다.</p>
+              <div class="person-links">
+                <a href="mailto:khoyun007@gmail.com">khoyun007@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          "AI가 나한테 얼마나 <b>도움이 되는가</b>"를 측정한다.
+        </div>
+        <div class="foot-col">
+          <h4>Project</h4>
+          <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank" rel="noopener">GitHub Repo</a>
+          <a href="#vision">Vision</a>
+          <a href="#tracks">Tracks</a>
+          <a href="#team">Team</a>
+        </div>
+        <div class="foot-col">
+          <h4>Partners</h4>
+          <a href="https://sam.soonsoon.ai" target="_blank" rel="noopener">SAM Platform</a>
+          <a href="https://soonsoon.ai" target="_blank" rel="noopener">SoonsoonFactory</a>
+          <a href="https://wemeet.snu.ac.kr" target="_blank" rel="noopener">SNU WE-Meet</a>
+        </div>
+      </div>
+      <div class="foot-bot">
+        <span>© 2025 soonsoonLABS · MIT License</span>
+        <span>Built with care in Seoul · wemeet-uni-bench v0.1</span>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
