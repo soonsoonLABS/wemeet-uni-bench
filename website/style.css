@@ -683,3 +683,321 @@ a:hover {
         flex-direction: column;
     }
 }
+
+
+/* === Two Questions === */
+.two-questions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.question-card {
+    background: linear-gradient(135deg, var(--color-surface), var(--color-accent-dim));
+    border: 1px solid var(--color-accent);
+    border-radius: 16px;
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+}
+
+.question-num {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+}
+
+.question-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--color-text);
+}
+
+/* === Tracks === */
+.tracks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.track-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: var(--space-lg);
+    transition: border-color 0.3s;
+}
+
+.track-card:hover {
+    border-color: var(--color-accent);
+}
+
+.track-active {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 32px var(--color-accent-dim);
+}
+
+.track-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    background: var(--color-accent-dim);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: var(--space-sm);
+}
+
+.track-badge-next {
+    color: var(--color-text-muted);
+    background: var(--color-surface-2);
+}
+
+.track-card h3 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-bottom: 4px;
+}
+
+.track-subtitle {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+}
+
+.track-question {
+    font-size: 1.05rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+    font-style: italic;
+}
+
+.track-focus {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-text);
+    background: var(--color-surface-2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: var(--space-md);
+}
+
+.track-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.track-items li {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.track-items li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-size: 0.8rem;
+}
+
+/* === Score Structure === */
+.score-structure {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: var(--space-lg);
+    text-align: center;
+}
+
+.score-structure h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-md);
+}
+
+.score-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.score-root {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-blue));
+    color: var(--color-bg);
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 12px;
+}
+
+.score-root span {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.score-branches {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.score-branch {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.score-branch span {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.score-branch-1 {
+    border-color: var(--color-accent);
+}
+
+.score-branch-2 {
+    border-color: var(--color-blue);
+}
+
+/* === SAM Section === */
+.section-alt {
+    background: var(--color-surface-2);
+}
+
+.sam-intro {
+    max-width: 700px;
+    margin-bottom: var(--space-lg);
+}
+
+.sam-intro p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+}
+
+.sam-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: var(--space-lg);
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+}
+
+.sam-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.sam-table thead {
+    background: var(--color-surface);
+}
+
+.sam-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+}
+
+.sam-table td {
+    padding: 12px 16px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+
+.sam-table tbody tr:hover {
+    background: var(--color-surface);
+}
+
+.score-high {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.price-high {
+    color: var(--color-highlight);
+}
+
+.price-low {
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+.sam-questions {
+    margin-bottom: var(--space-lg);
+}
+
+.sam-questions h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-md);
+}
+
+.sam-q-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-sm);
+}
+
+.sam-q-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: var(--space-md);
+}
+
+.sam-q-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+}
+
+.sam-q-highlight {
+    border-color: var(--color-accent);
+    background: var(--color-accent-dim);
+}
+
+.sam-q-highlight p {
+    color: var(--color-text);
+}
+
+.sam-point {
+    text-align: center;
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-accent);
+    border-radius: 16px;
+}
+
+.sam-point p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+}
+
+.sam-point h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--color-accent);
+}
