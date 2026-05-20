@@ -1,12 +1,17 @@
 {
-  "id": "mat_hoyoon_001",
+  "id": "mat_tester_001",
   "category": "materials",
   "subject": "전위(Dislocation) 개념 설명",
   "difficulty": "L2",
   "language": "ko",
   "prompt": "재료공학에서 \"전위(dislocation)\"의 개념을 학부 2학년 수준에서 설명하고, 다음 질문에 답해줘.\n\n1. Edge dislocation과 screw dislocation의 차이를 그림 없이 글로 명확히 구분해줘.\n2. 전위가 금속의 소성 변형(plastic deformation)에 어떻게 기여하는지 설명해줘.\n3. Burgers vector가 무엇이고 왜 중요한지 설명해줘.\n\n가능하면 한국어 학술 문체로 답해주고, 영어 용어는 한글-영문 병기로 적어줘.",
   "expected_output": {
-    "must_include": ["edge dislocation", "screw dislocation", "Burgers vector", "소성 변형"],
+    "must_include": [
+      "edge dislocation",
+      "screw dislocation",
+      "Burgers vector",
+      "소성 변형"
+    ],
     "must_not_include": []
   },
   "purpose": "재료공학 기초 개념 설명 능력과 한국어 학술 문체 적합성을 평가한다.",

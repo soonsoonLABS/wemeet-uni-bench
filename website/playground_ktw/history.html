@@ -6,7 +6,9 @@
   <title>History Viewer — wemeet-uni-bench</title>
   <meta name="description" content="벤치마크 실행 결과를 열람하고 비교하는 히스토리 뷰어." />
 
+  <!-- Base styles -->
   <link rel="stylesheet" href="../style.css" />
+  <!-- History Viewer styles -->
   <link rel="stylesheet" href="history.css" />
 
   <!-- Markdown rendering -->
@@ -22,7 +24,7 @@
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- =============== NAV =============== -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="./" class="nav-logo">uni-bench / history</a>
@@ -34,67 +36,98 @@
     </div>
   </nav>
 
-  <!-- HEADER -->
-  <header class="hv-hero">
-    <div class="wrap">
-      <h1 class="hv-title">📜 History Viewer</h1>
-      <p class="hv-desc">
-        벤치마크 실행 결과를 불러와 모델별 응답을 비교·열람한다.
-        JSON 파일을 드래그하거나 선택하여 로드할 수 있다.
-      </p>
-    </div>
-  </header>
+  <!-- =============== LAYOUT: SIDEBAR + MAIN =============== -->
+  <div class="hv-layout">
 
-  <!-- FILE LOADER -->
-  <section class="hv-loader-section">
-    <div class="wrap">
-      <div id="drop-zone" class="hv-drop-zone">
-        <p class="hv-drop-text">
-          <span class="hv-drop-icon">📂</span>
-          JSON 파일을 여기에 드래그하거나
-          <label class="hv-drop-label">
-            <input type="file" id="file-input" accept=".json" multiple hidden />
-            파일을 선택
-          </label>
-          하세요.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- RUN LIST -->
-  <section class="hv-list-section">
-    <div class="wrap">
-      <div id="run-list" class="hv-run-list"></div>
-    </div>
-  </section>
-
-  <!-- DETAIL VIEW -->
-  <section id="detail-section" class="hv-detail-section" hidden>
-    <div class="wrap">
-      <header class="hv-detail-header">
-        <div>
-          <h2 id="detail-title" class="hv-detail-title"></h2>
-          <p id="detail-meta" class="hv-detail-meta"></p>
-        </div>
-        <button id="detail-close" class="btn btn-ghost hv-detail-close">✕ 닫기</button>
+    <!-- ===== SIDEBAR: Run History List ===== -->
+    <aside id="hv-sidebar" class="hv-sidebar">
+      <header class="hv-sidebar-head">
+        <h2 class="hv-sidebar-title">📜 History DB</h2>
+        <button id="hv-sidebar-toggle" class="hv-sidebar-toggle" aria-label="Toggle sidebar">◀</button>
       </header>
 
-      <div id="detail-prompt" class="hv-detail-prompt"></div>
+      <div class="hv-sidebar-body">
+        <!-- DB Sync Controls -->
+        <div class="hv-db-sync">
+          <button id="refresh-btn" class="btn btn-ghost hv-sync-btn">
+            🔄 DB 결과 불러오기
+          </button>
+        </div>
 
-      <div id="detail-results" class="hv-detail-results"></div>
-    </div>
-  </section>
+        <!-- Mini File Upload / Drag & Drop -->
+        <div id="drop-zone" class="hv-drop-zone">
+          <p class="hv-drop-text">
+            <span>📂 JSON 드롭 또는 </span>
+            <label class="hv-drop-label">
+              <input type="file" id="file-input" accept=".json" multiple hidden />
+              클릭 업로드
+            </label>
+          </p>
+        </div>
 
-  <!-- FOOTER -->
-  <footer class="foot">
-    <div class="wrap">
-      <div class="foot-bot">
-        <span>© 2025 soonsoonLABS · MIT License</span>
-        <span>wemeet-uni-bench / history viewer v0.2</span>
+        <div class="hv-sidebar-divider"></div>
+
+        <!-- Run List Navigation -->
+        <div id="run-list" class="hv-run-list">
+          <p class="hv-loading">로딩 중...</p>
+        </div>
       </div>
-    </div>
-  </footer>
+    </aside>
+
+    <!-- ===== MAIN CONTENT AREA ===== -->
+    <main class="hv-main">
+
+      <!-- WELCOME STATE (Shown when no selection is active) -->
+      <div id="welcome-view" class="hv-welcome">
+        <div class="wrap">
+          <h1 class="hv-title">📜 History Viewer</h1>
+          <p class="hv-desc">
+            왼쪽 사이드바의 데이터베이스(DB) 실행 이력을 선택하거나, 
+            로컬 JSON 파일을 업로드하여 벤치마크 모델 응답을 나란히 상세 비교합니다.
+          </p>
+          
+          <div class="hv-guide-box">
+            <h3>💡 사용 가이드</h3>
+            <ul>
+              <li><strong>DB 결과 불러오기</strong>: 로컬 API 서버에 저장된 벤치마크 결과 리스트를 실시간 동기화합니다.</li>
+              <li><strong>JSON 파일 드롭</strong>: 이전에 로컬 저장소로 다운로드해두었던 <code>run_*.json</code> 파일을 끌어다 놓으면 즉시 브라우저에서 읽어 대조해 볼 수 있습니다.</li>
+              <li><strong>반응형 레이아웃</strong>: 사이드바 상단의 ◀ 버튼을 누르면 이력 목록이 축소되어 결과를 화면에 더 넓게 표시합니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- DETAIL VIEW SECTION (Shown when a run is selected) -->
+      <section id="detail-section" class="hv-detail" hidden>
+        <div class="wrap">
+          <header class="hv-detail-header">
+            <div>
+              <h2 id="detail-title" class="hv-detail-title"></h2>
+              <p id="detail-meta" class="hv-detail-meta"></p>
+            </div>
+            <button id="detail-close" class="btn btn-ghost hv-detail-close">✕ 닫기</button>
+          </header>
+
+          <div class="hv-detail-prompt-label">실행 프롬프트</div>
+          <div id="detail-prompt" class="hv-detail-prompt"></div>
+
+          <div class="hv-detail-compare-label">모델별 답변 비교</div>
+          <div id="detail-results" class="hv-detail-results"></div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="foot">
+        <div class="wrap">
+          <div class="foot-bot">
+            <span>© 2025 soonsoonLABS · MIT License</span>
+            <span>wemeet-uni-bench / history viewer v0.2 (KTW)</span>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+  </div>
 
   <script src="history.js" defer></script>
 </body>
