@@ -19,5 +19,11 @@ venv/
 .DS_Store
 Thumbs.db
 
-# Results (large files)
-# benchmarks/results/*.json  # uncomment if results get too large
+# Results & local DB
+benchmarks/results/*
+!benchmarks/results/.gitkeep
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3

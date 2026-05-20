@@ -1,12 +1,19 @@
 {
-  "id": "cs_taewoon_001",
+  "id": "cs_tester_001",
   "category": "algorithms",
   "subject": "이진 탐색 트리 구현",
   "difficulty": "L2",
   "language": "ko",
   "prompt": "Python으로 이진 탐색 트리(BST)를 구현하세요. 삽입, 검색, 삭제, 중위 순회 메서드를 포함해야 합니다. 각 메서드에 대한 시간 복잡도를 주석으로 설명하세요.",
   "expected_output": {
-    "must_include": ["O(log n)", "O(n)", "삽입", "검색", "삭제", "중위 순회"],
+    "must_include": [
+      "O(log n)",
+      "O(n)",
+      "삽입",
+      "검색",
+      "삭제",
+      "중위 순회"
+    ],
     "must_not_include": []
   },
   "purpose": "BST 기본 자료구조 구현 능력과 시간 복잡도 분석 설명력을 평가한다.",

@@ -1,11 +1,12 @@
-/* ==========================================================================
-   Playground KTW — extends main style.css
-   ========================================================================== */
+/* HTML hidden attribute global override to prevent CSS specificity bugs */
+[hidden] {
+  display: none !important;
+}
 
 /* --- Layout: Sidebar + Main --------------------------------------------- */
 .pg-layout {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: auto 1fr;
   min-height: 100vh;
   padding-top: 56px; /* nav height */
 }
@@ -22,6 +23,8 @@
   z-index: 10;
   transition: width 0.3s ease, min-width 0.3s ease;
   overflow: hidden;
+  width: 300px;
+  min-width: 300px;
 }
 
 .pg-sidebar.is-collapsed {
@@ -34,6 +37,10 @@
 }
 .pg-sidebar.is-collapsed .pg-sidebar-toggle {
   transform: rotate(180deg);
+}
+.pg-sidebar.is-collapsed .pg-sidebar-head {
+  padding: 0.8rem 0;
+  justify-content: center;
 }
 
 .pg-sidebar-head {

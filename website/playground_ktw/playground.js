@@ -38,6 +38,7 @@ const $badgeClear = document.getElementById('badge-clear');
 let problemsIndex = null;
 let selectedProblem = null;
 let lastRunData = null;
+let isRunning = false;
 
 // =========================================================================
 // API KEY
@@ -71,48 +72,6 @@ $clearKey.addEventListener('click', () => {
   localStorage.removeItem(KEY_STORAGE);
   $key.value = '';
   loadKey();
-});
-
-// =========================================================================
-// PRESET PROMPTS
-// =========================================================================
-const PRESETS = {
-  cs: `다음 동적계획법 문제를 풀어주고, 풀이 과정을 학부 2학년 수준에서 단계별로 설명해줘.
-
-문제: 길이가 N인 정수 배열 arr가 주어진다. 연속된 부분 배열 중 합이 최대인 것을 찾아라. (예: [-2, 1, -3, 4, -1, 2, 1, -5, 4] → 6, 부분배열 [4, -1, 2, 1])
-
-요구사항:
-- 시간복잡도 O(N)으로 풀어라
-- Python 코드를 작성하라
-- 왜 그 풀이가 작동하는지 점화식으로 설명하라`,
-
-  mat: `재료공학에서 "전위(dislocation)"의 개념을 학부 2학년 수준에서 설명하고, 다음 질문에 답해줘.
-
-1. Edge dislocation과 screw dislocation의 차이를 그림 없이 글로 명확히 구분해줘.
-2. 전위가 금속의 소성 변형(plastic deformation)에 어떻게 기여하는지 설명해줘.
-3. Burgers vector가 무엇이고 왜 중요한지 설명해줘.
-
-가능하면 한국어 학술 문체로 답해주고, 영어 용어는 한글-영문 병기로 적어줘.`,
-
-  kkodle: `꼬들(한국어 Wordle) 게임을 하자. 너는 5글자 한국어 단어를 6번 안에 맞춰야 한다.
-
-규칙:
-- 각 추측은 실존하는 한국어 5글자 명사여야 한다
-- 내가 피드백을 준다:
-  🟩 = 해당 위치에 정확히 맞는 글자
-  🟨 = 단어에 포함되지만 위치가 틀림
-  ⬜ = 단어에 포함되지 않는 글자
-
-지금 첫 번째 추측을 한국어 5글자 명사로 제시해라.
-왜 그 단어를 첫 추측으로 선택했는지 정보 이론적 관점에서 짧게 설명도 함께 줘.`,
-};
-
-document.querySelectorAll('.pg-preset').forEach(btn => {
-  btn.addEventListener('click', () => {
-    clearSelectedProblem();
-    $prompt.value = PRESETS[btn.dataset.preset] || '';
-    $prompt.focus();
-  });
 });
 
 // =========================================================================
@@ -316,6 +275,8 @@ function renderMarkdown(text) {
 // RUN COMPARISON
 // =========================================================================
 $runBtn.addEventListener('click', async () => {
+  if (isRunning) return;
+
   const apiKey = localStorage.getItem(KEY_STORAGE);
   if (!apiKey) { alert('API 키를 먼저 저장하라.'); return; }
 
@@ -327,50 +288,74 @@ $runBtn.addEventListener('click', async () => {
   if (selected.length === 0) { alert('모델을 1개 이상 선택하라.'); return; }
   if (selected.length > 5) { alert('한번에 최대 5개까지 비교 가능하다.'); return; }
 
-  $runBtn.disabled = true;
-  $runStatus.textContent = `${selected.length}개 모델 호출 중...`;
-  $results.innerHTML = '';
-  $runActions.hidden = true;
+  try {
+    isRunning = true;
+    $runBtn.disabled = true;
+    $runStatus.textContent = `${selected.length}개 모델 호출 중...`;
+    $results.innerHTML = '';
+    $runActions.hidden = true;
 
-  // Create result panes
-  const panes = {};
-  selected.forEach(model => {
-    const pane = createResultPane(model);
-    $results.appendChild(pane.el);
-    panes[model] = pane;
-  });
+    // Create result panes
+    const panes = {};
+    selected.forEach(model => {
+      const pane = createResultPane(model);
+      $results.appendChild(pane.el);
+      panes[model] = pane;
+    });
 
-  // Call all models in parallel
-  const startTime = Date.now();
-  const resultEntries = [];
+    // Call all models in parallel
+    const startTime = Date.now();
+    const resultEntries = [];
 
-  const calls = selected.map(async (model) => {
-    const entry = await callModel(apiKey, model, prompt, panes[model]);
-    resultEntries.push(entry);
-  });
+    const calls = selected.map(async (model) => {
+      const entry = await callModel(apiKey, model, prompt, panes[model]);
+      resultEntries.push(entry);
+    });
 
-  await Promise.allSettled(calls);
+    await Promise.allSettled(calls);
 
-  const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-  $runStatus.textContent = `완료 — 총 ${elapsed}초 소요`;
-  $runBtn.disabled = false;
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+    $runStatus.textContent = `완료 — 총 ${elapsed}초 소요`;
 
-  // Build run data
-  const now = new Date();
-  const runId = formatTimestamp(now);
-  lastRunData = {
-    run_id: runId,
-    timestamp: now.toISOString(),
-    prompt: prompt,
-    problem_id: selectedProblem ? selectedProblem.id : null,
-    results: resultEntries,
-  };
+    // Build run data
+    const now = new Date();
+    const runId = formatTimestamp(now);
+    lastRunData = {
+      run_id: runId,
+      timestamp: now.toISOString(),
+      prompt: prompt,
+      problem_id: selectedProblem ? selectedProblem.id : null,
+      results: resultEntries,
+    };
 
-  // Save to localStorage for instant viewing
-  localStorage.setItem(LAST_RUN_STORAGE, JSON.stringify(lastRunData));
+    // Save to localStorage for instant viewing
+    localStorage.setItem(LAST_RUN_STORAGE, JSON.stringify(lastRunData));
 
-  // Show action buttons
-  $runActions.hidden = false;
+    // Auto-save to local DB via server API
+    try {
+      const apiRes = await fetch('/api/save_result', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lastRunData)
+      });
+      if (apiRes.ok) {
+        console.log('Result saved to server database successfully.');
+      } else {
+        console.warn('Server failed to save result:', await apiRes.text());
+      }
+    } catch (e) {
+      console.warn('Failed to auto-save to server database:', e);
+    }
+
+    // Show action buttons
+    $runActions.hidden = false;
+  } catch (err) {
+    console.error('Benchmark execution error:', err);
+    $runStatus.textContent = `오류 발생: ${err.message || err}`;
+  } finally {
+    isRunning = false;
+    $runBtn.disabled = false;
+  }
 });
 
 function createResultPane(modelName) {
@@ -514,3 +499,11 @@ function formatTimestamp(date) {
 loadKey();
 loadProblemsIndex();
 $freeInputBtn.classList.add('is-active');
+
+// Prevent accidental exit during runs
+window.addEventListener('beforeunload', (e) => {
+  if (isRunning) {
+    e.preventDefault();
+    e.returnValue = ''; // Triggers the standard browser warning
+  }
+});

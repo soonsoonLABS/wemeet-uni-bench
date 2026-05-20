@@ -163,7 +163,7 @@ img, svg { display: block; max-width: 100%; }
   font-weight: 700;
   text-transform: uppercase;
 }
-.nav-links .nav-cta:hover { background: var(--paper); }
+.nav-links .nav-cta:hover { background: var(--paper); color: var(--ink); }
 
 /* --- Hero --------------------------------------------------------------- */
 .hero {
@@ -316,7 +316,7 @@ img, svg { display: block; max-width: 100%; }
   color: var(--ink);
   border-color: var(--lime);
 }
-.btn-primary:hover { background: var(--paper); border-color: var(--paper); }
+.btn-primary:hover { background: var(--paper); border-color: var(--paper); color: var(--ink) !important; }
 .btn-ghost {
   color: var(--paper);
   border-color: var(--rule);
