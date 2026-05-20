@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-05-20T17:27:59.222228",
+  "total": 4,
+  "tree": {
+    "algorithms": {
+      "label": "알고리즘",
+      "problems": [
+        {
+          "id": "cs_taewoon_001",
+          "subject": "이진 탐색 트리 구현",
+          "difficulty": "L2",
+          "file": "cs_tester_001.json"
+        },
+        {
+          "id": "cs_taewoon_002",
+          "subject": "동적계획법 — 최대 부분배열 합",
+          "difficulty": "L2",
+          "file": "cs_tester_002.json"
+        }
+      ]
+    },
+    "coding": {
+      "label": "코딩",
+      "problems": [
+        {
+          "id": "CD-L2-001",
+          "subject": "이진 탐색 트리 구현",
+          "difficulty": 2,
+          "file": "example_coding_l2.json"
+        }
+      ]
+    },
+    "materials": {
+      "label": "재료공학",
+      "problems": [
+        {
+          "id": "mat_hoyoon_001",
+          "subject": "전위(Dislocation) 개념 설명",
+          "difficulty": "L2",
+          "file": "mat_tester_001.json"
+        }
+      ]
+    }
+  }
+}

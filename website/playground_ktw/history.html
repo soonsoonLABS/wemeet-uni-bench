@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History Viewer — wemeet-uni-bench</title>
+  <meta name="description" content="벤치마크 실행 결과를 열람하고 비교하는 히스토리 뷰어." />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="history.css" />
+
+  <!-- Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js" defer></script>
+  <!-- Code highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" defer></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="./" class="nav-logo">uni-bench / history</a>
+      <div class="nav-links">
+        <a href="./">← playground</a>
+        <a href="../">project</a>
+        <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank" rel="noopener" class="nav-cta">GITHUB →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="hv-hero">
+    <div class="wrap">
+      <h1 class="hv-title">📜 History Viewer</h1>
+      <p class="hv-desc">
+        벤치마크 실행 결과를 불러와 모델별 응답을 비교·열람한다.
+        JSON 파일을 드래그하거나 선택하여 로드할 수 있다.
+      </p>
+    </div>
+  </header>
+
+  <!-- FILE LOADER -->
+  <section class="hv-loader-section">
+    <div class="wrap">
+      <div id="drop-zone" class="hv-drop-zone">
+        <p class="hv-drop-text">
+          <span class="hv-drop-icon">📂</span>
+          JSON 파일을 여기에 드래그하거나
+          <label class="hv-drop-label">
+            <input type="file" id="file-input" accept=".json" multiple hidden />
+            파일을 선택
+          </label>
+          하세요.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RUN LIST -->
+  <section class="hv-list-section">
+    <div class="wrap">
+      <div id="run-list" class="hv-run-list"></div>
+    </div>
+  </section>
+
+  <!-- DETAIL VIEW -->
+  <section id="detail-section" class="hv-detail-section" hidden>
+    <div class="wrap">
+      <header class="hv-detail-header">
+        <div>
+          <h2 id="detail-title" class="hv-detail-title"></h2>
+          <p id="detail-meta" class="hv-detail-meta"></p>
+        </div>
+        <button id="detail-close" class="btn btn-ghost hv-detail-close">✕ 닫기</button>
+      </header>
+
+      <div id="detail-prompt" class="hv-detail-prompt"></div>
+
+      <div id="detail-results" class="hv-detail-results"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-bot">
+        <span>© 2025 soonsoonLABS · MIT License</span>
+        <span>wemeet-uni-bench / history viewer v0.2</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="history.js" defer></script>
+</body>
+</html>
