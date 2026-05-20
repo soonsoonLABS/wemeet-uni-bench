@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benchmark Playground — wemeet-uni-bench</title>
+  <meta name="description" content="SAM API로 여러 모델에 같은 문제를 동시에 던져 결과를 나란히 비교하는 벤치마크 플레이그라운드." />
+
+  <!-- Base styles -->
+  <link rel="stylesheet" href="../style.css" />
+  <!-- Playground styles -->
+  <link rel="stylesheet" href="playground.css" />
+
+  <!-- Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js" defer></script>
+  <!-- Code highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+  <!-- KaTeX (math) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" defer></script>
+</head>
+<body>
+
+  <!-- =============== NAV =============== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo">uni-bench / playground</a>
+      <div class="nav-links">
+        <a href="../">← project</a>
+        <a href="history.html">history</a>
+        <a href="https://sam.soonsoon.ai" target="_blank" rel="noopener">SAM ↗</a>
+        <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank" rel="noopener" class="nav-cta">GITHUB →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =============== LAYOUT: SIDEBAR + MAIN =============== -->
+  <div class="pg-layout">
+
+    <!-- ===== SIDEBAR: Problem Tree ===== -->
+    <aside id="sidebar" class="pg-sidebar">
+      <header class="pg-sidebar-head">
+        <h2 class="pg-sidebar-title">📂 Problems</h2>
+        <button id="sidebar-toggle" class="pg-sidebar-toggle" aria-label="Toggle sidebar">◀</button>
+      </header>
+
+      <div class="pg-sidebar-body">
+        <div id="problem-tree" class="pg-tree">
+          <p class="pg-tree-loading">문제 인덱스 로딩 중...</p>
+        </div>
+
+        <div class="pg-sidebar-divider"></div>
+
+        <button id="free-input-btn" class="pg-tree-free">
+          <span class="pg-tree-free-icon">✏️</span>
+          직접 입력
+        </button>
+
+        <div class="pg-sidebar-divider"></div>
+
+        <!-- Problem detail panel (shown when a problem is selected) -->
+        <div id="problem-detail" class="pg-problem-detail" hidden>
+          <h3 id="detail-subject" class="pg-detail-subject"></h3>
+          <dl class="pg-detail-meta">
+            <div><dt>ID</dt><dd id="detail-id"></dd></div>
+            <div><dt>난이도</dt><dd id="detail-difficulty"></dd></div>
+            <div><dt>카테고리</dt><dd id="detail-category"></dd></div>
+          </dl>
+          <div id="detail-purpose" class="pg-detail-purpose"></div>
+          <div id="detail-rubric" class="pg-detail-rubric"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="pg-main">
+
+      <!-- HERO -->
+      <header class="pg-hero">
+        <div class="wrap">
+          <p class="hero-meta">
+            <span><b>EXPERIMENT №001</b> · Multi-Model Comparison</span>
+            <span>v0.2 · <b>KTW</b></span>
+          </p>
+          <h1 class="pg-title">
+            같은 문제를<br>
+            <mark>여러 AI에게</mark> 동시에.
+          </h1>
+          <p class="pg-desc">
+            SAM API로 한 번에 여러 모델을 호출하고 결과를 나란히 비교한다.
+            본인의 학업 문제를 직접 입력하고, 어느 모델이 더 도움이 되는지 체감한다.
+          </p>
+        </div>
+      </header>
+
+      <!-- STEP 1: API KEY -->
+      <section class="pg-step">
+        <div class="wrap">
+          <header class="pg-step-head">
+            <span class="pg-step-num">STEP / 01</span>
+            <h2 class="pg-step-title">SAM API 키 입력</h2>
+            <p class="pg-step-desc">
+              API 키는 브라우저의 localStorage에만 저장되며 외부 서버로 전송되지 않는다.
+              키 발급은 <a href="https://sam.soonsoon.ai" target="_blank" rel="noopener">sam.soonsoon.ai</a>에서 받을 수 있다.
+            </p>
+          </header>
+          <div class="pg-key-row">
+            <input type="password" id="api-key" class="pg-input" placeholder="sam-..." autocomplete="off" />
+            <button id="save-key" class="btn btn-primary">저장</button>
+            <button id="clear-key" class="btn btn-ghost">삭제</button>
+          </div>
+          <p id="key-status" class="pg-key-status"></p>
+        </div>
+      </section>
+
+      <!-- STEP 2: PROBLEM INPUT -->
+      <section class="pg-step pg-step-ink">
+        <div class="wrap">
+          <header class="pg-step-head">
+            <span class="pg-step-num">STEP / 02</span>
+            <h2 class="pg-step-title">문제 입력</h2>
+            <p class="pg-step-desc">
+              좌측 트리에서 벤치마크 문제를 선택하거나, 직접 입력할 수 있다.
+              한국어로 자연스럽게 작성하라.
+            </p>
+          </header>
+
+          <div id="selected-problem-badge" class="pg-selected-badge" hidden>
+            <span id="badge-text"></span>
+            <button id="badge-clear" class="pg-badge-clear" title="선택 해제">✕</button>
+          </div>
+
+          <textarea id="prompt" class="pg-textarea" rows="6"
+            placeholder="좌측 트리에서 문제를 선택하거나, 여기에 직접 입력하세요..."></textarea>
+
+          <div class="pg-presets">
+            <span class="pg-presets-label">빠른 예제:</span>
+            <button class="pg-preset" data-preset="cs">컴공 — 동적계획법</button>
+            <button class="pg-preset" data-preset="mat">재료 — 전위 개념</button>
+            <button class="pg-preset" data-preset="kkodle">꼬들 게임</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 3: MODEL SELECTION -->
+      <section class="pg-step">
+        <div class="wrap">
+          <header class="pg-step-head">
+            <span class="pg-step-num">STEP / 03</span>
+            <h2 class="pg-step-title">모델 선택</h2>
+            <p class="pg-step-desc">
+              비교할 모델을 2~5개 선택한다. 각 모델의 응답 속도와 비용은 다르다.
+            </p>
+          </header>
+
+          <div id="model-grid" class="pg-models">
+            <label class="pg-model">
+              <input type="checkbox" value="claude-opus" checked />
+              <div class="pg-model-card">
+                <span class="pg-model-tag">Premium</span>
+                <b>claude-opus</b>
+                <small>$5.5 / $27.5 per M tok · slow · highest quality</small>
+              </div>
+            </label>
+            <label class="pg-model">
+              <input type="checkbox" value="gpt-5.4" checked />
+              <div class="pg-model-card">
+                <span class="pg-model-tag">Premium</span>
+                <b>gpt-5.4</b>
+                <small>$2.5 / $15 per M tok · 1M context</small>
+              </div>
+            </label>
+            <label class="pg-model">
+              <input type="checkbox" value="claude-haiku" checked />
+              <div class="pg-model-card">
+                <span class="pg-model-tag">Mid</span>
+                <b>claude-haiku</b>
+                <small>$1.1 / $5.5 per M tok · 600ms</small>
+              </div>
+            </label>
+            <label class="pg-model">
+              <input type="checkbox" value="deepseek-v3.2" />
+              <div class="pg-model-card">
+                <span class="pg-model-tag">Budget</span>
+                <b>deepseek-v3.2</b>
+                <small>$0.62 / $1.85 per M tok</small>
+              </div>
+            </label>
+            <label class="pg-model">
+              <input type="checkbox" value="glm-4.7-flash" />
+              <div class="pg-model-card">
+                <span class="pg-model-tag">Budget</span>
+                <b>glm-4.7-flash</b>
+                <small>$0.06 / $0.40 per M tok · fastest</small>
+              </div>
+            </label>
+            <label class="pg-model">
+              <input type="checkbox" value="qwen3-coder-next" />
+              <div class="pg-model-card">
+                <span class="pg-model-tag">Coding</span>
+                <b>qwen3-coder-next</b>
+                <small>$0.5 / $1.2 per M tok · code-specialized</small>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 4: RUN & RESULTS -->
+      <section class="pg-step pg-step-ink">
+        <div class="wrap">
+          <header class="pg-step-head">
+            <span class="pg-step-num">STEP / 04</span>
+            <h2 class="pg-step-title">실행 & 비교</h2>
+          </header>
+
+          <button id="run-btn" class="btn btn-primary pg-run-btn" disabled>
+            Run Comparison →
+          </button>
+          <p id="run-status" class="pg-run-status"></p>
+
+          <!-- Action buttons (shown after run) -->
+          <div id="run-actions" class="pg-run-actions" hidden>
+            <button id="download-btn" class="btn btn-primary pg-action-btn">📥 결과 다운로드 (JSON)</button>
+            <button id="view-result-btn" class="btn btn-ghost pg-action-btn">🔍 결과 자세히 보기</button>
+          </div>
+
+          <div id="results" class="pg-results" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- STEP 5: OBSERVATION NOTES -->
+      <section class="pg-step">
+        <div class="wrap">
+          <header class="pg-step-head">
+            <span class="pg-step-num">STEP / 05</span>
+            <h2 class="pg-step-title">관찰 노트</h2>
+            <p class="pg-step-desc">
+              어느 모델이 더 도움이 되었는지, 비싸야 잘 푸는지, 한국어 품질은 어떤지
+              본인의 평가를 작성하라. 이 데이터가 우리 벤치마크의 출발점이다.
+            </p>
+          </header>
+          <ul class="pg-checklist">
+            <li>한국어 학술 문체로 답하는가? (어색한 번역체는 없는가)</li>
+            <li>풀이 과정을 단계별로 보여주는가?</li>
+            <li>참고할 수 있는 출처/공식을 제시하는가?</li>
+            <li>모르는 것을 솔직하게 인정하는가?</li>
+            <li>비싼 모델이 정말 더 도움되는가? (가성비)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="foot">
+        <div class="wrap">
+          <div class="foot-bot">
+            <span>© 2025 soonsoonLABS · MIT License</span>
+            <span>wemeet-uni-bench / playground_ktw v0.2</span>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="playground.js" defer></script>
+</body>
+</html>
