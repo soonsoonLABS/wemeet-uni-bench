@@ -1,0 +1,39 @@
+{
+  "id": "cs_taewoon_004",
+  "category": "coding",
+  "subject": "Programming",
+  "difficulty": "L2",
+  "language": "ko",
+  "prompt": "다음은 네트워크 프로그래밍 과제에서 조교가 제공한 `ServerConfig` 클래스의 스켈레톤 코드입니다.\n\n```java\npublic class ServerConfig {\n    private final String host;\n    private final int port;\n    private final boolean useSSL;\n\n    private ServerConfig(Builder builder) {\n        this.host = builder.host;\n        this.port = builder.port;\n        this.useSSL = builder.useSSL;\n    }\n\n    public static class Builder {\n        private String host;\n        private int port = 8080;\n        private boolean useSSL = false;\n\n        public Builder host(String host) {\n            this.host = host;\n            return this;\n        }\n\n        public Builder port(int port) {\n            if(port <= 0 || port > 65535) throw new IllegalArgumentException(\"Invalid port\");\n            this.port = port;\n            return this;\n        }\n\n        public Builder useSSL(boolean useSSL) {\n            this.useSSL = useSSL;\n            return this;\n        }\n\n        public ServerConfig build() {\n            if(host == null) throw new IllegalStateException(\"Host must be set\");\n            return new ServerConfig(this);\n        }\n    }\n}\n
+```\n\n컴퓨터공학과 학부생이 이 코드를 분석하여 동작 구조를 이해하려고 합니다. 다음 세 가지 요소를 포함하여 객체지향적 관점에서 설명하시오.\n1. `Builder` 클래스의 각 설정 메서드들이 인자(Argument)를 받아 내부 상태를 변경한 후 `return this;`를 반환하는 이유와 그로 인한 호출 방식의 이점.\n2. `build()` 메서드가 호출될 때 발생하는 상태 검증(Validation) 흐름과 예외 처리(Exception)의 목적.\n3. `ServerConfig` 객체가 생성된 이후 상태가 어떻게 관리되며, 이 설계가 가져오는 아키텍처적 장점.\n(단, 설명 시 'Immutable', 'Method Chaining', 'Side-effect', 'Thread-safe' 등의 영어 기술 용어를 한국어 문장 내에 어색함 없이 자연스럽게 혼용하여 작성하시오.)",
+  "expected_output": {
+    "must_include": [
+      "Method Chaining",
+      "메서드 체이닝",
+      "this",
+      "Validation",
+      "Exception",
+      "Immutable",
+      "불변",
+      "Side-effect",
+      "Thread-safe",
+      "생성자"
+    ],
+    "must_not_include": [
+      "우리는 ~할 수 있습니다",
+      "이 코드는 반환합니다",
+      "객체를 수정할 수 있습니다",
+      "setter"
+    ]
+  },
+  "purpose": [
+    "스켈레톤 코드를 분석하고자 하는 학생에게 전공자 수준의 적절한 용어(Code-switching)로 객체지향 설계의 의도(불변성, 빌더 패턴)를 설명하는 능력 검증",
+    "번역투의 어색한 한국어를 배제하고 학계 및 현업에서 사용하는 자연스러운 톤 앤 매너로 설명할 수 있는지(LLM의 표현력) 평가"
+  ],
+  "rubric": {
+    "흐름_분석력": "Builder의 각 메서드가 this(자기 자신의 참조)를 반환함으로써 Method Chaining이 가능해진다는 데이터 흐름을 정확히 짚어냈는가",
+    "설계_의도_파악": "ServerConfig의 필드가 모두 final로 선언되고 private 생성자를 가짐으로써 완전한 Immutable(불변) 객체가 생성됨을 설명했는가",
+    "예외_흐름_이해": "port 범위 검사나 host의 null 체크 등 Validation 과정에서 발생하는 Exception이 불완전한 객체 생성을 막기 위한 방어적 수단임을 서술했는가",
+    "용어_적합성(Code-switching)": "요구된 영어 기술 용어(Immutable, Thread-safe 등)를 억지로 번역하지 않고 한국어 문맥에 자연스럽게 섞어 사용했는가 (번역체 감점)"
+  }
+}
