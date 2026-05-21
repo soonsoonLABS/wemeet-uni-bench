@@ -314,6 +314,107 @@
 }
 .hv-detail-close::after { content: none; }
 
+/* Run Summary Dashboard */
+.hv-detail-summary {
+  background: var(--ink);
+  border: 1px solid var(--lime);
+  border-radius: 4px;
+  padding: 1.2rem;
+  margin-bottom: var(--s-3);
+}
+.hv-summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.hv-summary-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.hv-summary-title {
+  font-family: var(--ff-mono);
+  font-size: 0.65rem;
+  color: var(--mute);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.hv-summary-value {
+  font-family: var(--ff-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--paper);
+}
+.hv-summary-value mark {
+  background: none;
+  color: var(--lime);
+}
+
+/* Charts */
+.hv-chart-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  border-top: var(--edge-thin);
+  padding-top: 1.2rem;
+}
+@media (min-width: 768px) {
+  .hv-chart-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.hv-chart-title {
+  font-family: var(--ff-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 0.8rem;
+}
+.hv-chart-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+}
+.hv-chart-label {
+  width: 90px;
+  flex-shrink: 0;
+  font-family: var(--ff-mono);
+  font-size: 0.65rem;
+  color: var(--mute);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+.hv-chart-bar-bg {
+  flex: 1;
+  background: var(--ink-3);
+  height: 14px;
+  border-radius: 3px;
+  position: relative;
+}
+.hv-chart-bar {
+  height: 100%;
+  background: var(--lime);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.3rem;
+  min-width: 30px;
+  transition: width 0.4s ease;
+}
+.hv-chart-bar.token-bar {
+  background: #3bb2d0; /* A cyan/blue for tokens */
+}
+.hv-chart-bar span {
+  font-family: var(--ff-mono);
+  font-size: 0.55rem;
+  color: var(--ink);
+  font-weight: 700;
+}
 /* Prompt / Category Labels */
 .hv-detail-prompt-label,
 .hv-detail-compare-label {

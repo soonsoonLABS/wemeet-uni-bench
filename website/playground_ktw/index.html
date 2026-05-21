@@ -40,37 +40,90 @@
   <!-- =============== LAYOUT: SIDEBAR + MAIN =============== -->
   <div class="pg-layout">
 
-    <!-- ===== SIDEBAR: Problem Tree ===== -->
+    <!-- ===== SIDEBAR: Problems / Models Tabbed Sidebar ===== -->
     <aside id="sidebar" class="pg-sidebar">
       <header class="pg-sidebar-head">
-        <h2 class="pg-sidebar-title">📂 Problems</h2>
+        <div class="pg-sidebar-tabs">
+          <button id="tab-problems" class="pg-sidebar-tab is-active" aria-controls="problems-panel">📂 Problems</button>
+          <button id="tab-models" class="pg-sidebar-tab" aria-controls="models-panel">🤖 Models</button>
+        </div>
         <button id="sidebar-toggle" class="pg-sidebar-toggle" aria-label="Toggle sidebar">◀</button>
       </header>
 
       <div class="pg-sidebar-body">
-        <div id="problem-tree" class="pg-tree">
-          <p class="pg-tree-loading">문제 인덱스 로딩 중...</p>
+        <!-- Problems Panel -->
+        <div id="problems-panel" class="pg-sidebar-panel">
+          <div id="problem-tree" class="pg-tree">
+            <p class="pg-tree-loading">문제 인덱스 로딩 중...</p>
+          </div>
+
+          <div class="pg-sidebar-divider"></div>
+
+          <button id="free-input-btn" class="pg-tree-free">
+            <span class="pg-tree-free-icon">✏️</span>
+            직접 입력
+          </button>
+
+          <label class="pg-tree-upload-btn" id="upload-btn">
+            <input type="file" id="pg-file-input" accept=".json" multiple hidden />
+            <span class="pg-tree-upload-icon">➕</span>
+            JSON 추가 (Drop 가능)
+          </label>
+
+          <div class="pg-sidebar-divider"></div>
+
+          <!-- Problem detail panel (shown when a problem is selected) -->
+          <div id="problem-detail" class="pg-problem-detail" hidden>
+            <h3 id="detail-subject" class="pg-detail-subject"></h3>
+            <dl class="pg-detail-meta">
+              <div><dt>ID</dt><dd id="detail-id"></dd></div>
+              <div><dt>난이도</dt><dd id="detail-difficulty"></dd></div>
+              <div><dt>카테고리</dt><dd id="detail-category"></dd></div>
+            </dl>
+            <div id="detail-purpose" class="pg-detail-purpose"></div>
+            <div id="detail-rubric" class="pg-detail-rubric"></div>
+          </div>
         </div>
 
-        <div class="pg-sidebar-divider"></div>
+        <!-- Models Panel -->
+        <div id="models-panel" class="pg-sidebar-panel" hidden>
+          <!-- Presets Section -->
+          <div class="pg-sidebar-presets">
+            <div class="pg-sidebar-presets-header">
+              <span style="font-size:0.75rem; font-weight:700; color:var(--paper);">🔖 Saved Presets</span>
+              <div style="display:flex; gap:0.2rem;">
+                <button id="btn-export-presets" class="pg-preset-action" title="JSON 내보내기">📤</button>
+                <label class="pg-preset-action" title="JSON 불러오기 (덮어쓰기)" style="cursor:pointer; display:inline-block;">
+                  📥 <input type="file" id="input-import-presets" accept=".json" hidden />
+                </label>
+              </div>
+            </div>
+            <div class="pg-sidebar-presets-save">
+              <input type="text" id="preset-name-input" class="pg-input" placeholder="새 프리셋 이름..." style="font-size:0.75rem; padding:0.4rem 0.5rem; border-radius:3px;" />
+              <button id="btn-save-preset" class="btn btn-primary" style="font-size:0.7rem; padding:0.4rem 0.6rem; min-width:max-content;">저장</button>
+            </div>
+            <div id="preset-list-container" class="pg-preset-list">
+              <!-- Presets rendered here -->
+            </div>
+          </div>
+          
+          <div class="pg-sidebar-divider"></div>
 
-        <button id="free-input-btn" class="pg-tree-free">
-          <span class="pg-tree-free-icon">✏️</span>
-          직접 입력
-        </button>
+          <div class="pg-sidebar-search-row">
+            <input type="text" id="model-search" class="pg-input pg-sidebar-search" placeholder="모델 이름/ID/태그 검색..." autocomplete="off" />
+          </div>
 
-        <div class="pg-sidebar-divider"></div>
+          <div id="model-tag-chips" class="pg-model-tag-chips">
+            <button type="button" class="pg-chip active" data-tag="all">전체</button>
+            <button type="button" class="pg-chip" data-tag="Premium">Premium</button>
+            <button type="button" class="pg-chip" data-tag="Mid">Mid</button>
+            <button type="button" class="pg-chip" data-tag="Budget">Budget</button>
+            <button type="button" class="pg-chip" data-tag="Coding">Coding</button>
+          </div>
 
-        <!-- Problem detail panel (shown when a problem is selected) -->
-        <div id="problem-detail" class="pg-problem-detail" hidden>
-          <h3 id="detail-subject" class="pg-detail-subject"></h3>
-          <dl class="pg-detail-meta">
-            <div><dt>ID</dt><dd id="detail-id"></dd></div>
-            <div><dt>난이도</dt><dd id="detail-difficulty"></dd></div>
-            <div><dt>카테고리</dt><dd id="detail-category"></dd></div>
-          </dl>
-          <div id="detail-purpose" class="pg-detail-purpose"></div>
-          <div id="detail-rubric" class="pg-detail-rubric"></div>
+          <div id="model-list-container" class="pg-model-list">
+            <!-- dynamically populated -->
+          </div>
         </div>
       </div>
     </aside>
@@ -150,54 +203,7 @@
           </header>
 
           <div id="model-grid" class="pg-models">
-            <label class="pg-model">
-              <input type="checkbox" value="claude-opus" checked />
-              <div class="pg-model-card">
-                <span class="pg-model-tag">Premium</span>
-                <b>claude-opus</b>
-                <small>$5.5 / $27.5 per M tok · slow · highest quality</small>
-              </div>
-            </label>
-            <label class="pg-model">
-              <input type="checkbox" value="gpt-5.4" checked />
-              <div class="pg-model-card">
-                <span class="pg-model-tag">Premium</span>
-                <b>gpt-5.4</b>
-                <small>$2.5 / $15 per M tok · 1M context</small>
-              </div>
-            </label>
-            <label class="pg-model">
-              <input type="checkbox" value="claude-haiku" checked />
-              <div class="pg-model-card">
-                <span class="pg-model-tag">Mid</span>
-                <b>claude-haiku</b>
-                <small>$1.1 / $5.5 per M tok · 600ms</small>
-              </div>
-            </label>
-            <label class="pg-model">
-              <input type="checkbox" value="deepseek-v3.2" />
-              <div class="pg-model-card">
-                <span class="pg-model-tag">Budget</span>
-                <b>deepseek-v3.2</b>
-                <small>$0.62 / $1.85 per M tok</small>
-              </div>
-            </label>
-            <label class="pg-model">
-              <input type="checkbox" value="glm-4.7-flash" />
-              <div class="pg-model-card">
-                <span class="pg-model-tag">Budget</span>
-                <b>glm-4.7-flash</b>
-                <small>$0.06 / $0.40 per M tok · fastest</small>
-              </div>
-            </label>
-            <label class="pg-model">
-              <input type="checkbox" value="qwen3-coder-next" />
-              <div class="pg-model-card">
-                <span class="pg-model-tag">Coding</span>
-                <b>qwen3-coder-next</b>
-                <small>$0.5 / $1.2 per M tok · code-specialized</small>
-              </div>
-            </label>
+            <!-- Models will be dynamically rendered here -->
           </div>
         </div>
       </section>
@@ -259,6 +265,9 @@
     </main>
   </div>
 
+  <!-- MODAL REMOVED (Replaced by Tabbed Sidebar) -->
+
+  <script src="data/models.js" defer></script>
   <script src="playground.js" defer></script>
 </body>
 </html>

@@ -21,6 +21,7 @@ const $detailSection = document.getElementById('detail-section');
 const $detailTitle = document.getElementById('detail-title');
 const $detailMeta = document.getElementById('detail-meta');
 const $detailPrompt = document.getElementById('detail-prompt');
+const $detailSummary = document.getElementById('detail-summary');
 const $detailResults = document.getElementById('detail-results');
 const $detailClose = document.getElementById('detail-close');
 
@@ -283,24 +284,41 @@ function showDetail(run) {
 
   // Build model response comparison cards
   let html = '';
+  let maxLatency = 0;
+  let minLatency = Infinity;
+  let maxTokensOut = 0;
+  let totalIn = 0;
+  let totalOut = 0;
+  let successCount = 0;
+
   if (run.results && run.results.length > 0) {
     for (const r of run.results) {
-      const latency = r.latency_seconds ? `${r.latency_seconds}s` : '—';
-      const tokensIn = r.tokens?.prompt_tokens ?? r.tokens?.input_tokens ?? '?';
-      const tokensOut = r.tokens?.completion_tokens ?? r.tokens?.output_tokens ?? '?';
+      const latencyStr = r.latency_seconds ? `${r.latency_seconds}s` : '—';
+      const tokensIn = r.tokens?.prompt_tokens ?? r.tokens?.input_tokens ?? 0;
+      const tokensOut = r.tokens?.completion_tokens ?? r.tokens?.output_tokens ?? 0;
+      const tInStr = tokensIn || '?';
+      const tOutStr = tokensOut || '?';
+
+      if (r.latency_seconds && !r.error) {
+        maxLatency = Math.max(maxLatency, r.latency_seconds);
+        minLatency = Math.min(minLatency, r.latency_seconds);
+        successCount++;
+      }
+      maxTokensOut = Math.max(maxTokensOut, tokensOut);
+      totalIn += tokensIn;
+      totalOut += tokensOut;
 
       html += `
         <article class="hv-result-card">
           <header class="hv-result-head">
             <span class="hv-result-name">${r.model}</span>
-            <span class="hv-result-time">${latency}</span>
+            <span class="hv-result-time">${latencyStr}</span>
           </header>
           <div class="hv-result-body" data-content="${encodeURIComponent(r.response || r.error || '')}">
             ${r.error ? `<div class="hv-result-error">${r.error}</div>` : '<p style="color:var(--mute); font-size:0.75rem; font-family:var(--ff-mono);">렌더링 대기 중...</p>'}
           </div>
           <footer class="hv-result-foot">
-            <span>${tokensIn} in · ${tokensOut} out</span>
-            <span>${latency}</span>
+            <span>${tInStr} in · ${tOutStr} out</span>
           </footer>
         </article>`;
     }
@@ -309,6 +327,63 @@ function showDetail(run) {
   }
 
   $detailResults.innerHTML = html;
+
+  // Render Dashboard Summary and Chart
+  if (successCount > 0) {
+    let chartHtml = '<div class="hv-chart-wrapper">';
+    
+    // Latency Chart
+    chartHtml += '<div class="hv-chart-col"><h4 class="hv-chart-title">응답 시간 (초)</h4>';
+    for (const r of run.results) {
+      if (!r.latency_seconds || r.error) continue;
+      const pct = Math.max(5, (r.latency_seconds / maxLatency) * 100);
+      chartHtml += `
+        <div class="hv-chart-row">
+          <div class="hv-chart-label">${r.model}</div>
+          <div class="hv-chart-bar-bg"><div class="hv-chart-bar" style="width:${pct}%"><span>${r.latency_seconds}s</span></div></div>
+        </div>`;
+    }
+    chartHtml += '</div>';
+
+    // Token Chart
+    chartHtml += '<div class="hv-chart-col"><h4 class="hv-chart-title">출력 토큰 수</h4>';
+    for (const r of run.results) {
+      if (r.error) continue;
+      const outTok = r.tokens?.completion_tokens ?? r.tokens?.output_tokens ?? 0;
+      const pct = maxTokensOut > 0 ? Math.max(5, (outTok / maxTokensOut) * 100) : 5;
+      chartHtml += `
+        <div class="hv-chart-row">
+          <div class="hv-chart-label">${r.model}</div>
+          <div class="hv-chart-bar-bg"><div class="hv-chart-bar token-bar" style="width:${pct}%"><span>${outTok}</span></div></div>
+        </div>`;
+    }
+    chartHtml += '</div></div>';
+
+    $detailSummary.innerHTML = `
+      <div class="hv-summary-stats">
+        <div class="hv-summary-box">
+          <span class="hv-summary-title">Max Latency</span>
+          <span class="hv-summary-value">${maxLatency.toFixed(1)}s</span>
+        </div>
+        <div class="hv-summary-box">
+          <span class="hv-summary-title">Min Latency</span>
+          <span class="hv-summary-value">${minLatency.toFixed(1)}s</span>
+        </div>
+        <div class="hv-summary-box">
+          <span class="hv-summary-title">Total Tokens (In)</span>
+          <span class="hv-summary-value">${totalIn.toLocaleString()}</span>
+        </div>
+        <div class="hv-summary-box">
+          <span class="hv-summary-title">Total Tokens (Out)</span>
+          <span class="hv-summary-value"><mark>${totalOut.toLocaleString()}</mark></span>
+        </div>
+      </div>
+      ${chartHtml}
+    `;
+    $detailSummary.style.display = 'block';
+  } else {
+    $detailSummary.style.display = 'none';
+  }
 
   // Render markdown with delay to avoid rendering blocks blocking DOM
   requestAnimationFrame(() => {
