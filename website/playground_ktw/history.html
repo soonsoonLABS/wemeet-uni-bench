@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" defer></script>
+  <!-- Models DB -->
+  <script src="data/models.js" defer></script>
 </head>
 <body>
 
@@ -107,6 +109,8 @@
             </div>
             <button id="detail-close" class="btn btn-ghost hv-detail-close">✕ 닫기</button>
           </header>
+
+          <div id="detail-summary" class="hv-detail-summary"></div>
 
           <div class="hv-detail-prompt-label">실행 프롬프트</div>
           <div id="detail-prompt" class="hv-detail-prompt"></div>
