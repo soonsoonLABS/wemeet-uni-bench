@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 2 Report — wemeet-uni-bench</title>
+  <link rel="stylesheet" href="slides.css" />
+</head>
+<body>
+
+  <!-- =============== UI CHROME =============== -->
+  <div class="progress-bar"><div id="progress" class="progress-fill"></div></div>
+  <div class="slide-counter"><span id="current">01</span> / <span id="total">22</span></div>
+  <div class="help-hint">← → · Space · F</div>
+
+  <!-- =============== SLIDES =============== -->
+  <main id="slides">
+
+    <!-- 01 — COVER -->
+    <section class="slide slide-cover">
+      <img src="img/cover-bg.jpg" class="cover-bg" alt="" aria-hidden="true" />
+      <div class="cover-grid">
+        <p class="cover-meta-top">
+          <span><b>DOSSIER №002</b></span>
+          <span>WEEK 2 REPORT</span>
+        </p>
+        <div class="cover-center">
+          <p class="cover-tag">SNU WE-Meet × SoonsoonFactory</p>
+          <h1 class="cover-title">
+            <span class="cover-eyebrow">2주차 보고</span>
+            <span class="cover-line">우리만의</span>
+            <span class="cover-line"><mark>축</mark>을 발견했다.</span>
+          </h1>
+        </div>
+        <p class="cover-meta-bot">
+          <span>송용성 · 김태운 · 김호윤</span>
+          <span>2025 · SEOUL</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 02 — WEEK 1 RECAP -->
+    <section class="slide center">
+      <div class="center-stack">
+        <p class="kicker">§01 · RECAP</p>
+        <h2 class="display-md">
+          1주차에 우리는<br>
+          <em>난이도 갭</em>을 발견했다.
+        </h2>
+      </div>
+    </section>
+
+    <!-- 03 — RECAP DIAGRAM -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§01.1 · The Gap</span>
+        <h2 class="display-sm">학부 2~4학년 — <em>비어있다.</em></h2>
+      </header>
+      <div class="recap-track">
+        <div class="recap-axis"></div>
+        <div class="recap-pt" style="left:8%"><span class="dot"></span><span>GSM8K</span><small>초등</small></div>
+        <div class="recap-pt" style="left:24%"><span class="dot"></span><span>MMLU</span><small>자격</small></div>
+        <div class="recap-pt is-gap" style="left:48%"><span class="dot"></span><span>학부 2~4학년</span><small>비어있다</small></div>
+        <div class="recap-pt" style="left:72%"><span class="dot"></span><span>GPQA</span><small>PhD</small></div>
+        <div class="recap-pt" style="left:92%"><span class="dot"></span><span>HLE</span><small>인류한계</small></div>
+      </div>
+    </section>
+
+    <!-- 04 — PIVOT -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§02 · Pivot</span>
+        <h2 class="display-sm">2주차는 <em>실험</em>의 단계였다.</h2>
+      </header>
+      <div class="pivot-flow">
+        <div class="pivot-stage is-done">
+          <span class="pivot-label">Week 1</span>
+          <p>조사하다</p>
+        </div>
+        <div class="pivot-arrow">→</div>
+        <div class="pivot-stage is-now">
+          <span class="pivot-label">Week 2</span>
+          <p>만들고 돌리다</p>
+        </div>
+        <div class="pivot-arrow">→</div>
+        <div class="pivot-stage">
+          <span class="pivot-label">Week 3+</span>
+          <p>설계하다</p>
+        </div>
+      </div>
+      <p class="big-quote">
+        <span class="serif">"손으로 SAM을 써봐야 다음 단계가 현실적이 된다."</span>
+      </p>
+    </section>
+
+    <!-- 05 — KIM TAEWOON HEADLINE -->
+    <section class="slide center">
+      <div class="center-stack">
+        <p class="kicker">§03 · Achievement</p>
+        <p class="big-num">11</p>
+        <h2 class="display-md">
+          <em>김태운 학생</em>이 작성한<br>
+          벤치마크 문제 수.
+        </h2>
+        <p class="caption">목표 3~5개의 두 배 이상.</p>
+      </div>
+    </section>
+
+    <!-- 06 — KIM TAEWOON GRID -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§03.1 · Categories</span>
+        <h2 class="display-sm">5개 도메인에 걸친 <em>11개 문제.</em></h2>
+      </header>
+      <div class="problem-grid">
+        <div class="problem"><span class="pid">001</span><span class="pcat">CODE</span><p>Java Min-Heap (제약 준수)</p></div>
+        <div class="problem"><span class="pid">002</span><span class="pcat">SYS</span><p>Verilog 래치 디버깅</p></div>
+        <div class="problem"><span class="pid">003</span><span class="pcat">CODE</span><p>Cache 시뮬레이터</p></div>
+        <div class="problem"><span class="pid">004</span><span class="pcat">CODE</span><p>Builder 패턴 분석</p></div>
+        <div class="problem highlight"><span class="pid">005</span><span class="pcat">PROMPT</span><p>소크라테스식 프롬프트</p></div>
+        <div class="problem"><span class="pid">006</span><span class="pcat">MATH</span><p>SVD 데이터 압축</p></div>
+        <div class="problem"><span class="pid">007</span><span class="pcat">MATH</span><p>기저 · 차원 정의</p></div>
+        <div class="problem highlight"><span class="pid">008</span><span class="pcat">SYS</span><p>스레드 힙 함정</p></div>
+        <div class="problem"><span class="pid">009</span><span class="pcat">CODE</span><p>코드 리뷰 멘토링</p></div>
+        <div class="problem highlight"><span class="pid">010</span><span class="pcat">LEARN</span><p>가짜 논문 환각</p></div>
+        <div class="problem highlight"><span class="pid">011</span><span class="pcat">GEN</span><p>Spring 레거시</p></div>
+        <div class="problem-spotlight">
+          <span class="serif">4 / 11</span>
+          <p>함정·유도 유형<br>기존 벤치마크에 없는 차별점</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 — KIM HOYOON HEADLINE -->
+    <section class="slide center">
+      <div class="center-stack">
+        <p class="kicker">§04 · Achievement</p>
+        <h2 class="display-md">
+          김호윤 학생은<br>
+          <em>자연과학 도메인</em>을<br>
+          연다.
+        </h2>
+        <p class="caption">재료공학 + 한국어 추론(꼬들) 문제 진행 중</p>
+      </div>
+    </section>
+
+    <!-- 08 — KIM HOYOON SPLIT -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§04.1 · Bonus Idea</span>
+        <h2 class="display-sm">"꼬들"이 좋은 <em>벤치마크</em>다.</h2>
+      </header>
+      <div class="hoyoon-grid">
+        <div class="hoyoon-status">
+          <span class="status-tag">진행 중</span>
+          <h3>재료공학 도메인</h3>
+          <ul class="hoyoon-list">
+            <li>전위(dislocation) 분석</li>
+            <li>상변태 · 열처리</li>
+            <li>XRD · SEM 데이터 해석</li>
+          </ul>
+        </div>
+        <div class="hoyoon-bonus">
+          <span class="status-tag is-bonus">제안</span>
+          <h3 class="serif">꼬들 한국어 Wordle</h3>
+          <ul class="hoyoon-list">
+            <li>한국어 음운 구조 이해</li>
+            <li>멀티턴 정보 활용</li>
+            <li>실제 한국어 어휘력</li>
+            <li>채점 명확</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 — DISCOVERY HEADLINE -->
+    <section class="slide hero-image">
+      <img src="img/matrix-discovery.jpg" class="hero-bg" alt="" aria-hidden="true" />
+      <div class="hero-content">
+        <p class="kicker">§05 · Discovery</p>
+        <h2 class="display-lg">
+          <span class="serif">학생 문제에서</span><br>
+          <mark>2축 구조</mark>가<br>
+          드러났다.
+        </h2>
+      </div>
+    </section>
+
+    <!-- 10 — XY MATRIX MINI -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§05.1 · The Matrix</span>
+        <h2 class="display-sm">도메인 (X) <em>×</em> 능력 (Y).</h2>
+      </header>
+      <div class="matrix-mini">
+        <span></span><span>D1</span><span>D2</span><span>D3</span><span>D4</span><span>D5</span><span>D6</span><span>D7</span><span>D8</span><span>D9</span>
+        <span class="row-label">C1</span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span>
+        <span class="row-label">C2</span><span class="cell filled"></span><span class="cell"></span><span class="cell filled"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span>
+        <span class="row-label">C3</span><span class="cell filled"></span><span class="cell filled"></span><span class="cell"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span>
+        <span class="row-label">C4</span><span class="cell filled"></span><span class="cell filled"></span><span class="cell"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span>
+        <span class="row-label">C5</span><span class="cell filled"></span><span class="cell"></span><span class="cell filled"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span>
+        <span class="row-label">C6</span><span class="cell filled"></span><span class="cell"></span><span class="cell"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span>
+        <span class="row-label">···</span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span><span class="cell empty"></span>
+      </div>
+      <p class="caption-center"><span class="lime-stat">25%</span> 채워진 매트릭스 — 학생들이 직접 채워나간다.</p>
+    </section>
+
+    <!-- 11 — X AXIS DOMAINS -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§06 · X-Axis</span>
+        <h2 class="display-sm">9개 <em>도메인.</em></h2>
+      </header>
+      <div class="axis-flow">
+        <div class="axis-block">
+          <span class="axis-block-title">전공별</span>
+          <div class="axis-chips">
+            <span class="chip">D1 · CODE</span>
+            <span class="chip">D2 · SYS</span>
+            <span class="chip">D3 · MATH</span>
+            <span class="chip">D4 · SCI</span>
+            <span class="chip">D5 · HUM</span>
+          </div>
+        </div>
+        <div class="axis-block">
+          <span class="axis-block-title">범전공</span>
+          <div class="axis-chips">
+            <span class="chip">D6 · RES</span>
+            <span class="chip">D7 · DATA</span>
+            <span class="chip">D8 · WRITE</span>
+            <span class="chip is-special">D9 · LANG</span>
+          </div>
+        </div>
+      </div>
+      <p class="caption-center"><strong>D9 (언어/다국어)</strong> — AI가 인간을 압도하는 영역. 가성비 기준선.</p>
+    </section>
+
+    <!-- 12 — Y AXIS CAPABILITIES -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§07 · Y-Axis</span>
+        <h2 class="display-sm">10개 <em>능력.</em></h2>
+      </header>
+      <div class="cap-flow">
+        <div class="cap-cluster">
+          <span class="cap-cluster-label">결과물 품질</span>
+          <span class="chip">C1 · ACC</span>
+          <span class="chip">C2 · RSN</span>
+          <span class="chip auto">C3 · CMP</span>
+          <span class="chip auto">C8 · FMT</span>
+        </div>
+        <div class="cap-cluster">
+          <span class="cap-cluster-label">교육적 태도</span>
+          <span class="chip">C5 · EXP</span>
+          <span class="chip">C6 · PED</span>
+          <span class="chip">C10 · CRT</span>
+        </div>
+        <div class="cap-cluster">
+          <span class="cap-cluster-label">신뢰성</span>
+          <span class="chip auto">C4 · ROB</span>
+          <span class="chip auto">C9 · HON</span>
+        </div>
+        <div class="cap-cluster">
+          <span class="cap-cluster-label">문화 적합</span>
+          <span class="chip">C7 · STY</span>
+        </div>
+      </div>
+      <p class="caption-center"><span class="lime-stat">40%</span> 자동 채점 가능 (라임 표시)</p>
+    </section>
+
+    <!-- 13 — Z AXIS HEADLINE -->
+    <section class="slide hero-image right-content">
+      <img src="img/z-tower.jpg" class="hero-bg" alt="" aria-hidden="true" />
+      <div class="hero-content right">
+        <p class="kicker">§08 · Z-Axis</p>
+        <h2 class="display-lg">
+          평면 → <mark>입체.</mark>
+        </h2>
+        <p class="big-quote-right">
+          <span class="serif">학생이 직접 만들고 돌려보면서<br>난이도를 채워나간다.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 14 — Z AXIS LEVELS -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§08.1 · Levels</span>
+        <h2 class="display-sm">L0 → L4 <em>난이도 스케일.</em></h2>
+      </header>
+      <div class="z-tower-flat">
+        <div class="z-row"><span class="z-id">L0</span><b>초등 4-6</b><small>기억 · 이해</small></div>
+        <div class="z-row"><span class="z-id">L1</span><b>중등 (중1~고1)</b><small>이해 · 적용</small></div>
+        <div class="z-row is-now"><span class="z-id">L2</span><b>고등~대학초</b><small>적용 · 분석</small></div>
+        <div class="z-row is-now"><span class="z-id">L3</span><b>대학 중반~졸업</b><small>분석 · 평가</small></div>
+        <div class="z-row"><span class="z-id">L4</span><b>대학원 · 전문가</b><small>평가 · 창조</small></div>
+      </div>
+      <p class="caption-center">대학 수준(L2~L3)을 100점 기준 — 같은 X×Y 좌표에서 난이도만 조절.</p>
+    </section>
+
+    <!-- 15 — GLOBAL ALIGNMENT HERO -->
+    <section class="slide hero-image">
+      <img src="img/global-map.jpg" class="hero-bg" alt="" aria-hidden="true" />
+      <div class="hero-content">
+        <p class="kicker">§09 · Alignment</p>
+        <h2 class="display-lg">
+          <span class="serif">우리 방향이</span><br>
+          <mark>글로벌 트렌드</mark>와<br>
+          맞다.
+        </h2>
+        <p class="big-quote-left">5개국이 공통으로 강조 — 비판적 사고, 학생 주도성, AI를 도구로.</p>
+      </div>
+    </section>
+
+    <!-- 16 — SELF EVAL HEADLINE -->
+    <section class="slide center">
+      <div class="center-stack">
+        <p class="kicker">§10 · Self-Critique</p>
+        <p class="big-num is-warn">6.25</p>
+        <h2 class="display-md">
+          <em>10점 만점</em>의 자기 평가.
+        </h2>
+        <p class="caption">"방향은 맞지만 실행 디테일 보강 필요."</p>
+      </div>
+    </section>
+
+    <!-- 17 — SELF EVAL DETAIL -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§10.1 · Breakdown</span>
+        <h2 class="display-sm">8개 관점 <em>점수.</em></h2>
+      </header>
+      <div class="score-list">
+        <div class="score-row"><b>차별성</b><div class="bar"><div class="fill" style="width:80%"></div></div><span>8</span></div>
+        <div class="score-row"><b>구조적 완결성</b><div class="bar"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+        <div class="score-row"><b>한국 특수성</b><div class="bar"><div class="fill" style="width:70%"></div></div><span>7</span></div>
+        <div class="score-row"><b>스케일링 타당성</b><div class="bar"><div class="fill" style="width:60%"></div></div><span>6</span></div>
+        <div class="score-row"><b>지속 가능성</b><div class="bar"><div class="fill" style="width:60%"></div></div><span>6</span></div>
+        <div class="score-row"><b>윤리적 고려</b><div class="bar"><div class="fill" style="width:60%"></div></div><span>6</span></div>
+        <div class="score-row is-low"><b>실행 가능성</b><div class="bar"><div class="fill" style="width:50%"></div></div><span>5</span></div>
+        <div class="score-row is-low"><b>가성비 측정 (CER)</b><div class="bar"><div class="fill" style="width:50%"></div></div><span>5</span></div>
+      </div>
+    </section>
+
+    <!-- 18 — TOP 3 WEAKNESSES (with hero image) -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§11 · Weakness</span>
+        <h2 class="display-sm">핵심 약점 <em>3가지.</em></h2>
+      </header>
+      <div class="weakness-list">
+        <article class="weakness">
+          <span class="w-num">01</span>
+          <h3>수동 채점 병목</h3>
+          <p>능력 축의 30%(C2·C5·C10)는 전문가 평가 필요. <strong>3명 팀으로 5×80 평가는 불가능.</strong></p>
+        </article>
+        <article class="weakness">
+          <span class="w-num">02</span>
+          <h3>CER 단순함</h3>
+          <p>모든 도메인 동일 가중치. <strong>도메인별 분리 + 검증 비용 개념 빠짐.</strong></p>
+        </article>
+        <article class="weakness">
+          <span class="w-num">03</span>
+          <h3>스케일링 미검증</h3>
+          <p>L0~L4 선형 가정. <strong>L1↔L3 점수 차이 실제 검증 안 됨.</strong></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 19 — POSITION VS EXISTING -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§12 · Position</span>
+        <h2 class="display-sm"><em>다섯의 교집합</em>은 어디에도 없다.</h2>
+      </header>
+      <div class="position-table">
+        <div class="pos-head">
+          <span></span><span>학생관점</span><span>한국어</span><span>가성비</span><span>학습유도</span><span>학부수준</span>
+        </div>
+        <div class="pos-row"><b>OpenLearnLM</b><span class="pos-y">○</span><span class="pos-n">×</span><span class="pos-n">×</span><span class="pos-y">○</span><span class="pos-y">○</span></div>
+        <div class="pos-row"><b>SHAPE</b><span class="pos-y">○</span><span class="pos-n">×</span><span class="pos-n">×</span><span class="pos-y">○</span><span class="pos-n">×</span></div>
+        <div class="pos-row"><b>KoNET</b><span class="pos-n">×</span><span class="pos-y">○</span><span class="pos-n">×</span><span class="pos-n">×</span><span class="pos-n">×</span></div>
+        <div class="pos-row"><b>MMLU/GPQA</b><span class="pos-n">×</span><span class="pos-n">×</span><span class="pos-n">×</span><span class="pos-n">×</span><span class="pos-n">×</span></div>
+        <div class="pos-row is-us"><b>wemeet-uni-bench</b><span class="pos-y">●</span><span class="pos-y">●</span><span class="pos-y">●</span><span class="pos-y">●</span><span class="pos-y">●</span></div>
+      </div>
+    </section>
+
+    <!-- 20 — WEEK 3 GOALS -->
+    <section class="slide hero-image">
+      <img src="img/roadmap-path.jpg" class="hero-bg" alt="" aria-hidden="true" />
+      <div class="hero-content">
+        <p class="kicker">§13 · Next</p>
+        <h2 class="display-lg">
+          3주차 — <mark>돌아가는</mark> 것부터.
+        </h2>
+        <div class="next-pillars-mini">
+          <div><b>P1</b><span>자동 채점 v0.1</span></div>
+          <div><b>P2</b><span>스케일링 파일럿</span></div>
+          <div><b>P3</b><span>도메인 확장</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21 — TASK ASSIGNMENT -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§13.1 · Assignment</span>
+        <h2 class="display-sm">3주차 <em>역할 분배.</em></h2>
+      </header>
+      <div class="assign-list">
+        <article class="assign">
+          <div class="assign-who">
+            <span class="who-role">Mentor</span>
+            <b>송용성</b>
+          </div>
+          <ul class="assign-tasks">
+            <li>자동 채점 파이프라인 (Python)</li>
+            <li>SAM API 키 학생 발급</li>
+            <li>벤치마크 결과 시각화</li>
+          </ul>
+        </article>
+        <article class="assign">
+          <div class="assign-who">
+            <span class="who-role">Student · 컴공</span>
+            <b>김태운</b>
+          </div>
+          <ul class="assign-tasks">
+            <li>기존 문제 3개 L1/L2/L3 변형</li>
+            <li>D6 (논문/리서치) 파일럿</li>
+            <li>SAM Playground 피드백</li>
+          </ul>
+        </article>
+        <article class="assign">
+          <div class="assign-who">
+            <span class="who-role">Student · 재료</span>
+            <b>김호윤</b>
+          </div>
+          <ul class="assign-tasks">
+            <li>D4 자연과학 4~5개 완성</li>
+            <li>꼬들 게임 시제품</li>
+            <li>D7 (데이터/통계) 파일럿</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 22 — CLOSING -->
+    <section class="slide hero-image slide-closing">
+      <img src="img/closing-horizon.jpg" class="hero-bg" alt="" aria-hidden="true" />
+      <div class="closing-grid">
+        <p class="cover-meta-top">
+          <span><b>DOSSIER №002</b></span>
+          <span>END</span>
+        </p>
+        <div class="closing-center">
+          <h2 class="display-lg">
+            <span class="serif">학생이 손으로 만든 문제가</span><br>
+            <mark>벤치마크의 축</mark>이 되었다.
+          </h2>
+          <div class="closing-stats">
+            <div><b>11</b><small>문제</small></div>
+            <div><b>9 × 10</b><small>매트릭스</small></div>
+            <div><b>5</b><small>국가 정합</small></div>
+            <div><b>6.25</b><small>자기 평가</small></div>
+          </div>
+          <p class="closing-q serif">
+            다음 주, 우리는 <mark>돌아가는 벤치마크</mark>를 본다.
+          </p>
+        </div>
+        <p class="cover-meta-bot">
+          <span>wemeet-uni-bench / v0.1</span>
+          <span>2025 · SEOUL</span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="slides.js" defer></script>
+</body>
+</html>
