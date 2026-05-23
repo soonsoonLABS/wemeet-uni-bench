@@ -1,0 +1,34 @@
+{
+  "id": "cs_taewoon_003",
+  "category": "coding",
+  "subject": "Programming",
+  "difficulty": "L2",
+  "language": "ko",
+  "prompt": "다음 명세를 만족하는 Cache Memory 시뮬레이터를 C++로 작성하시오.\n\n[요구사항]\n1. 캐시 구조: 4-way Set Associative 방식을 사용하며, 총 Cache Size는 16KB, Block Size는 64 Byte입니다.\n2. Address 체계: 32-bit physical address를 입력받아 파싱합니다.\n3. Replacement Policy: 일반적인 LRU(Least Recently Used)를 따르되, 캐시 라인의 상태가 'Dirty'인 경우 우선순위 갱신에 페널티(penalty)를 주어 일반 'Clean' 라인보다 먼저 Evict 되도록 변형된 로직을 적용하시오.\n4. Write Policy: Write-Back 및 Write-Allocate 방식을 사용합니다.\n5. 출력: 다른 부연 설명 없이 C++ 코드 스니펫만 출력하시오.",
+  "expected_output": {
+    "must_include": [
+      "struct",
+      "class",
+      "valid",
+      "dirty",
+      "tag",
+      "index",
+      "offset",
+      "Write-Back",
+      "Write-Allocate"
+    ],
+    "must_not_include": [
+      "#include <bits/stdc++.h>"
+    ]
+  },
+  "purpose": [
+    "한국어 문법과 영어 기술 용어(Set Associative, Write-Back 등)가 혼재된 학부 과제 명세를 정확히 파싱하여 아키텍처로 변환하는 능력 검증",
+    "학습된 관성(표준 LRU 알고리즘)을 억제하고, 한국어 줄글로 서술된 변형된 요구사항(Dirty 페널티)을 알고리즘 로직으로 반영할 수 있는지 확인"
+  ],
+  "rubric": {
+    "명세_파싱_정확도": "32-bit 주소에서 Tag, Index, Offset 비트 수를 명세된 Size(16KB, 4-way, 64B)에 맞게 정확히 계산하여 분리하는가 (예: Offset 6 bits, Index 6 bits, Tag 20 bits)",
+    "관성_극복_알고리즘": "표준 LRU를 그대로 쓰지 않고, Eviction 수행 시 'Dirty' 비트가 1인 라인을 우선적으로 방출(Evict)하도록 조건문을 변형했는가",
+    "아키텍처_구조화": "단일 함수로 하드코딩하지 않고 캐시 라인, 세트, 정책 관리 등을 객체 지향적(C++)으로 적절히 모듈화했는가",
+    "출력형식_이행": "자연어 설명 없이 완성된 C++ 코드 스니펫만 반환했는가"
+  }
+}

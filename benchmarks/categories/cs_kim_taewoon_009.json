@@ -1,0 +1,40 @@
+{
+  "id": "cs_taewoon_009",
+  "category": "learning",
+  "subject": "algorithm",
+  "difficulty": "L3",
+  "language": "ko",
+  "prompt": "다음은 대규모 사용자 목록(`users`)에서 차단된 사용자 목록(`blacklist`)을 제외하고 유효한 사용자만 추출하기 위해 학부생이 작성한 Java 코드입니다.\n\n```java\npublic List<String> filterValidUsers(List<String> users, List<String> blacklist) {\n    List<String> validUsers = new ArrayList<>();\n    for (String user : users) {\n        if (!blacklist.contains(user)) {\n            validUsers.add(user);\n        }\n    }\n    return validUsers;\n}\n
+```\n\n이 학생의 알고리즘 학습을 돕는 '코드 리뷰어(멘토)' 입장에서 피드백을 작성하시오.\n\n[요구 및 제약 조건]\n1. 복잡도 진단 유도: 학생 스스로 현재 코드의 시간 복잡도($O(N \\times M)$)를 인지할 수 있도록, `ArrayList.contains()` 메서드의 내부 동작 메커니즘에 대해 비판적인 질문을 던질 것.\n2. 최적화 방향 안내: 공간 복잡도(추가 메모리)를 희생하더라도 탐색 시간 복잡도를 $O(1)$ 수준으로 낮출 수 있는 자료구조의 도입을 '스스로 고민하도록' 유도하는 힌트(Trade-off 관점)를 제공할 것.\n3. 정답 통제: 최적화가 완료된 코드(예: HashSet을 적용한 스니펫)나 'HashSet을 쓰세요'라는 직접적인 정답을 절대 제공하지 말 것.\n4. 학술적 톤 유지: 설명을 전개할 때 일상적인 사물에 빗대는 비유나 은유를 일절 배제하고, 오직 객관적이고 학술적인 전공 용어로만 서술할 것. 모든 수학적 표기는 마크다운 LaTeX 문법($ 및 $$)을 사용할 것.",
+  "expected_output": {
+    "must_include": [
+      "O(N \\times M)",
+      "ArrayList",
+      "contains",
+      "시간 복잡도",
+      "공간 복잡도",
+      "O(1)",
+      "Trade-off"
+    ],
+    "must_not_include": [
+      "비유하자면",
+      "마치",
+      "예를 들어 ~와 같습니다",
+      "그릇",
+      "HashSet<String>",
+      "new HashSet",
+      "결함이 있습니다"
+    ]
+  },
+  "purpose": [
+    "결함 여부를 명시하지 않은 중립적 리뷰 상황에서, AI가 완성된 코드를 제시하는 대신 질문과 힌트(Socratic Method)를 통해 학생 스스로 병목을 인지하도록 유도하는 학습 보조 능력 검증",
+    "올바른 개념으로, 코드의 문제점 및 개선점을 지적하는 능력 평가",
+    "정답 코드 제공 금지(Negative Constraint)를 준수하며, 어색한 비유 없는 엄밀한 학술적 톤 앤 매너를 유지하는지 평가"
+  ],
+  "rubric": {
+    "병목_인지_유도": "`ArrayList.contains()`가 선형 탐색($O(M)$)을 수행함을 학생이 자각하도록 돕는 적절한 형태의 질문을 피드백에 포함했는가",
+    "트레이드오프_학습_보조": "탐색을 $O(1)$로 줄이기 위해 메모리를 추가로 사용하는 공간-시간 트레이드오프(Space-Time Trade-off) 원리를 명시하고, 이를 만족하는 해시 기반 자료구조를 고민하게 하는 힌트를 주었는가",
+    "정답_통제력": "지시문에 따라 수정된 전체 코드를 직접 작성하거나 특정 정답(HashSet)을 맹목적으로 주입하는 행위를 완벽히 통제했는가",
+    "학술적_엄밀성": "일상적인 사물에 빗대는 비유나 은유를 철저히 배제하고 객관적인 전공 용어만으로 리뷰를 전개했는가"
+  }
+}
