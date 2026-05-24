@@ -245,7 +245,7 @@ strong { font-weight: 700; color: var(--paper); }
    ========================================================================== */
 .slide-cover {
   padding: 0;
-  grid-template-rows: 1fr;
+  display: block;
   position: relative;
   overflow: hidden;
 }
@@ -261,10 +261,9 @@ strong { font-weight: 700; color: var(--paper); }
   z-index: 0;
 }
 .cover-grid {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
-  width: 100%;
-  height: 100%;
   padding: clamp(2rem, 5vh, 3.5rem) clamp(2.5rem, 7vw, 6rem);
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -330,7 +329,7 @@ strong { font-weight: 700; color: var(--paper); }
    ========================================================================== */
 .slide.hero-image {
   padding: 0;
-  grid-template-rows: 1fr;
+  display: block;     /* override grid; we use absolute layers */
   position: relative;
   overflow: hidden;
 }
@@ -340,7 +339,7 @@ strong { font-weight: 700; color: var(--paper); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.7;
+  opacity: 0.55;
   z-index: 0;
 }
 .slide.hero-image::after {
@@ -350,14 +349,14 @@ strong { font-weight: 700; color: var(--paper); }
   background: linear-gradient(135deg,
     rgba(11, 11, 13, 0.92) 0%,
     rgba(11, 11, 13, 0.55) 45%,
-    rgba(11, 11, 13, 0.2) 100%);
+    rgba(11, 11, 13, 0.18) 100%);
   z-index: 1;
+  pointer-events: none;
 }
 .slide.hero-image .hero-content {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 2;
-  width: 100%;
-  height: 100%;
   padding: clamp(2.5rem, 6vh, 5rem) clamp(3rem, 7vw, 7rem);
   display: flex;
   flex-direction: column;
@@ -369,16 +368,11 @@ strong { font-weight: 700; color: var(--paper); }
   align-items: flex-end;
   text-align: right;
 }
-/* Override gradient direction when content is on the right */
-.slide.hero-image .hero-content.right ~ ::after,
-.slide.hero-image .hero-content.right + .hero-bg {
-  /* placeholder - handled by class on .slide */
-}
 .slide.hero-image.right-content::after {
   background: linear-gradient(225deg,
     rgba(11, 11, 13, 0.92) 0%,
     rgba(11, 11, 13, 0.55) 45%,
-    rgba(11, 11, 13, 0.2) 100%) !important;
+    rgba(11, 11, 13, 0.18) 100%);
 }
 
 /* ==========================================================================
@@ -1030,12 +1024,11 @@ strong { font-weight: 700; color: var(--paper); }
 /* ==========================================================================
    CLOSING (slide 22)
    ========================================================================== */
-.slide-closing { padding: 0; }
+.slide-closing { padding: 0; display: block; }
 .closing-grid {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 2;
-  width: 100%;
-  height: 100%;
   padding: clamp(2rem, 5vh, 3.5rem) clamp(2.5rem, 7vw, 6rem);
   display: grid;
   grid-template-rows: auto 1fr auto;
