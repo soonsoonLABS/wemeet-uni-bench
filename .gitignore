@@ -27,3 +27,5 @@ benchmarks/results/*
 *.db
 *.sqlite
 *.sqlite3
+
+CONTRIBUTING.md

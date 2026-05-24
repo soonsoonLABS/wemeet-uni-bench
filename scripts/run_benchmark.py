@@ -15,7 +15,10 @@ from pathlib import Path
 from datetime import datetime
 
 # SAM API 설정
-SAM_API_KEY = os.getenv("SAM_API_KEY", "YOUR_SAM_API_KEY")
+SAM_API_KEY = os.getenv("SAM_API_KEY")
+if not SAM_API_KEY:
+    print("Error: SAM_API_KEY 환경 변수를 설정하세요.")
+    sys.exit(1)
 SAM_BASE_URL = os.getenv("SAM_BASE_URL", "https://sam.soonsoon.ai")
 
 # 벤치마크 대상 모델 목록

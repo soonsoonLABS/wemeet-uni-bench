@@ -1,7 +1,109 @@
 {
-  "generated_at": "2026-05-20T17:40:45.514992",
-  "total": 4,
+  "generated_at": "2026-05-23T20:32:21.304450",
+  "total": 15,
   "tree": {
+    "coding": {
+      "label": "코딩",
+      "problems": [
+        {
+          "id": "CD-L2-001",
+          "subject": "이진 탐색 트리 구현",
+          "difficulty": 2,
+          "file": "example_coding_l2.json"
+        },
+        {
+          "id": "cs_taewoon_001",
+          "subject": "Programming",
+          "difficulty": "L2",
+          "file": "cs_kim_taewoon_001.json"
+        },
+        {
+          "id": "cs_taewoon_003",
+          "subject": "Programming",
+          "difficulty": "L2",
+          "file": "cs_kim_taewoon_003.json"
+        },
+        {
+          "id": "cs_taewoon_004",
+          "subject": "Programming",
+          "difficulty": "L2",
+          "file": "cs_kim_taewoon_004.json"
+        }
+      ]
+    },
+    "Hardware": {
+      "label": "Hardware",
+      "problems": [
+        {
+          "id": "cs_taewoon_002",
+          "subject": "Logic Design",
+          "difficulty": "L2",
+          "file": "cs_kim_taewoon_002.json"
+        }
+      ]
+    },
+    "Prompting": {
+      "label": "Prompting",
+      "problems": [
+        {
+          "id": "cs_taewoon_005",
+          "subject": "Support",
+          "difficulty": "L2",
+          "file": "cs_kim_taewoon_005.json"
+        }
+      ]
+    },
+    "math": {
+      "label": "수학",
+      "problems": [
+        {
+          "id": "cs_taewoon_006",
+          "subject": "Engineering Mathematics",
+          "difficulty": "L2",
+          "file": "cs_kim_taewoon_006.json"
+        },
+        {
+          "id": "cs_taewoon_007",
+          "subject": "Linear Algebra",
+          "difficulty": "L1",
+          "file": "cs_kim_taewoon_007.json"
+        }
+      ]
+    },
+    "learning": {
+      "label": "학습 보조",
+      "problems": [
+        {
+          "id": "cs_taewoon_008",
+          "subject": "System Programming",
+          "difficulty": "L2",
+          "file": "cs_kim_taewoon_008.json"
+        },
+        {
+          "id": "cs_taewoon_009",
+          "subject": "algorithm",
+          "difficulty": "L3",
+          "file": "cs_kim_taewoon_009.json"
+        },
+        {
+          "id": "cs_taewoon_010",
+          "subject": "Artificial Intelligence",
+          "difficulty": "L3",
+          "file": "cs_kim_taewoon_010.json"
+        }
+      ]
+    },
+    "general": {
+      "label": "일반",
+      "problems": [
+        {
+          "id": "cs_taewoon_011",
+          "subject": "Programming",
+          "difficulty": "L2",
+          "file": "cs_kim_taewoon_011.json"
+        }
+      ]
+    },
     "algorithms": {
       "label": "알고리즘",
       "problems": [
@@ -16,17 +118,6 @@
           "subject": "동적계획법 — 최대 부분배열 합",
           "difficulty": "L2",
           "file": "cs_tester_002.json"
-        }
-      ]
-    },
-    "coding": {
-      "label": "코딩",
-      "problems": [
-        {
-          "id": "CD-L2-001",
-          "subject": "이진 탐색 트리 구현",
-          "difficulty": 2,
-          "file": "example_coding_l2.json"
         }
       ]
     },
