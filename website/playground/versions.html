@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playground Versions — wemeet-uni-bench</title>
+  <meta name="description" content="SAM 멀티모델 비교 플레이그라운드의 버전 히스토리." />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="playground.css" />
+  <style>
+    /* ==== Versions page styles ============================================ */
+    .versions-hero {
+      padding: clamp(7rem, 14vh, 10rem) 0 var(--s-5);
+      border-bottom: var(--edge-thin);
+    }
+    .versions-title {
+      font-family: var(--ff-sans);
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--paper);
+      margin: var(--s-3) 0 var(--s-3);
+      max-width: 22ch;
+      word-break: keep-all;
+    }
+    .versions-title em {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--lime);
+    }
+    .versions-desc {
+      font-size: var(--t-md);
+      color: var(--paper-dim);
+      max-width: 60ch;
+      line-height: 1.6;
+    }
+
+    .versions-list {
+      padding: var(--s-6) 0;
+    }
+    .version {
+      display: grid;
+      grid-template-columns: 12rem 1fr auto;
+      gap: var(--s-5);
+      padding: var(--s-5) 0;
+      border-top: var(--edge-thin);
+      align-items: start;
+    }
+    .version:last-child { border-bottom: var(--edge-thin); }
+
+    .version-meta {
+      display: grid;
+      gap: 0.4rem;
+      align-content: start;
+      padding-top: 0.3rem;
+    }
+    .version-tag {
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--lime);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .version-date {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      color: var(--mute);
+    }
+    .version-status {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      color: var(--alert);
+      letter-spacing: 0.05em;
+    }
+    .version-status.is-current {
+      color: var(--lime);
+    }
+
+    .version-body h2 {
+      font-family: var(--ff-sans);
+      font-weight: 800;
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      letter-spacing: -0.025em;
+      color: var(--paper);
+      margin-bottom: 0.6rem;
+      word-break: keep-all;
+    }
+    .version-body h2 em {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--lime);
+    }
+    .version-author {
+      font-family: var(--ff-mono);
+      font-size: 0.85rem;
+      color: var(--paper-dim);
+      margin-bottom: var(--s-2);
+    }
+    .version-author b { color: var(--paper); font-weight: 600; }
+
+    .version-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.5rem;
+      margin: var(--s-3) 0;
+    }
+    .feature-chip {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      padding: 0.35rem 0.6rem;
+      border: 1px solid var(--rule);
+      color: var(--paper-dim);
+      background: var(--ink);
+      letter-spacing: 0.02em;
+    }
+    .feature-chip.added {
+      border-color: var(--lime);
+      color: var(--lime);
+      background: var(--lime-dim);
+    }
+
+    .version-stats {
+      display: flex;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+      margin-top: var(--s-2);
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      color: var(--mute);
+    }
+    .version-stats b {
+      color: var(--paper);
+      font-weight: 700;
+      margin-right: 0.3em;
+    }
+
+    .version-cta {
+      display: grid;
+      gap: 0.5rem;
+      align-content: start;
+      padding-top: 0.5rem;
+    }
+    .version-cta .btn {
+      white-space: nowrap;
+    }
+    .version.is-future {
+      opacity: 0.5;
+    }
+    .version.is-future .version-body {
+      filter: grayscale(0.5);
+    }
+
+    @media (max-width: 900px) {
+      .version {
+        grid-template-columns: 1fr;
+        gap: var(--s-2);
+      }
+      .version-cta {
+        padding-top: var(--s-2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============== NAV =============== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo">uni-bench / playground</a>
+      <div class="nav-links">
+        <a href="../" class="nav-key">← project</a>
+        <a href="https://sam.soonsoon.ai" target="_blank" rel="noopener">SAM ↗</a>
+        <a href="https://github.com/soonsoonLABS/wemeet-uni-bench/tree/main/website/playground"
+           target="_blank" rel="noopener" class="nav-cta">FORK ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =============== HERO =============== -->
+  <header class="versions-hero">
+    <div class="wrap">
+      <p class="hero-meta">
+        <span><b>PLAYGROUND</b> · Version History</span>
+        <span>v0.1 → v0.2 · <b>POC → Platform</b></span>
+      </p>
+      <h1 class="versions-title">
+        SAM <em>멀티모델 비교</em><br>
+        플레이그라운드.
+      </h1>
+      <p class="versions-desc">
+        같은 문제를 여러 AI 모델에 동시에 던지고 결과를 비교하는 도구.
+        멘토가 만든 POC를 학생이 본격 플랫폼으로 확장한 흐름을 따라가본다.
+      </p>
+    </div>
+  </header>
+
+  <!-- =============== VERSIONS =============== -->
+  <main class="versions-list">
+    <div class="wrap">
+
+      <!-- v0.2 — current -->
+      <article class="version">
+        <div class="version-meta">
+          <span class="version-tag">v0.2 — KTW</span>
+          <span class="version-date">2026-05-23</span>
+          <span class="version-status is-current">● Current</span>
+        </div>
+        <div class="version-body">
+          <h2>POC → <em>본격 플랫폼.</em></h2>
+          <p class="version-author">
+            확장: <b>김태운 (Listro02)</b> — 서울대 컴퓨터공학과 2학년
+          </p>
+          <p>
+            v0.1을 기반으로 사이드바 레이아웃 + 문제 트리 + 모델 프리셋 +
+            마크다운 렌더링 + 결과 영속화 + 히스토리 차트 비교까지 추가한 본격 플랫폼.
+          </p>
+
+          <div class="version-features">
+            <span class="feature-chip added">+ 사이드바 레이아웃</span>
+            <span class="feature-chip added">+ 문제 트리 (JSON 인덱스)</span>
+            <span class="feature-chip added">+ 31개 모델 동적 로딩</span>
+            <span class="feature-chip added">+ 검색 · 태그 필터</span>
+            <span class="feature-chip added">+ Drag &amp; Drop 재배치</span>
+            <span class="feature-chip added">+ 모델 프리셋 시스템</span>
+            <span class="feature-chip added">+ Markdown · 코드 · 수식</span>
+            <span class="feature-chip added">+ 결과 영속 저장</span>
+            <span class="feature-chip added">+ History Viewer + 차트</span>
+            <span class="feature-chip added">+ JSON 업로드 · 내보내기</span>
+          </div>
+
+          <div class="version-stats">
+            <span><b>1,435</b>JS 줄</span>
+            <span><b>1,567</b>CSS 줄</span>
+            <span><b>413</b>HTML 줄</span>
+            <span><b>~84KB</b>총 크기</span>
+            <span><b>3.6×</b>vs v0.1</span>
+          </div>
+        </div>
+        <div class="version-cta">
+          <a href="../playground_ktw/" class="btn btn-primary">실행하기 →</a>
+          <a href="../playground_ktw/history.html" class="btn btn-ghost">History Viewer</a>
+        </div>
+      </article>
+
+      <!-- v0.1 — POC -->
+      <article class="version">
+        <div class="version-meta">
+          <span class="version-tag">v0.1 — POC</span>
+          <span class="version-date">2026-05-12</span>
+          <span class="version-status">○ Archived</span>
+        </div>
+        <div class="version-body">
+          <h2>최초 <em>POC.</em></h2>
+          <p class="version-author">
+            제작: <b>송용성 (Mentor)</b> — 순순팩토리 대표
+          </p>
+          <p>
+            5단계 순차 UI로 SAM API에 6개 모델을 병렬 호출하고 결과를 나란히 보여주는
+            최소 기능 시제품. 학생들이 각자 문제를 만들어 던져볼 수 있는 출발점.
+          </p>
+
+          <div class="version-features">
+            <span class="feature-chip">5단계 순차 UI</span>
+            <span class="feature-chip">API 키 localStorage</span>
+            <span class="feature-chip">6개 모델 (하드코딩)</span>
+            <span class="feature-chip">병렬 fetch()</span>
+            <span class="feature-chip">3개 프리셋 프롬프트</span>
+            <span class="feature-chip">관찰 노트 체크리스트</span>
+          </div>
+
+          <div class="version-stats">
+            <span><b>206</b>JS 줄</span>
+            <span><b>319</b>CSS 줄</span>
+            <span><b>206</b>HTML 줄</span>
+            <span><b>~23KB</b>총 크기</span>
+          </div>
+        </div>
+        <div class="version-cta">
+          <a href="./" class="btn btn-ghost">실행하기 →</a>
+        </div>
+      </article>
+
+      <!-- Future — placeholder -->
+      <article class="version is-future">
+        <div class="version-meta">
+          <span class="version-tag">v0.3 — Next</span>
+          <span class="version-date">예정</span>
+          <span class="version-status">⋯ Planned</span>
+        </div>
+        <div class="version-body">
+          <h2>자동 채점 + <em>벤치마크 통합.</em></h2>
+          <p class="version-author">
+            기여 환영 — 1기 학생 누구나
+          </p>
+          <p>
+            must_include / must_not_include 자동 검증, 도메인×능력 매트릭스 시각화,
+            가성비(CER) 분석 대시보드, 멀티턴 평가 등 본격 벤치마크 운영 기능을 추가한다.
+          </p>
+
+          <div class="version-features">
+            <span class="feature-chip">자동 채점 v0.1</span>
+            <span class="feature-chip">X×Y 히트맵</span>
+            <span class="feature-chip">CER 분석</span>
+            <span class="feature-chip">멀티턴 평가</span>
+          </div>
+        </div>
+        <div class="version-cta">
+          <a href="https://github.com/soonsoonLABS/wemeet-uni-bench/issues"
+             target="_blank" rel="noopener" class="btn btn-ghost">기여하기 ↗</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-bot">
+        <span>© 2025 soonsoonLABS · MIT License</span>
+        <span>wemeet-uni-bench · playground versions</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
