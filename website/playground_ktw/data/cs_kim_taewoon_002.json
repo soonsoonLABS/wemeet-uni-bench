@@ -1,0 +1,33 @@
+{
+  "id": "cs_taewoon_002",
+  "category": "Hardware",
+  "subject": "Logic Design",
+  "difficulty": "L2",
+  "language": "ko",
+  "prompt": "다음은 두 개의 4비트 BCD(Binary-Coded Decimal) 입력을 받아 조건에 따라 제어 신호를 출력하는 조합 논리(Combinational Logic) 회로의 Verilog 설계 일부입니다.\n\nalways @(*) begin\n    if (enable) begin\n        out_a = in_a & in_b;\n        if (in_a > in_b) begin\n            out_b = 1'b1;\n        end\n    end else begin\n        out_a = 4'b0000;\n    end\nend\n\n이 코드는 문법적(Syntax) 오류는 없으나, 실제 실리콘 레벨로 합성(Synthesis)될 때 하드웨어적 결함을 유발합니다. 소프트웨어 프로그래밍 관점이 아닌 물리적 회로 관점에서 1) 어떤 결함이 발생하는지 명칭을 명시하고, 2) 그로 인해 발생하는 물리적 문제를 서술한 후, 3) 이를 해결한 Verilog 코드를 작성하시오. 단, 플립플롭(Flip-flop) 등 동기식 소자는 사용하지 마시오.",
+  "expected_output": {
+    "must_include": [
+      "래치", 
+      "Latch", 
+      "out_b", 
+      "else", 
+      "초기화"
+    ],
+    "must_not_include": [
+      "<=", 
+      "posedge", 
+      "negedge"
+    ]
+  },
+  "purpose": [
+    "학부 수준의 하드웨어/로우레벨 디버깅 (Low-level Debugging)",
+    "소프트웨어 프로그래밍의 순차적(Sequential) 실행 관성을 탈피하고, HDL의 동시적(Concurrent) 회로 동작을 정확히 모델링하는 능력 검증",
+    "범용 프로그래밍 언어(C/Java 등) 편향이 있는 LLM이 하드웨어 레벨의 제약 조건(예: 동기식 소자 사용 불가)을 준수할 수 있는지 측정"
+  ],
+  "rubric": {
+    "정확도": "out_b 신호에 대한 default/else 조건이 누락되어 '의도치 않은 래치(Unintended Latch)'가 추론됨을 정확히 지적하는가",
+    "설명력": "조합 논리 회로에서 조건 분기가 불완전할 경우, 상태를 유지하기 위해 불필요한 메모리 소자가 합성되어 타이밍 분석 실패나 글리치가 발생함을 설명하는가",
+    "코드품질": "동기식 할당(<=)을 사용하지 않고, block 시작부에서 out_b를 0으로 초기화하거나 모든 분기에 else 구문을 추가하여 완벽한 조합 논리 코드로 수정했는가",
+    "한국어품질": "어색한 번역체 없이 하드웨어 전공 용어(합성, 조합 논리, 래치 추론 등)를 자연스럽게 사용했는가"
+  }
+}
