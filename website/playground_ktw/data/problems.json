@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-23T20:32:21.304450",
-  "total": 15,
+  "generated_at": "2026-05-25T23:32:54.224959",
+  "total": 17,
   "tree": {
     "coding": {
       "label": "코딩",
@@ -125,10 +125,27 @@
       "label": "재료공학",
       "problems": [
         {
+          "id": "mat_hoyoon_001",
+          "subject": "전위(Dislocation) 개념 설명",
+          "difficulty": "L2",
+          "file": "mat_kim_hoyoon_001.json"
+        },
+        {
           "id": "mat_tester_001",
           "subject": "전위(Dislocation) 개념 설명",
           "difficulty": "L2",
           "file": "mat_tester_001.json"
+        }
+      ]
+    },
+    "organic_chemistry": {
+      "label": "유기화학",
+      "problems": [
+        {
+          "id": "mat_hoyoon_002",
+          "subject": "친전자성 첨가 반응 — 프로펜 + HBr",
+          "difficulty": "L2",
+          "file": "mat_kim_hoyoon_002.json"
         }
       ]
     }

@@ -131,46 +131,110 @@
       </div>
     </section>
 
+    <!-- 06.5 — KIM TAEWOON BONUS: PLAYGROUND v0.2 -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§03.2 · Bonus</span>
+        <h2 class="display-sm">그리고 그는 <em>도구까지 만들었다.</em></h2>
+        <p class="slide-sub">멘토가 만든 v0.1을 v0.2로 확장 — POC가 본격 플랫폼이 됨.</p>
+      </header>
+      <div class="ktw-grid">
+        <div class="ktw-stats">
+          <div class="ktw-stat"><b>3.6×</b><span>vs v0.1</span></div>
+          <div class="ktw-stat"><b>1,435</b><span>JS 줄</span></div>
+          <div class="ktw-stat"><b>31</b><span>모델</span></div>
+          <div class="ktw-stat"><b>+1</b><span>History 페이지</span></div>
+        </div>
+        <ul class="ktw-features">
+          <li><b>+ 사이드바 레이아웃</b> · 문제 트리 + 모델 패널 탭</li>
+          <li><b>+ 문제 인덱스 자동화</b> · JSON 스캔 → 트리 자동 생성</li>
+          <li><b>+ 모델 프리셋 시스템</b> · 저장 · 불러오기 · JSON 내보내기</li>
+          <li><b>+ Markdown · 코드 · 수식 렌더링</b> · marked + Prism + KaTeX</li>
+          <li><b>+ 결과 영속 저장</b> · 로컬 백엔드 API + localStorage 폴백</li>
+          <li><b>+ History Viewer</b> · 응답시간 · 토큰 비교 차트</li>
+        </ul>
+      </div>
+    </section>
+
     <!-- 07 — KIM HOYOON HEADLINE -->
     <section class="slide center">
       <div class="center-stack">
         <p class="kicker">§04 · Achievement</p>
+        <p class="big-num">2</p>
         <h2 class="display-md">
-          김호윤 학생은<br>
-          <em>자연과학 도메인</em>을<br>
-          연다.
+          김호윤 학생의<br>
+          <em>벤치마크 디자인.</em>
         </h2>
-        <p class="caption">재료공학 + 한국어 추론(꼬들) 문제 진행 중</p>
+        <p class="caption">양 대신 깊이 — 측정 의도를 한 문제 안에 정밀하게 박아넣다.</p>
       </div>
     </section>
 
     <!-- 08 — KIM HOYOON SPLIT -->
     <section class="slide">
       <header class="slide-head">
-        <span class="kicker">§04.1 · Bonus Idea</span>
-        <h2 class="display-sm">"꼬들"이 좋은 <em>벤치마크</em>다.</h2>
+        <span class="kicker">§04.1 · Two Problems</span>
+        <h2 class="display-sm">두 도메인 — <em>재료 + 유기화학.</em></h2>
       </header>
       <div class="hoyoon-grid">
         <div class="hoyoon-status">
-          <span class="status-tag">진행 중</span>
-          <h3>재료공학 도메인</h3>
+          <span class="status-tag">완료</span>
+          <h3>mat_hoyoon_001 — 전위</h3>
+          <p class="hoyoon-meta">L2 · materials · rubric 4축</p>
           <ul class="hoyoon-list">
-            <li>전위(dislocation) 분석</li>
-            <li>상변태 · 열처리</li>
-            <li>XRD · SEM 데이터 해석</li>
+            <li>Edge / screw dislocation 구분</li>
+            <li>Burgers vector 설명</li>
+            <li>소성 변형 메커니즘</li>
+            <li>한글-영문 병기 평가</li>
           </ul>
         </div>
         <div class="hoyoon-bonus">
-          <span class="status-tag is-bonus">제안</span>
-          <h3 class="serif">꼬들 한국어 Wordle</h3>
+          <span class="status-tag is-bonus">정밀 설계</span>
+          <h3 class="serif">ochem_001 — 친전자성 첨가</h3>
+          <p class="hoyoon-meta is-bonus">L2 · organic_chemistry · rubric 5축</p>
           <ul class="hoyoon-list">
-            <li>한국어 음운 구조 이해</li>
-            <li>멀티턴 정보 활용</li>
-            <li>실제 한국어 어휘력</li>
-            <li>채점 명확</li>
+            <li>마르코브니코프 <b>없이</b> 유도</li>
+            <li>HOMO/LUMO + VBT 원리만 사용</li>
+            <li>3단계 논리 체인 강제</li>
+            <li>must_not_include 5개 정밀</li>
           </ul>
         </div>
       </div>
+      <p class="caption-center"><strong>"법칙 암기 vs 원리 이해"</strong> — 두 문제만으로 새 측정 축을 발견했다.</p>
+    </section>
+
+    <!-- 08.5 — TWO STUDENTS, TWO PATHS -->
+    <section class="slide">
+      <header class="slide-head">
+        <span class="kicker">§04.2 · Two Paths</span>
+        <h2 class="display-sm">두 학생, 두 가지 <em>기여 방식.</em></h2>
+      </header>
+      <div class="two-paths">
+        <article class="path">
+          <span class="path-tag">Path A</span>
+          <h3>System Builder</h3>
+          <p class="path-name">김태운 — CSE</p>
+          <p class="path-desc">도구를 만들고 양을 확장한다. POC를 production-grade 플랫폼으로.</p>
+          <div class="path-tags">
+            <span>11 문제</span>
+            <span>5 도메인</span>
+            <span>v0.2 플랫폼</span>
+            <span>백엔드 API</span>
+          </div>
+        </article>
+        <article class="path is-alt">
+          <span class="path-tag">Path B</span>
+          <h3>Benchmark Designer</h3>
+          <p class="path-name">김호윤 — MatSE</p>
+          <p class="path-desc">한 문제 안에 측정 의도를 깊이 박는다. 평가 축의 정밀화.</p>
+          <div class="path-tags">
+            <span>2 문제</span>
+            <span>2 도메인</span>
+            <span>rubric 5축</span>
+            <span>측정 근거 명시</span>
+          </div>
+        </article>
+      </div>
+      <p class="caption-center">서로 다른 기여 방식이 합쳐져 <strong>벤치마크의 형태</strong>가 잡혀가고 있다.</p>
     </section>
 
     <!-- 09 — DISCOVERY HEADLINE -->
