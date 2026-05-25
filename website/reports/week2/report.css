@@ -823,3 +823,36 @@
   .rp-cov-row { grid-template-columns: 1fr; gap: 0.3rem; }
   .rp-score-row { grid-template-columns: 9rem 1fr 2.5rem; }
 }
+
+
+/* --- Visual CTA in hero ------------------------------------------------- */
+.rp-visual-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin: var(--s-3) 0 var(--s-4);
+  flex-wrap: wrap;
+}
+.rp-visual-btn {
+  display: inline-block;
+  font-family: var(--ff-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  background: var(--lime);
+  padding: 0.85rem 1.5rem;
+  border: 2px solid var(--lime);
+  transition: all 0.2s;
+}
+.rp-visual-btn:hover {
+  background: var(--paper);
+  border-color: var(--paper);
+  transform: translateY(-2px);
+}
+.rp-visual-cta small {
+  font-family: var(--ff-mono);
+  font-size: 0.78rem;
+  color: var(--paper-dim);
+  font-style: italic;
+}

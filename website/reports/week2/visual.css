@@ -1,0 +1,442 @@
+/* ==========================================================================
+   Visual story page — 2주차 보고서를 그림으로 풀어내기
+   ========================================================================== */
+
+.wrap-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+/* --- Hero --------------------------------------------------------------- */
+.vs-hero {
+  padding: clamp(7rem, 14vh, 10rem) 0 var(--s-6);
+  border-bottom: var(--edge-thin);
+  background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+}
+.vs-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--ff-mono);
+  font-size: 0.78rem;
+  color: var(--mute);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-top: var(--edge-thin);
+  padding-top: 0.8rem;
+  margin-bottom: var(--s-3);
+}
+.vs-meta b { color: var(--paper); font-weight: 500; }
+
+.vs-title {
+  font-family: var(--ff-sans);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+  margin-bottom: var(--s-3);
+}
+.vs-title .serif {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.55em;
+  color: var(--paper-dim);
+  display: block;
+  margin-bottom: 0.3em;
+}
+.vs-title mark {
+  background: none;
+  color: var(--lime);
+}
+
+.vs-lead {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  line-height: 1.55;
+  color: var(--paper-dim);
+  max-width: 50ch;
+  font-weight: 400;
+}
+.vs-lead strong {
+  color: var(--paper);
+  font-style: normal;
+  font-family: var(--ff-sans);
+  font-weight: 700;
+}
+
+/* --- Panel layout ------------------------------------------------------- */
+.vs-panel {
+  padding: var(--s-7) 0;
+  border-bottom: var(--edge-thin);
+}
+.vs-panel-ink { background: var(--ink-2); }
+
+.vs-num {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: clamp(4rem, 8vw, 6rem);
+  line-height: 1;
+  color: var(--lime);
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.vs-h2 {
+  font-family: var(--ff-sans);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--paper);
+  margin: var(--s-2) 0 var(--s-3);
+  word-break: keep-all;
+  max-width: 22ch;
+}
+.vs-h2 em {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--lime);
+}
+
+.vs-h3 {
+  font-family: var(--ff-sans);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  letter-spacing: -0.025em;
+  color: var(--paper);
+  margin: var(--s-5) 0 var(--s-3);
+}
+
+.vs-p {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--paper-dim);
+  max-width: 60ch;
+  margin-bottom: var(--s-4);
+}
+.vs-p strong { color: var(--paper); font-weight: 700; }
+
+/* Path tag (in heading) */
+.path-a-tag, .path-b-tag {
+  display: inline-block;
+  font-family: var(--ff-mono);
+  font-size: 0.6em;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  background: var(--lime);
+  padding: 0.15em 0.5em;
+  vertical-align: middle;
+  margin-right: 0.3em;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.path-b-tag {
+  background: var(--alert);
+  color: var(--paper);
+}
+
+/* --- Figure ------------------------------------------------------------- */
+.vs-fig {
+  margin: var(--s-4) 0 var(--s-5);
+  padding: var(--s-3);
+  border: var(--edge-thin);
+  background: var(--ink);
+}
+.vs-panel-ink .vs-fig { background: var(--ink-3); }
+.vs-fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.vs-fig figcaption {
+  font-family: var(--ff-mono);
+  font-size: 0.85rem;
+  color: var(--paper-dim);
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin-top: var(--s-2);
+  padding-top: var(--s-2);
+  border-top: 1px dashed var(--rule);
+  line-height: 1.5;
+}
+.vs-fig figcaption strong { color: var(--lime); }
+.vs-fig figcaption code {
+  font-family: var(--ff-mono);
+  font-size: 0.85em;
+  background: var(--ink-2);
+  padding: 0.1em 0.4em;
+  color: var(--lime);
+  border: 1px solid var(--rule);
+}
+
+/* --- SVG text styles ---------------------------------------------------- */
+.svg-axis-label {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  fill: #cfccc1;
+  text-anchor: middle;
+}
+.svg-axis-bold {
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-anchor: middle;
+  letter-spacing: 0.08em;
+}
+.svg-empty {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 26px;
+  fill: #6e6e7a;
+  text-anchor: middle;
+}
+.dots-a circle { fill: #d4ff3a; }
+.dots-b circle:not([fill="none"]) { fill: #ff4d3d; }
+.dot-id {
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  font-weight: 700;
+  fill: #0b0b0d;
+  text-anchor: middle;
+  pointer-events: none;
+}
+.svg-legend {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  fill: #cfccc1;
+}
+.svg-legend-small {
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  fill: #6e6e7a;
+}
+
+/* Layered cross-section labels */
+.layer-label {
+  font-family: var(--ff-sans);
+  font-size: 13px;
+  font-weight: 700;
+  fill: #f4f1e8;
+  text-anchor: middle;
+}
+.svg-center-label {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 18px;
+  fill: #d4ff3a;
+  text-anchor: middle;
+}
+
+/* Box comparison labels */
+.svg-box-title {
+  font-family: var(--ff-mono);
+  font-size: 14px;
+  font-weight: 700;
+  text-anchor: middle;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.svg-box-result {
+  font-family: var(--ff-sans);
+  font-size: 16px;
+  font-weight: 700;
+  fill: #f4f1e8;
+  text-anchor: middle;
+}
+.svg-box-sub {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 12px;
+  fill: #cfccc1;
+  text-anchor: middle;
+}
+.vs-svg-op {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 56px;
+  fill: #cfccc1;
+  text-anchor: middle;
+  font-weight: 400;
+}
+
+/* Map / Surveyor labels */
+.map-mark {
+  font-family: var(--ff-mono);
+  font-size: 14px;
+  fill: #d4ff3a;
+  text-anchor: middle;
+}
+.role-name {
+  font-family: var(--ff-sans);
+  font-size: 22px;
+  font-weight: 800;
+  text-anchor: middle;
+  letter-spacing: -0.02em;
+}
+.role-sub {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 14px;
+  fill: #6e6e7a;
+  text-anchor: middle;
+}
+.role-action {
+  font-family: var(--ff-sans);
+  font-size: 13px;
+  fill: #cfccc1;
+  text-anchor: middle;
+}
+.role-tag {
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  fill: #f4f1e8;
+  text-anchor: middle;
+  font-weight: 700;
+}
+
+/* Convergence labels */
+.conv-label {
+  font-family: var(--ff-sans);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.conv-sub {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  fill: #f4f1e8;
+}
+.conv-result-tag {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-anchor: middle;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.conv-result-title {
+  font-family: var(--ff-sans);
+  font-size: 18px;
+  font-weight: 800;
+  fill: #f4f1e8;
+  text-anchor: middle;
+  letter-spacing: -0.02em;
+}
+.conv-result-sub {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  fill: #cfccc1;
+  text-anchor: middle;
+}
+.conv-final {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 22px;
+  text-anchor: middle;
+}
+
+/* --- Callouts ----------------------------------------------------------- */
+.vs-callout {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  margin: var(--s-4) 0;
+  border-left: 4px solid var(--lime);
+  background: var(--lime-dim);
+  align-items: center;
+}
+.vs-callout-b {
+  border-left-color: var(--alert);
+  background: rgba(255, 77, 61, 0.1);
+}
+.vs-callout-icon {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: 3rem;
+  color: var(--lime);
+  text-align: center;
+  line-height: 1;
+}
+.vs-callout-b .vs-callout-icon { color: var(--alert); }
+.vs-callout span:last-child {
+  font-size: 1rem;
+  color: var(--paper);
+  line-height: 1.6;
+}
+.vs-callout span:last-child b {
+  font-weight: 800;
+  color: var(--lime);
+  font-size: 1.05rem;
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+.vs-callout-b span:last-child b { color: var(--alert); }
+
+/* --- Final card --------------------------------------------------------- */
+.vs-final-card {
+  border: 2px solid var(--lime);
+  background: var(--lime-dim);
+  padding: var(--s-5) var(--s-4);
+  margin-top: var(--s-5);
+  text-align: center;
+}
+.vs-final-title {
+  font-family: var(--ff-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--lime);
+  font-weight: 700;
+  margin-bottom: var(--s-3);
+}
+.vs-final-quote {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.5;
+  color: var(--paper);
+  max-width: 38ch;
+  margin: 0 auto;
+}
+.vs-final-quote .serif { display: block; }
+.vs-final-quote mark {
+  background: var(--lime);
+  color: var(--ink);
+  padding: 0 0.2em;
+  font-style: normal;
+  font-family: var(--ff-sans);
+  font-weight: 800;
+  font-size: 0.95em;
+}
+
+/* --- Back button -------------------------------------------------------- */
+.vs-back {
+  text-align: center;
+  margin-top: var(--s-5);
+}
+.vs-back-btn {
+  display: inline-block;
+  font-family: var(--ff-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--lime);
+  border: 1px solid var(--lime);
+  padding: 0.7rem 1.5rem;
+  transition: all 0.2s;
+}
+.vs-back-btn:hover {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+/* --- Responsive --------------------------------------------------------- */
+@media (max-width: 700px) {
+  .vs-callout { grid-template-columns: 1fr; gap: var(--s-2); }
+  .vs-callout-icon { font-size: 2.5rem; }
+}
