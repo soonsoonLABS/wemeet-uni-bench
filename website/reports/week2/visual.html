@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>그림으로 이해하기 — 2주차 보고서</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="visual.css" />
+</head>
+<body>
+
+  <!-- =============== NAV =============== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../../" class="nav-logo">uni-bench / visual</a>
+      <div class="nav-links">
+        <a href="./" class="nav-key">← 보고서</a>
+        <a href="../../slides/week2/" class="nav-key">slides</a>
+        <a href="../../" class="nav-cta">PROJECT</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =============== HERO =============== -->
+  <header class="vs-hero">
+    <div class="wrap-narrow">
+      <p class="vs-meta">
+        <span><b>VISUAL</b> · 2주차 정리</span>
+        <span>그림 6장</span>
+      </p>
+      <h1 class="vs-title">
+        <span class="serif">두 학생이 만든 것을</span><br>
+        <mark>그림으로</mark> 이해하기.
+      </h1>
+      <p class="vs-lead">
+        벤치마크가 뭔지, 두 학생이 각각 무엇을 만들었는지,
+        왜 이 둘이 합쳐져야 의미가 있는지 — 텍스트로는 어려우니
+        <strong>스크롤하면서 그림으로 따라가본다.</strong>
+      </p>
+    </div>
+  </header>
+
+  <!-- =============== PANEL 1 =============== -->
+  <section class="vs-panel">
+    <div class="wrap-narrow">
+      <p class="vs-num">01</p>
+      <h2 class="vs-h2">벤치마크는 <em>격자</em>다.</h2>
+      <p class="vs-p">
+        벤치마크를 도서관 책장이라고 생각해보자.
+        <strong>가로</strong>는 분야(코딩, 수학, 화학…),
+        <strong>세로</strong>는 능력(정확성, 설명력, 학습 유도…)이다.
+        한 칸은 "코딩 분야에서 정확성"을 측정하는 문제집 한 권에 해당한다.
+      </p>
+
+      <figure class="vs-fig">
+        <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Grid background -->
+          <defs>
+            <pattern id="grid1" width="80" height="80" patternUnits="userSpaceOnUse">
+              <rect width="80" height="80" fill="none" stroke="#2a2a33" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect x="120" y="60" width="640" height="400" fill="url(#grid1)" stroke="#2a2a33"/>
+
+          <!-- X axis labels -->
+          <text x="160" y="50" class="svg-axis-label">코딩</text>
+          <text x="240" y="50" class="svg-axis-label">시스템</text>
+          <text x="320" y="50" class="svg-axis-label">수학</text>
+          <text x="400" y="50" class="svg-axis-label">자연과학</text>
+          <text x="480" y="50" class="svg-axis-label">언어</text>
+          <text x="560" y="50" class="svg-axis-label">논문</text>
+          <text x="640" y="50" class="svg-axis-label">데이터</text>
+          <text x="720" y="50" class="svg-axis-label">글쓰기</text>
+
+          <!-- Y axis labels -->
+          <text x="100" y="100" class="svg-axis-label" text-anchor="end">정확성</text>
+          <text x="100" y="180" class="svg-axis-label" text-anchor="end">추론</text>
+          <text x="100" y="260" class="svg-axis-label" text-anchor="end">설명력</text>
+          <text x="100" y="340" class="svg-axis-label" text-anchor="end">학습유도</text>
+          <text x="100" y="420" class="svg-axis-label" text-anchor="end">함정감지</text>
+
+          <!-- Big arrows -->
+          <line x1="120" y1="475" x2="760" y2="475" stroke="#d4ff3a" stroke-width="1.5" marker-end="url(#arr-x)"/>
+          <line x1="105" y1="460" x2="105" y2="60" stroke="#d4ff3a" stroke-width="1.5" marker-end="url(#arr-y)"/>
+          <text x="440" y="495" class="svg-axis-bold" fill="#d4ff3a">X — 분야 (무엇을)</text>
+          <text x="80" y="245" class="svg-axis-bold" fill="#d4ff3a" text-anchor="middle" transform="rotate(-90 80 245)">Y — 능력 (어떻게)</text>
+
+          <defs>
+            <marker id="arr-x" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#d4ff3a"/>
+            </marker>
+            <marker id="arr-y" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#d4ff3a"/>
+            </marker>
+          </defs>
+
+          <!-- Empty grid cells emphasized -->
+          <text x="440" y="260" class="svg-empty">전부 비어있다</text>
+        </svg>
+        <figcaption>
+          시작은 텅 빈 격자 한 장. 우리가 채워야 할 영토.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- =============== PANEL 2 — 태운 =============== -->
+  <section class="vs-panel vs-panel-ink">
+    <div class="wrap-narrow">
+      <p class="vs-num">02</p>
+      <h2 class="vs-h2">
+        <span class="path-a-tag">태운</span> — 격자 위에 <em>점을 흩뿌리다.</em>
+      </h2>
+      <p class="vs-p">
+        태운 학생은 11개의 문제를 만들어 격자 위 여러 칸에 흩뿌렸다.
+        <strong>"이 분야에 이 능력 측정 문제가 있다"</strong>를 빨리 표시하는 식.
+        그리고 도구(Playground v0.2)까지 만들어서, 다른 사람도 쉽게 점을 찍게 했다.
+      </p>
+
+      <figure class="vs-fig">
+        <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Grid -->
+          <rect x="120" y="60" width="640" height="400" fill="url(#grid1)" stroke="#2a2a33"/>
+
+          <!-- X labels -->
+          <text x="160" y="50" class="svg-axis-label">코딩</text>
+          <text x="240" y="50" class="svg-axis-label">시스템</text>
+          <text x="320" y="50" class="svg-axis-label">수학</text>
+          <text x="400" y="50" class="svg-axis-label">자연과학</text>
+          <text x="480" y="50" class="svg-axis-label">언어</text>
+          <text x="560" y="50" class="svg-axis-label">논문</text>
+
+          <text x="100" y="100" class="svg-axis-label" text-anchor="end">정확성</text>
+          <text x="100" y="180" class="svg-axis-label" text-anchor="end">추론</text>
+          <text x="100" y="260" class="svg-axis-label" text-anchor="end">설명력</text>
+          <text x="100" y="340" class="svg-axis-label" text-anchor="end">학습유도</text>
+          <text x="100" y="420" class="svg-axis-label" text-anchor="end">함정감지</text>
+
+          <!-- 태운 dots — scattered across many cells -->
+          <g class="dots-a">
+            <circle cx="160" cy="180" r="14" /><text x="160" y="184" class="dot-id">001</text>
+            <circle cx="160" cy="260" r="14" /><text x="160" y="264" class="dot-id">004</text>
+            <circle cx="160" cy="340" r="14" /><text x="160" y="344" class="dot-id">009</text>
+            <circle cx="240" cy="100" r="14" /><text x="240" y="104" class="dot-id">002</text>
+            <circle cx="240" cy="420" r="14" /><text x="240" y="424" class="dot-id">008</text>
+            <circle cx="160" cy="180" r="14" /><text x="160" y="184" class="dot-id">003</text>
+            <circle cx="320" cy="180" r="14" /><text x="320" y="184" class="dot-id">006</text>
+            <circle cx="320" cy="260" r="14" /><text x="320" y="264" class="dot-id">007</text>
+            <circle cx="160" cy="340" r="14" /><text x="160" y="344" class="dot-id">005</text>
+            <circle cx="160" cy="420" r="14" /><text x="160" y="424" class="dot-id">010</text>
+            <circle cx="240" cy="100" r="14" /><text x="240" y="104" class="dot-id">011</text>
+          </g>
+
+          <!-- Legend -->
+          <g transform="translate(540, 380)">
+            <circle cx="0" cy="0" r="14" fill="#d4ff3a"/>
+            <text x="22" y="5" class="svg-legend">= 태운이 만든 문제 (11개)</text>
+          </g>
+        </svg>
+        <figcaption>
+          격자의 <strong>여러 칸에 점이 찍혔다</strong>. 면적이 넓어졌다.
+        </figcaption>
+      </figure>
+
+      <p class="vs-callout vs-callout-a">
+        <span class="vs-callout-icon">A</span>
+        <span>
+          <b>태운의 기여</b><br>
+          격자 위에 영토를 표시한다. 빨리, 넓게.<br>
+          그리고 도구를 만들어 누구나 점을 찍을 수 있게 한다.
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <!-- =============== PANEL 3 — 호윤 =============== -->
+  <section class="vs-panel">
+    <div class="wrap-narrow">
+      <p class="vs-num">03</p>
+      <h2 class="vs-h2">
+        <span class="path-b-tag">호윤</span> — 한 점을 <em>두껍게</em> 만들다.
+      </h2>
+      <p class="vs-p">
+        호윤 학생은 정반대로 갔다. 두 점만 찍었지만,
+        <strong>그 점 안을 들여다보면 두께가 다르다</strong>.
+        한 문제 안에 측정하려는 의도가 5겹으로 정밀하게 박혀있다.
+      </p>
+
+      <figure class="vs-fig">
+        <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Grid -->
+          <rect x="120" y="60" width="640" height="400" fill="url(#grid1)" stroke="#2a2a33"/>
+
+          <text x="160" y="50" class="svg-axis-label">코딩</text>
+          <text x="240" y="50" class="svg-axis-label">시스템</text>
+          <text x="320" y="50" class="svg-axis-label">수학</text>
+          <text x="400" y="50" class="svg-axis-label">자연과학</text>
+          <text x="480" y="50" class="svg-axis-label">화학</text>
+          <text x="560" y="50" class="svg-axis-label">언어</text>
+
+          <text x="100" y="100" class="svg-axis-label" text-anchor="end">정확성</text>
+          <text x="100" y="180" class="svg-axis-label" text-anchor="end">추론</text>
+          <text x="100" y="260" class="svg-axis-label" text-anchor="end">설명력</text>
+          <text x="100" y="340" class="svg-axis-label" text-anchor="end">학습유도</text>
+          <text x="100" y="420" class="svg-axis-label" text-anchor="end">함정감지</text>
+
+          <!-- 호윤 dots — only 2, but with rings showing depth -->
+          <g class="dots-b">
+            <!-- mat_hoyoon_001: 자연과학 + 정확성 -->
+            <circle cx="400" cy="100" r="22" fill="none" stroke="#ff4d3d" stroke-width="2" opacity="0.3"/>
+            <circle cx="400" cy="100" r="16" fill="none" stroke="#ff4d3d" stroke-width="2" opacity="0.55"/>
+            <circle cx="400" cy="100" r="10" fill="#ff4d3d"/>
+            <text x="400" y="104" class="dot-id">mat</text>
+
+            <!-- ochem_001: 화학 + 학습유도 — 두께가 진짜 깊음 -->
+            <circle cx="480" cy="340" r="42" fill="none" stroke="#ff4d3d" stroke-width="1.2" opacity="0.15"/>
+            <circle cx="480" cy="340" r="34" fill="none" stroke="#ff4d3d" stroke-width="1.5" opacity="0.25"/>
+            <circle cx="480" cy="340" r="26" fill="none" stroke="#ff4d3d" stroke-width="1.8" opacity="0.4"/>
+            <circle cx="480" cy="340" r="18" fill="none" stroke="#ff4d3d" stroke-width="2" opacity="0.6"/>
+            <circle cx="480" cy="340" r="11" fill="#ff4d3d"/>
+            <text x="480" y="344" class="dot-id">★</text>
+          </g>
+
+          <!-- Legend -->
+          <g transform="translate(540, 380)">
+            <circle cx="0" cy="0" r="22" fill="none" stroke="#ff4d3d" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="0" cy="0" r="11" fill="#ff4d3d"/>
+            <text x="32" y="5" class="svg-legend" fill="#ff4d3d">= 호윤이 만든 문제 (2개)</text>
+            <text x="32" y="22" class="svg-legend-small">고리 두께 = 측정 의도의 정밀도</text>
+          </g>
+        </svg>
+        <figcaption>
+          점 두 개. 그러나 <strong>그 안의 고리가 두껍다</strong> — 측정하려는 의도가 깊다.
+        </figcaption>
+      </figure>
+
+      <h3 class="vs-h3">호윤의 한 문제(★)를 잘라보면</h3>
+
+      <figure class="vs-fig">
+        <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cross-section view: a stack of layers -->
+          <g transform="translate(80, 40)">
+            <!-- Layer 1: 정답 유도 자제 -->
+            <ellipse cx="320" cy="40" rx="280" ry="22" fill="#ff4d3d" opacity="0.85"/>
+            <text x="320" y="46" class="layer-label">① 정답 유도 자제 (must_not_include 5개)</text>
+
+            <!-- Layer 2 -->
+            <ellipse cx="320" cy="100" rx="260" ry="22" fill="#ff4d3d" opacity="0.7"/>
+            <text x="320" y="106" class="layer-label">② 단계적 구조 준수 (3단계 강제)</text>
+
+            <!-- Layer 3 -->
+            <ellipse cx="320" cy="160" rx="240" ry="22" fill="#ff4d3d" opacity="0.55"/>
+            <text x="320" y="166" class="layer-label">③ 이론적 도구 활용 (HOMO/LUMO + VBT)</text>
+
+            <!-- Layer 4 -->
+            <ellipse cx="320" cy="220" rx="220" ry="22" fill="#ff4d3d" opacity="0.4"/>
+            <text x="320" y="226" class="layer-label">④ 힌트 품질 (정답 미포함)</text>
+
+            <!-- Layer 5 -->
+            <ellipse cx="320" cy="280" rx="200" ry="22" fill="#ff4d3d" opacity="0.3"/>
+            <text x="320" y="286" class="layer-label">⑤ 한국어 학술 품질</text>
+
+            <!-- Side label -->
+            <line x1="630" y1="20" x2="630" y2="300" stroke="#ff4d3d" stroke-width="2"/>
+            <line x1="625" y1="20" x2="635" y2="20" stroke="#ff4d3d" stroke-width="2"/>
+            <line x1="625" y1="300" x2="635" y2="300" stroke="#ff4d3d" stroke-width="2"/>
+            <text x="650" y="170" class="svg-axis-bold" fill="#ff4d3d">5겹</text>
+            <text x="650" y="195" class="svg-legend-small" fill="#ff4d3d">측정 깊이</text>
+
+            <!-- Bottom annotation -->
+            <text x="320" y="370" class="svg-center-label">한 문제 = 5개 측정 축이 한 번에 작동</text>
+          </g>
+        </svg>
+        <figcaption>
+          호윤의 <code>ochem_001</code> 한 문제는 <strong>5개의 측정 축이 한 번에 작동</strong>한다.
+          하나라도 실패하면 그 모델은 그 측정에서 떨어진다.
+        </figcaption>
+      </figure>
+
+      <p class="vs-callout vs-callout-b">
+        <span class="vs-callout-icon">B</span>
+        <span>
+          <b>호윤의 기여</b><br>
+          한 점을 깊이 판다. 정밀하게.<br>
+          한 문제 안에 의도를 5겹으로 박아넣어 자동 채점이 작동하게 만든다.
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <!-- =============== PANEL 4 — 합쳐지면 =============== -->
+  <section class="vs-panel vs-panel-ink">
+    <div class="wrap-narrow">
+      <p class="vs-num">04</p>
+      <h2 class="vs-h2">둘이 합쳐지면 <em>입체</em>가 된다.</h2>
+      <p class="vs-p">
+        면적만 있으면 <strong>흐릿한 지도</strong>가 되고,
+        깊이만 있으면 <strong>좁은 우물</strong>이 된다.
+        <br>둘이 합쳐져야 비로소 <strong>벤치마크가 진짜 작동</strong>한다.
+      </p>
+
+      <figure class="vs-fig">
+        <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Three boxes side by side -->
+          <g transform="translate(40, 40)">
+            <!-- Box A: 면적만 -->
+            <rect x="0" y="40" width="220" height="280" fill="none" stroke="#2a2a33" stroke-width="1"/>
+            <text x="110" y="20" class="svg-box-title" fill="#d4ff3a">면적만</text>
+
+            <!-- Many shallow dots -->
+            <circle cx="40" cy="80" r="6" fill="#d4ff3a"/>
+            <circle cx="100" cy="100" r="6" fill="#d4ff3a"/>
+            <circle cx="180" cy="90" r="6" fill="#d4ff3a"/>
+            <circle cx="60" cy="150" r="6" fill="#d4ff3a"/>
+            <circle cx="140" cy="160" r="6" fill="#d4ff3a"/>
+            <circle cx="200" cy="180" r="6" fill="#d4ff3a"/>
+            <circle cx="50" cy="220" r="6" fill="#d4ff3a"/>
+            <circle cx="120" cy="240" r="6" fill="#d4ff3a"/>
+            <circle cx="190" cy="260" r="6" fill="#d4ff3a"/>
+
+            <text x="110" y="350" class="svg-box-result">📍 흐릿한 지도</text>
+            <text x="110" y="375" class="svg-box-sub">"점은 많은데 측정이 흐릿함"</text>
+
+            <!-- Box B: 깊이만 -->
+            <rect x="280" y="40" width="220" height="280" fill="none" stroke="#2a2a33" stroke-width="1"/>
+            <text x="390" y="20" class="svg-box-title" fill="#ff4d3d">깊이만</text>
+
+            <!-- One thick dot -->
+            <circle cx="390" cy="180" r="60" fill="none" stroke="#ff4d3d" opacity="0.2" stroke-width="2"/>
+            <circle cx="390" cy="180" r="48" fill="none" stroke="#ff4d3d" opacity="0.35" stroke-width="2"/>
+            <circle cx="390" cy="180" r="36" fill="none" stroke="#ff4d3d" opacity="0.5" stroke-width="2"/>
+            <circle cx="390" cy="180" r="24" fill="none" stroke="#ff4d3d" opacity="0.7" stroke-width="2"/>
+            <circle cx="390" cy="180" r="14" fill="#ff4d3d"/>
+
+            <text x="390" y="350" class="svg-box-result">🕳️ 좁은 우물</text>
+            <text x="390" y="375" class="svg-box-sub">"한 점은 정확한데 영토가 좁음"</text>
+
+            <!-- Box C: 합쳐짐 -->
+            <rect x="560" y="40" width="220" height="280" fill="none" stroke="#d4ff3a" stroke-width="2"/>
+            <text x="670" y="20" class="svg-box-title" fill="#d4ff3a">합쳐짐</text>
+
+            <!-- Multiple thick dots -->
+            <g>
+              <circle cx="600" cy="100" r="22" fill="none" stroke="#d4ff3a" opacity="0.3" stroke-width="2"/>
+              <circle cx="600" cy="100" r="14" fill="none" stroke="#d4ff3a" opacity="0.5" stroke-width="2"/>
+              <circle cx="600" cy="100" r="8" fill="#d4ff3a"/>
+            </g>
+            <g>
+              <circle cx="700" cy="130" r="20" fill="none" stroke="#d4ff3a" opacity="0.3" stroke-width="2"/>
+              <circle cx="700" cy="130" r="12" fill="none" stroke="#d4ff3a" opacity="0.5" stroke-width="2"/>
+              <circle cx="700" cy="130" r="7" fill="#d4ff3a"/>
+            </g>
+            <g>
+              <circle cx="640" cy="180" r="22" fill="none" stroke="#d4ff3a" opacity="0.3" stroke-width="2"/>
+              <circle cx="640" cy="180" r="14" fill="none" stroke="#d4ff3a" opacity="0.5" stroke-width="2"/>
+              <circle cx="640" cy="180" r="8" fill="#d4ff3a"/>
+            </g>
+            <g>
+              <circle cx="730" cy="200" r="20" fill="none" stroke="#d4ff3a" opacity="0.3" stroke-width="2"/>
+              <circle cx="730" cy="200" r="12" fill="none" stroke="#d4ff3a" opacity="0.5" stroke-width="2"/>
+              <circle cx="730" cy="200" r="7" fill="#d4ff3a"/>
+            </g>
+            <g>
+              <circle cx="600" cy="250" r="22" fill="none" stroke="#d4ff3a" opacity="0.3" stroke-width="2"/>
+              <circle cx="600" cy="250" r="14" fill="none" stroke="#d4ff3a" opacity="0.5" stroke-width="2"/>
+              <circle cx="600" cy="250" r="8" fill="#d4ff3a"/>
+            </g>
+            <g>
+              <circle cx="700" cy="280" r="20" fill="none" stroke="#d4ff3a" opacity="0.3" stroke-width="2"/>
+              <circle cx="700" cy="280" r="12" fill="none" stroke="#d4ff3a" opacity="0.5" stroke-width="2"/>
+              <circle cx="700" cy="280" r="7" fill="#d4ff3a"/>
+            </g>
+
+            <text x="670" y="350" class="svg-box-result" fill="#d4ff3a">✨ 입체 벤치마크</text>
+            <text x="670" y="375" class="svg-box-sub">"넓은 영토 + 정확한 측정"</text>
+          </g>
+
+          <!-- Plus / equals signs -->
+          <text x="280" y="200" class="vs-svg-op">+</text>
+          <text x="540" y="200" class="vs-svg-op">=</text>
+        </svg>
+        <figcaption>
+          왼쪽 둘은 미완성. <strong>오른쪽이 우리가 가야 할 곳</strong>.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- =============== PANEL 5 — 비유 =============== -->
+  <section class="vs-panel">
+    <div class="wrap-narrow">
+      <p class="vs-num">05</p>
+      <h2 class="vs-h2">더 쉬운 비유 — <em>지도 만들기</em>.</h2>
+      <p class="vs-p">
+        지도를 만들 때는 두 종류의 사람이 필요하다:
+        <strong>지도 제작자</strong>는 영역을 발견하고 그린다.
+        <strong>측량 기사</strong>는 한 지점을 mm 단위로 정확히 측정한다.
+        둘 중 하나만 있으면 지도는 쓸모가 없다.
+      </p>
+
+      <figure class="vs-fig">
+        <svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+          <!-- LEFT: 지도 제작자 -->
+          <g transform="translate(60, 60)">
+            <!-- Map outline -->
+            <path d="M 30,80 Q 60,30 130,40 Q 200,20 240,80 Q 280,140 240,200 Q 200,260 130,250 Q 60,240 30,180 Z" 
+                  fill="none" stroke="#d4ff3a" stroke-width="2"/>
+            <!-- Many small marks inside -->
+            <text x="80" y="100" class="map-mark">×</text>
+            <text x="120" y="120" class="map-mark">×</text>
+            <text x="160" y="100" class="map-mark">×</text>
+            <text x="200" y="140" class="map-mark">×</text>
+            <text x="100" y="160" class="map-mark">×</text>
+            <text x="170" y="180" class="map-mark">×</text>
+            <text x="220" y="180" class="map-mark">×</text>
+            <text x="80" y="200" class="map-mark">×</text>
+            <text x="140" y="220" class="map-mark">×</text>
+            <text x="180" y="220" class="map-mark">×</text>
+            <text x="200" y="100" class="map-mark">×</text>
+
+            <text x="135" y="320" class="role-name" fill="#d4ff3a">지도 제작자</text>
+            <text x="135" y="345" class="role-sub">Cartographer</text>
+            <text x="135" y="380" class="role-action">"새 영토를 발견하고 그린다"</text>
+            <text x="135" y="405" class="role-tag">→ 김태운</text>
+          </g>
+
+          <!-- RIGHT: 측량 기사 -->
+          <g transform="translate(460, 60)">
+            <!-- Single concentric circles - precision -->
+            <circle cx="130" cy="140" r="100" fill="none" stroke="#ff4d3d" opacity="0.15" stroke-width="1.5"/>
+            <circle cx="130" cy="140" r="78" fill="none" stroke="#ff4d3d" opacity="0.3" stroke-width="1.5"/>
+            <circle cx="130" cy="140" r="56" fill="none" stroke="#ff4d3d" opacity="0.45" stroke-width="1.5"/>
+            <circle cx="130" cy="140" r="34" fill="none" stroke="#ff4d3d" opacity="0.6" stroke-width="1.5"/>
+            <circle cx="130" cy="140" r="14" fill="#ff4d3d"/>
+            <!-- Crosshair -->
+            <line x1="20" y1="140" x2="240" y2="140" stroke="#ff4d3d" stroke-width="0.5" opacity="0.5"/>
+            <line x1="130" y1="30" x2="130" y2="250" stroke="#ff4d3d" stroke-width="0.5" opacity="0.5"/>
+
+            <text x="135" y="320" class="role-name" fill="#ff4d3d">측량 기사</text>
+            <text x="135" y="345" class="role-sub">Surveyor</text>
+            <text x="135" y="380" class="role-action">"한 지점을 정확히 측정한다"</text>
+            <text x="135" y="405" class="role-tag">→ 김호윤</text>
+          </g>
+        </svg>
+        <figcaption>
+          영역(태운) + 정확도(호윤) = <strong>쓸 수 있는 지도</strong>.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- =============== PANEL 6 — 3주차 =============== -->
+  <section class="vs-panel vs-panel-ink">
+    <div class="wrap-narrow">
+      <p class="vs-num">06</p>
+      <h2 class="vs-h2">3주차 — <em>두 흐름이 만난다.</em></h2>
+      <p class="vs-p">
+        3주차에는 두 학생의 작업이 본격적으로 합쳐진다.
+        <strong>태운은 영역을 더 넓히고 (난이도 변형)</strong>,
+        <strong>호윤은 다른 점들도 두껍게 만든다 (rubric 정밀화)</strong>.
+        그러면 자동 채점이 작동하는 진짜 벤치마크 v0.1이 나온다.
+      </p>
+
+      <figure class="vs-fig">
+        <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
+          <!-- Two arrows converging into one -->
+          <g>
+            <!-- Path A — 태운 widens horizontally -->
+            <line x1="50" y1="130" x2="380" y2="220" stroke="#d4ff3a" stroke-width="3" opacity="0.7" marker-end="url(#arrow-merge)"/>
+            <text x="120" y="100" class="conv-label" fill="#d4ff3a">태운</text>
+            <text x="120" y="124" class="conv-sub">기존 문제 3개를</text>
+            <text x="120" y="142" class="conv-sub">L1/L2/L3로 변형</text>
+            <text x="120" y="162" class="conv-sub">→ 면적 확장 ↔</text>
+
+            <!-- Path B — 호윤 deepens vertically -->
+            <line x1="50" y1="380" x2="380" y2="260" stroke="#ff4d3d" stroke-width="3" opacity="0.7" marker-end="url(#arrow-merge-b)"/>
+            <text x="120" y="350" class="conv-label" fill="#ff4d3d">호윤</text>
+            <text x="120" y="374" class="conv-sub" fill="#cfccc1">유기화학 시리즈 확장</text>
+            <text x="120" y="392" class="conv-sub" fill="#cfccc1">기존 11문제 정밀화</text>
+            <text x="120" y="412" class="conv-sub" fill="#cfccc1">→ 깊이 확장 ↕</text>
+
+            <defs>
+              <marker id="arrow-merge" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
+                <path d="M0,0 L12,6 L0,12 Z" fill="#d4ff3a"/>
+              </marker>
+              <marker id="arrow-merge-b" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
+                <path d="M0,0 L12,6 L0,12 Z" fill="#ff4d3d"/>
+              </marker>
+            </defs>
+
+            <!-- Convergence box -->
+            <rect x="380" y="180" width="380" height="120" fill="none" stroke="#d4ff3a" stroke-width="2" rx="4"/>
+            <text x="570" y="220" class="conv-result-tag" fill="#d4ff3a">3주차 결과</text>
+            <text x="570" y="252" class="conv-result-title">자동 채점 벤치마크 v0.1</text>
+            <text x="570" y="278" class="conv-result-sub">must_include / must_not_include 검증 작동</text>
+
+            <!-- Below the box -->
+            <text x="570" y="340" class="conv-final" fill="#d4ff3a">진짜 작동하는 벤치마크</text>
+
+            <!-- Decorative dots converging -->
+            <circle cx="600" cy="380" r="16" fill="none" stroke="#d4ff3a" opacity="0.3" stroke-width="1.5"/>
+            <circle cx="600" cy="380" r="10" fill="none" stroke="#d4ff3a" opacity="0.5" stroke-width="1.5"/>
+            <circle cx="600" cy="380" r="5" fill="#d4ff3a"/>
+            <circle cx="640" cy="400" r="16" fill="none" stroke="#d4ff3a" opacity="0.3" stroke-width="1.5"/>
+            <circle cx="640" cy="400" r="10" fill="none" stroke="#d4ff3a" opacity="0.5" stroke-width="1.5"/>
+            <circle cx="640" cy="400" r="5" fill="#d4ff3a"/>
+            <circle cx="560" cy="410" r="16" fill="none" stroke="#d4ff3a" opacity="0.3" stroke-width="1.5"/>
+            <circle cx="560" cy="410" r="10" fill="none" stroke="#d4ff3a" opacity="0.5" stroke-width="1.5"/>
+            <circle cx="560" cy="410" r="5" fill="#d4ff3a"/>
+            <circle cx="690" cy="420" r="16" fill="none" stroke="#d4ff3a" opacity="0.3" stroke-width="1.5"/>
+            <circle cx="690" cy="420" r="10" fill="none" stroke="#d4ff3a" opacity="0.5" stroke-width="1.5"/>
+            <circle cx="690" cy="420" r="5" fill="#d4ff3a"/>
+          </g>
+        </svg>
+        <figcaption>
+          두 흐름이 만나는 지점이 <strong>3주차의 목표</strong>.
+        </figcaption>
+      </figure>
+
+      <div class="vs-final-card">
+        <h3 class="vs-final-title">한 줄로 정리</h3>
+        <p class="vs-final-quote">
+          <span class="serif">
+            태운이 영토를 그리고,<br>
+            호윤이 그 영토를 정확히 측정한다.<br>
+            <mark>둘 다 있어야 살아있는 벤치마크가 된다.</mark>
+          </span>
+        </p>
+      </div>
+
+      <div class="vs-back">
+        <a href="./" class="vs-back-btn">← 보고서로 돌아가기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-bot">
+        <span>© 2025 soonsoonLABS · MIT License</span>
+        <span>wemeet-uni-bench · week 2 · visual</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
