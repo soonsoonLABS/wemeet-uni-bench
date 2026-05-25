@@ -1155,3 +1155,172 @@ strong { font-weight: 700; color: var(--paper); }
   .recap-pt span { font-size: 0.7rem; }
   .recap-pt small { display: none; }
 }
+
+
+/* ==========================================================================
+   KTW v0.2 PLAYGROUND SLIDE (slide 07)
+   ========================================================================== */
+.ktw-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+  margin: auto 0;
+  align-self: center;
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ktw-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  align-content: start;
+}
+.ktw-stat {
+  border: 1px solid var(--rule);
+  background: var(--ink-2);
+  padding: 1rem 0.8rem;
+  text-align: center;
+  display: grid;
+  gap: 0.3rem;
+  align-content: center;
+}
+.ktw-stat b {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--lime);
+  font-weight: 400;
+  line-height: 1;
+}
+.ktw-stat span {
+  font-family: var(--ff-mono);
+  font-size: 0.7rem;
+  color: var(--mute);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ktw-features {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+  align-self: start;
+  border: 1px solid var(--rule);
+  background: var(--ink-2);
+  padding: 1.2rem 1.5rem;
+}
+.ktw-features li {
+  font-size: 0.92rem;
+  color: var(--paper-dim);
+  line-height: 1.5;
+  padding-left: 0.3rem;
+  border-left: 2px solid var(--lime);
+  padding-left: 0.7rem;
+}
+.ktw-features li b {
+  font-family: var(--ff-mono);
+  color: var(--lime);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   HOYOON META (additional)
+   ========================================================================== */
+.hoyoon-meta {
+  font-family: var(--ff-mono);
+  font-size: 0.72rem;
+  color: var(--mute);
+  letter-spacing: 0.04em;
+  margin-bottom: -0.3rem;
+}
+.hoyoon-meta.is-bonus { color: var(--lime); }
+.hoyoon-list li b {
+  color: var(--alert);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   TWO PATHS (slide 09 — Two students, two paths)
+   ========================================================================== */
+.two-paths {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: auto 0;
+  align-self: center;
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.path {
+  border: 1px solid var(--rule);
+  background: var(--ink-2);
+  padding: 1.8rem;
+  display: grid;
+  gap: 0.8rem;
+  align-content: start;
+  position: relative;
+  border-top: 3px solid var(--lime);
+}
+.path.is-alt {
+  border-top-color: var(--alert);
+}
+.path-tag {
+  font-family: var(--ff-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--lime);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.path.is-alt .path-tag { color: var(--alert); }
+.path h3 {
+  font-family: var(--ff-sans);
+  font-weight: 800;
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  letter-spacing: -0.025em;
+  color: var(--paper);
+  margin-top: -0.2rem;
+}
+.path-name {
+  font-family: var(--ff-mono);
+  font-size: 0.9rem;
+  color: var(--paper-dim);
+  font-weight: 500;
+}
+.path-desc {
+  font-size: 0.95rem;
+  color: var(--paper-dim);
+  line-height: 1.55;
+  border-top: 1px dashed var(--rule);
+  padding-top: 0.8rem;
+  margin-top: 0.3rem;
+}
+.path-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+.path-tags span {
+  font-family: var(--ff-mono);
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--rule);
+  color: var(--paper-dim);
+  background: var(--ink);
+  letter-spacing: 0.03em;
+}
+.path.is-alt .path-tags span {
+  border-color: rgba(255,77,61,0.3);
+  color: var(--alert);
+}
+
+@media (max-width: 1100px) {
+  .ktw-grid { grid-template-columns: 1fr; }
+  .two-paths { grid-template-columns: 1fr; }
+}
