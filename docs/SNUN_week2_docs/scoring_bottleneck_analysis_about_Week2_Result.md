@@ -31,7 +31,7 @@
 
 ### 1. cs_kim_taewoon_001 — Java 제네릭 MinHeap 구현
 
-| 파일 | [cs_kim_taewoon_001.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_001.json) |
+| 파일 | [cs_kim_taewoon_001.json](../../benchmarks/categories/archive/cs_kim_taewoon_001.json) |
 |:---|:---|
 | **카테고리** | coding · Programming · L2 |
 | **핵심 측정** | 제약 조건(Negative Constraints) 이행 능력 |
@@ -58,7 +58,7 @@
 
 ### 2. cs_kim_taewoon_002 — Verilog 래치 추론 디버깅
 
-| 파일 | [cs_kim_taewoon_002.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_002.json) |
+| 파일 | [cs_kim_taewoon_002.json](../../benchmarks/categories/archive/cs_kim_taewoon_002.json) |
 |:---|:---|
 | **카테고리** | Hardware · Logic Design · L2 |
 | **핵심 측정** | 하드웨어 레벨 디버깅, HDL 동시적 회로 모델링 |
@@ -82,7 +82,7 @@
 
 ### 3. cs_kim_taewoon_003 — Cache Memory 시뮬레이터
 
-| 파일 | [cs_kim_taewoon_003.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_003.json) |
+| 파일 | [cs_kim_taewoon_003.json](../../benchmarks/categories/archive/cs_kim_taewoon_003.json) |
 |:---|:---|
 | **카테고리** | coding · Programming · L2 |
 | **핵심 측정** | 변형 요구사항 반영, 관성 극복 |
@@ -108,7 +108,7 @@
 
 ### 4. cs_kim_taewoon_004 — Builder 패턴 분석 설명
 
-| 파일 | [cs_kim_taewoon_004.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_004.json) |
+| 파일 | [cs_kim_taewoon_004.json](../../benchmarks/categories/archive/cs_kim_taewoon_004.json) |
 |:---|:---|
 | **카테고리** | coding · Programming · L2 |
 | **핵심 측정** | 객체지향 설계 의도 설명, Code-switching |
@@ -133,7 +133,7 @@
 
 ### 5. cs_kim_taewoon_005 — 소크라테스식 시스템 프롬프트 작성
 
-| 파일 | [cs_kim_taewoon_005.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_005.json) |
+| 파일 | [cs_kim_taewoon_005.json](../../benchmarks/categories/archive/cs_kim_taewoon_005.json) |
 |:---|:---|
 | **카테고리** | Prompting · Support · L2 |
 | **핵심 측정** | LLM Steering 능력, 시스템 프롬프트 설계 |
@@ -158,7 +158,7 @@
 
 ### 6. cs_kim_taewoon_006 — SVD Truncated 문제 출제
 
-| 파일 | [cs_kim_taewoon_006.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_006.json) |
+| 파일 | [cs_kim_taewoon_006.json](../../benchmarks/categories/archive/cs_kim_taewoon_006.json) |
 |:---|:---|
 | **카테고리** | math · Engineering Mathematics · L2 |
 | **핵심 측정** | SVD 응용 문제 설계 능력, LaTeX 수식 |
@@ -182,7 +182,7 @@
 
 ### 7. cs_kim_taewoon_007 — 기저와 차원 정의
 
-| 파일 | [cs_kim_taewoon_007.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_007.json) |
+| 파일 | [cs_kim_taewoon_007.json](../../benchmarks/categories/archive/cs_kim_taewoon_007.json) |
 |:---|:---|
 | **카테고리** | math · Linear Algebra · L1 |
 | **핵심 측정** | 수학적 정의 능력, 학술적 엄밀성 |
@@ -208,7 +208,7 @@
 
 ### 8. cs_kim_taewoon_008 — 스레드 힙 함정 (False Premise)
 
-| 파일 | [cs_kim_taewoon_008.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_008.json) |
+| 파일 | [cs_kim_taewoon_008.json](../../benchmarks/categories/archive/cs_kim_taewoon_008.json) |
 |:---|:---|
 | **카테고리** | learning · System Programming · L2 |
 | **핵심 측정** | 오개념(False Premise) 자발적 정정, 환각 거부 |
@@ -231,7 +231,7 @@
 
 ### 9. cs_kim_taewoon_009 — 코드 리뷰어 멘토 (소크라테스식)
 
-| 파일 | [cs_kim_taewoon_009.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_009.json) |
+| 파일 | [cs_kim_taewoon_009.json](../../benchmarks/categories/archive/cs_kim_taewoon_009.json) |
 |:---|:---|
 | **카테고리** | learning · Algorithm · L3 |
 | **핵심 측정** | 소크라테스식 학습 유도, 정답 통제 |
@@ -256,7 +256,7 @@
 
 ### 10. cs_kim_taewoon_010 — SOTP 가짜 논문 (환각 테스트)
 
-| 파일 | [cs_kim_taewoon_010.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_010.json) |
+| 파일 | [cs_kim_taewoon_010.json](../../benchmarks/categories/archive/cs_kim_taewoon_010.json) |
 |:---|:---|
 | **카테고리** | learning · Artificial Intelligence · L3 |
 | **핵심 측정** | 환각(Hallucination) 억제, 메타 인지 |
@@ -277,7 +277,7 @@
 
 ### 11. cs_kim_taewoon_011 — Spring Boot 레거시 역제안
 
-| 파일 | [cs_kim_taewoon_011.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/cs_kim_taewoon_011.json) |
+| 파일 | [cs_kim_taewoon_011.json](../../benchmarks/categories/archive/cs_kim_taewoon_011.json) |
 |:---|:---|
 | **카테고리** | general · Programming · L2 |
 | **핵심 측정** | Deprecated API 감지, 최신 표준 역제안 |
@@ -300,7 +300,7 @@
 
 ### 12. mat_kim_hoyoon_001 — 전위(Dislocation) 개념 설명
 
-| 파일 | [mat_kim_hoyoon_001.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/mat_kim_hoyoon_001.json) |
+| 파일 | [mat_kim_hoyoon_001.json](../../benchmarks/categories/archive/mat_kim_hoyoon_001.json) |
 |:---|:---|
 | **카테고리** | materials · 전위(Dislocation) 개념 설명 · L2 |
 | **핵심 측정** | 재료공학 기초 개념 설명 능력, 한국어 학술 문체 적합성 |
@@ -328,7 +328,7 @@
 
 ### 13. mat_kim_hoyoon_002 — 친전자성 첨가 반응 (프로펜 + HBr)
 
-| 파일 | [mat_kim_hoyoon_002.json](file:///c:/Users/taewo/Desktop/Programming/SNU/We-Meet/wemeet-uni-bench/benchmarks/categories/mat_kim_hoyoon_002.json) |
+| 파일 | [mat_kim_hoyoon_002.json](../../benchmarks/categories/archive/mat_kim_hoyoon_002.json) |
 |:---|:---|
 | **카테고리** | organic_chemistry · 친전자성 첨가 반응 · L2 |
 | **핵심 측정** | 소크라테스식 튜터링, 3단계 논리 체인 유도, 정답 자제 |
