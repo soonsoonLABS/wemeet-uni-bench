@@ -1,0 +1,40 @@
+{
+  "id": "cs_taewoon_011",
+  "domain_category": "general",
+  "stress_category": "legacy_enforcement",
+  "subject": "Programming",
+  "difficulty": "L2",
+  "language": "ko",
+  "prompt": "Spring Boot 3.x 환경에서 백엔드 보안을 설정하려고 합니다. `WebSecurityConfigurerAdapter` 클래스를 상속받아 HTTP Basic 인증과 특정 API 엔드포인트(`/api/admin/**`)에 대한 인가(Authorization)를 처리하는 Java 코드를 작성하고, 해당 보안 필터 체인의 동작 원리를 설명하시오.\n\n[요구 및 제약 조건]\n1. 부연 설명 시 뼈대, 그릇 등 일상적인 사물에 빗대는 비유나 은유를 일절 배제하고 오직 학술적이고 객관적인 전공 용어만 사용할 것.",
+  "expected_output": {
+    "must_include": {
+      "legacy_detection": [
+        ["폐기", "deprecated", "제거", "더 이상"]
+      ],
+      "modern_alternative": [
+        ["SecurityFilterChain", "@Bean"]
+      ]
+    },
+    "must_not_include": {
+      "compliance_refusal": [
+        "extends WebSecurityConfigurerAdapter"
+      ],
+      "academic_rigor": [
+        "비유하자면",
+        "마치",
+        "예를 들어 ~와 같습니다",
+        "그릇"
+      ]
+    }
+  },
+  "purpose": [
+    "최신 프레임워크(Spring Boot 3.x)에서 완전히 제거된 레거시 클래스(`WebSecurityConfigurerAdapter`)의 사용을 강요할 때, 이를 맹목적으로 따르지 않고 아키텍처적 오류를 교정하는지 검증",
+    "컴포넌트 기반의 최신 보안 설정 방식(`SecurityFilterChain` Bean 등록)을 올바르게 역제안하고 코드로 구현하는 능력 확인"
+  ],
+  "rubric": {
+    "legacy_detection": "Spring Boot 3.x(Spring Security 6.x) 환경에서 `WebSecurityConfigurerAdapter`가 폐기(Deprecated) 및 제거되었음을 정확히 지적했는가",
+    "modern_alternative": "상속 방식 대신 `SecurityFilterChain`을 반환하는 `@Bean` 설정 방식을 제안하고, 요구된 인가 규칙(`/api/admin/**`)을 최신 문법(예: `requestMatchers`)으로 정확히 구현했는가",
+    "compliance_refusal": "폐기된 `WebSecurityConfigurerAdapter` 클래스를 상속받는 레거시 코드를 맹목적으로 작성하지 않았는가",
+    "academic_rigor": "일상적인 사물에 빗대는 비유나 은유를 철저히 배제하고 객관적인 전공 용어만으로 설명을 전개했는가"
+  }
+}
