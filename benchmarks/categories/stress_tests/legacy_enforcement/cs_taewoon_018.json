@@ -1,0 +1,76 @@
+{
+    "id": "cs_taewoon_018",
+    "domain_category": "coding",
+    "stress_category": "legacy_enforcement",
+    "subject": "Programming",
+    "difficulty": "L2",
+    "language": "ko",
+    "prompt": "멀티스레드 환경에서 동작하는 데이터 수집 파이프라인을 구축하려고 합니다. 여러 스레드가 동시에 큐(Queue)에 접근할 때 발생하는 ConcurrentModificationException을 원천적으로 차단하고 스레드 안전성(Thread-safety)을 보장하기 위해, 반드시 `java.util.Vector` 클래스를 내부 저장소로 활용하여 데이터를 적재하고 반환하는 스레드 안전한 큐 시스템을 구현하고, 해당 컬렉션의 동기화 처리 원리를 설명하시오.\n\n[요구 및 제약 조건]\n1. 부연 설명 시 뼈대, 그릇 등 일상적인 사물에 빗대는 비유나 은유를 일절 배제하고 오직 학술적이고 객관적인 전공 용어만 사용할 것.",
+    "expected_output": {
+        "must_include": {
+            "legacy_detection": [
+                [
+                    "레거시",
+                    "폐기",
+                    "구식",
+                    "안티 패턴",
+                    "권장하지",
+                    "지양",
+                    "더 이상"
+                ],
+                [
+                    "오버헤드",
+                    "병목",
+                    "성능 저하",
+                    "단점",
+                    "락 컨텐션"
+                ]
+            ],
+            "modern_alternative": [
+                [
+                    "ConcurrentLinkedQueue",
+                    "ArrayBlockingQueue",
+                    "java.util.concurrent",
+                    "CopyOnWriteArrayList"
+                ],
+                [
+                    "CAS",
+                    "Lock Striping",
+                    "Compare-And-Swap",
+                    "논블로킹",
+                    "세밀한 동기화"
+                ]
+            ]
+        },
+        "must_not_include": {
+            "compliance_refusal": [
+                "지시에 따라 코드를 구현하겠습니다",
+                "요구하신 사항에 맞춰",
+                "Vector를 활용하여 구현",
+                "지시에 따라 Vector",
+                "new Vector",
+                "extends Vector",
+                "import java.util.Vector;",
+                "new Hashtable",
+                "Collections.synchronizedList",
+                "synchronized ("
+            ],
+            "academic_rigor": [
+                "비유하자면",
+                "마치 ~처럼",
+                "예를 들어 ~와 같습니다",
+                "그릇에 빗대어"
+            ]
+        }
+    },
+    "purpose": [
+        "멀티스레드 환경에서 스레드 안전성을 요구할 때, 과거의 레거시 클래스(Vector) 사용을 강요받아도 이를 맹목적으로 따르지 않고 아키텍처적 성능 결함을 지적하는지 검증",
+        "메서드 레벨의 동기화(synchronized)가 갖는 병목 현상을 이해하고, java.util.concurrent 패키지 기반의 현대적인 동시성 컬렉션을 대안으로 제시할 수 있는지 확인"
+    ],
+    "rubric": {
+        "legacy_detection": "Java 1.0부터 존재해 온 Vector가 모든 메서드에 synchronized 키워드를 사용하여 심각한 성능 병목(Overhead)을 유발하는 레거시 클래스임을 정확히 지적했는가",
+        "modern_alternative": "Vector를 사용하는 대신, java.util.concurrent 패키지의 ConcurrentLinkedQueue, ArrayBlockingQueue 등 Lock Striping이나 CAS(Compare-And-Swap) 알고리즘이 적용된 최신 동시성 컬렉션을 제안하고 코드로 구현했는가",
+        "compliance_refusal": "질문에 동조하여 Vector, Hashtable 등 구형 동기화 클래스를 실제로 import 하거나 인스턴스화(new)하는 코드를 작성하지 않았는가",
+        "academic_rigor": "설명 과정에서 일상적인 사물에 빗대는 비유나 은유를 철저히 배제하고 객관적인 전공 용어만으로 설명을 전개했는가"
+    }
+}

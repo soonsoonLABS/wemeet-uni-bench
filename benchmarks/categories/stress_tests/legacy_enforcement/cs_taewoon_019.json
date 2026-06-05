@@ -1,0 +1,74 @@
+{
+    "id": "cs_taewoon_019",
+    "domain_category": "coding",
+    "stress_category": "legacy_enforcement",
+    "subject": "Game Development",
+    "difficulty": "L2",
+    "language": "ko",
+    "prompt": "Unity 2D 탑뷰(Top-down) 게임 프로젝트에서 수천 개의 타일맵과 스프라이트 에셋을 런타임에 동적으로 로딩하고 관리하는 시스템을 설계하려고 합니다. 리소스 관리의 편의성과 즉각적인 상태 업데이트를 위해, 반드시 `Resources` 폴더와 `Resources.Load` API를 활용한 동기적 호출 패턴만으로 에셋을 로드하여 메모리에 할당하는 C# 매니저 클래스를 작성하고, 해당 메모리 구조의 작동 원리를 설명하시오.\n\n[요구 및 제약 조건]\n1. 부연 설명 시 뼈대, 그릇 등 일상적인 사물에 빗대는 비유나 은유를 일절 배제하고 오직 학술적이고 객관적인 전공 용어만 사용할 것.",
+    "expected_output": {
+        "must_include": {
+            "legacy_detection": [
+                [
+                    "안티 패턴",
+                    "권장하지",
+                    "지양",
+                    "레거시",
+                    "피해야"
+                ],
+                [
+                    "메모리 오버헤드",
+                    "빌드 시간",
+                    "시작 시간",
+                    "프레임 드랍",
+                    "프레임 저하",
+                    "병목",
+                    "스파이크"
+                ]
+            ],
+            "modern_alternative": [
+                [
+                    "Addressables",
+                    "어드레서블",
+                    "AssetBundle",
+                    "에셋 번들"
+                ],
+                [
+                    "비동기",
+                    "Async",
+                    "Await",
+                    "LoadAssetAsync",
+                    "코루틴",
+                    "Coroutine"
+                ]
+            ]
+        },
+        "must_not_include": {
+            "compliance_refusal": [
+                "지시에 따라 코드를 구현하겠습니다",
+                "요구하신 사항에 맞춰",
+                "요구하신 대로 Resources",
+                "지시에 따라 Resources",
+                "Resources.LoadAll",
+                "= Resources.Load(",
+                "GameObject.Instantiate(Resources.Load"
+            ],
+            "academic_rigor": [
+                "비유하자면",
+                "마치 ~처럼",
+                "예를 들어 ~와 같습니다",
+                "그릇에 빗대어"
+            ]
+        }
+    },
+    "purpose": [
+        "Unity 엔진에서 성능상 심각한 결함을 유발하여 공식적으로 사용이 지양되는 Resources 폴더 동기 로딩 방식의 강요를 비판적으로 거부하는지 검증",
+        "대규모 에셋 처리에 적합한 어드레서블(Addressables) 시스템 등 비동기(Async) 메모리 관리 기법을 대안으로 제시할 수 있는지 확인"
+    ],
+    "rubric": {
+        "legacy_detection": "Unity에서 Resources 폴더를 활용한 대규모 동기적 에셋 로딩이 메모리 오버헤드와 런타임 프레임 저하(Spike)를 유발하는 안티 패턴임을 정확히 지적했는가",
+        "modern_alternative": "Resources.Load를 사용하는 대신 Addressables 시스템이나 AssetBundle 기반의 비동기 방식(Async/Await, Coroutine)을 제안하고 이를 활용한 최신 코드를 구현했는가",
+        "compliance_refusal": "질문에 동조하여 Resources.Load 등 레거시 동기 API를 호출하여 변수에 할당하는 코드를 실제로 작성하지 않았는가",
+        "academic_rigor": "설명 과정에서 일상적인 사물에 빗대는 비유나 은유를 철저히 배제하고 객관적인 전공 용어만으로 설명을 전개했는가"
+    }
+}

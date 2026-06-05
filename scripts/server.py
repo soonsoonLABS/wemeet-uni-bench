@@ -8,6 +8,13 @@ We-Meet Benchmark Server
     python scripts/server.py
 """
 
+import io
+import sys
+# Windows 콘솔 UTF-8 출력
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+
 import http.server
 import json
 import os
@@ -20,6 +27,8 @@ PORT = 8000
 PROJECT_ROOT = Path(__file__).parent.parent
 WEBSITE_DIR = PROJECT_ROOT / "website"
 RESULTS_DIR = PROJECT_ROOT / "benchmarks" / "results"
+EVAL_RESULTS_DIR = RESULTS_DIR / "eval"
+STRESS_TESTS_DIR = PROJECT_ROOT / "benchmarks" / "categories" / "stress_tests"
 
 class BenchmarkHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -52,13 +61,35 @@ class BenchmarkHandler(http.server.SimpleHTTPRequestHandler):
             self.handle_get_result_file()
             return
 
-        # 3. 기본 정적 파일 서빙
+        # 3. API: 스트레스 테스트 문제 목록
+        elif self.path == "/api/stress-problems":
+            self.handle_get_stress_problems()
+            return
+
+        # 4. API: 평가 결과 목록 조회
+        elif self.path == "/api/eval-results":
+            self.handle_get_eval_results()
+            return
+
+        # 5. 기본 정적 파일 서빙
         super().do_GET()
 
     def do_POST(self):
         # CORS 헤더 등을 위한 preflight는 OPTIONS에서 잡음
         if self.path == "/api/save_result":
             self.handle_save_result()
+            return
+        
+        if self.path == "/api/save-eval-result":
+            self.handle_save_eval_result()
+            return
+
+        if self.path == "/api/grade":
+            self.handle_grade()
+            return
+
+        if self.path == "/api/validate":
+            self.handle_validate()
             return
         
         self.send_error(404, "API endpoint not found")
@@ -140,16 +171,129 @@ class BenchmarkHandler(http.server.SimpleHTTPRequestHandler):
             print(f"[ERROR] 결과 저장 실패: {e}")
             self._send_json({"ok": False, "error": str(e)}, status=500)
 
+    # ── 스트레스 테스트 문제 로딩 API ──
+    def handle_get_stress_problems(self):
+        """스트레스 테스트 문제 전체 목록을 JSON으로 반환"""
+        problems = []
+        if STRESS_TESTS_DIR.exists():
+            for json_file in sorted(STRESS_TESTS_DIR.glob("**/*.json")):
+                if json_file.name.startswith("."):
+                    continue
+                try:
+                    with open(json_file, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    if "id" in data and "prompt" in data:
+                        problems.append(data)
+                except Exception:
+                    continue
+        self._send_json(problems)
+
+    # ── 평가 결과 저장 API ──
+    def handle_save_eval_result(self):
+        """평가 대시보드에서 보내온 결과(채점 포함)를 파일로 저장"""
+        try:
+            content_length = int(self.headers.get("Content-Length", 0))
+            post_data = self.rfile.read(content_length)
+            data = json.loads(post_data.decode("utf-8"))
+
+            run_id = data.get("run_id", "unknown")
+            EVAL_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
+            file_path = EVAL_RESULTS_DIR / f"eval_{run_id}.json"
+            with open(file_path, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+
+            print(f"[INFO] 평가 결과 저장 완료: {file_path.name}")
+            self._send_json({"ok": True, "file": file_path.name})
+        except Exception as e:
+            print(f"[ERROR] 평가 결과 저장 실패: {e}")
+            self._send_json({"ok": False, "error": str(e)}, status=500)
+
+    # ── 평가 결과 목록 조회 API ──
+    def handle_get_eval_results(self):
+        """저장된 평가 결과 목록 반환"""
+        results = []
+        if EVAL_RESULTS_DIR.exists():
+            for file in sorted(EVAL_RESULTS_DIR.glob("eval_*.json"), reverse=True):
+                try:
+                    with open(file, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    results.append({
+                        "filename": file.name,
+                        "run_id": data.get("run_id", ""),
+                        "timestamp": data.get("timestamp", ""),
+                        "problem_id": data.get("problem", {}).get("id", ""),
+                        "stress_category": data.get("problem", {}).get("stress_category", ""),
+                        "model_count": len(data.get("evaluations", [])),
+                    })
+                except Exception:
+                    continue
+        self._send_json(results)
+
+    # ── 채점 API ──
+    def handle_grade(self):
+        """문제 JSON + 응답 텍스트를 받아 채점 결과 반환"""
+        try:
+            scripts_dir = Path(__file__).parent
+            if str(scripts_dir) not in sys.path:
+                sys.path.insert(0, str(scripts_dir))
+            from auto_grader import auto_grade
+
+            content_length = int(self.headers.get("Content-Length", 0))
+            post_data = self.rfile.read(content_length)
+            data = json.loads(post_data.decode("utf-8"))
+
+            problem = data.get("problem", {})
+            response = data.get("response", "")
+
+            result = auto_grade(problem, response)
+            self._send_json(result)
+        except Exception as e:
+            self._send_json({"error": str(e)}, status=500)
+
+    # ── 스키마 검증 API ──
+    def handle_validate(self):
+        """문제 JSON의 스키마 유효성을 검증"""
+        try:
+            scripts_dir = Path(__file__).parent
+            if str(scripts_dir) not in sys.path:
+                sys.path.insert(0, str(scripts_dir))
+            from validate_schema import validate_problem
+            import tempfile
+
+            content_length = int(self.headers.get("Content-Length", 0))
+            post_data = self.rfile.read(content_length)
+            data = json.loads(post_data.decode("utf-8"))
+
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8') as tmp:
+                json.dump(data, tmp, ensure_ascii=False)
+                tmp_path = Path(tmp.name)
+
+            try:
+                result = validate_problem(tmp_path)
+            finally:
+                tmp_path.unlink(missing_ok=True)
+
+            self._send_json(result)
+        except Exception as e:
+            self._send_json({"error": str(e)}, status=500)
+
 
 def main():
     # RESULTS_DIR 생성 보장
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
+    EVAL_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
     print("=" * 60)
     print("[SERVER] We-Meet Benchmark Local Server Starting...")
     print(f"   Root Website : {WEBSITE_DIR}")
     print(f"   Database Path: {RESULTS_DIR}")
+    print(f"   Eval Results : {EVAL_RESULTS_DIR}")
     print(f"   Listening on : http://localhost:{PORT}")
+    print(f"")
+    print(f"   📂 Legacy Playground: http://localhost:{PORT}/playground_ktw/")
+    print(f"   ⚡ Eval Dashboard  : http://localhost:{PORT}/eval/")
     print("=" * 60)
 
     # 포트 사용 중 충돌 방지 설정 적용하여 서버 인스턴스 생성
@@ -166,3 +310,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
