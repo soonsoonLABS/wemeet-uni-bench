@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stress Test Evaluator — wemeet-uni-bench</title>
+  <meta name="description" content="LLM 스트레스 테스트 자동 채점 대시보드. 모델 응답의 환각/동조/신뢰성을 정량적으로 평가합니다." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Eval Dashboard styles -->
+  <link rel="stylesheet" href="eval.css" />
+
+  <!-- Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js" defer></script>
+  <!-- Code highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-tomorrow.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+  <!-- KaTeX (math) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" defer></script>
+</head>
+<body>
+
+  <!-- =============== NAV =============== -->
+  <nav class="ev-nav">
+    <div class="ev-nav-inner">
+      <a href="./" class="ev-nav-logo">
+        <span class="ev-nav-logo-icon">⚡</span>
+        uni-bench <span class="ev-nav-logo-sep">/</span> <strong>stress-eval</strong>
+      </a>
+      <div class="ev-nav-links">
+        <a href="../">← project</a>
+        <a href="results.html">results 📊</a>
+        <a href="../playground_ktw/">legacy playground</a>
+        <a href="https://sam.soonsoon.ai" target="_blank" rel="noopener">SAM ↗</a>
+        <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank" rel="noopener" class="ev-nav-cta">GITHUB →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =============== LAYOUT =============== -->
+  <div class="ev-layout">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside id="sidebar" class="ev-sidebar">
+      <header class="ev-sidebar-head">
+        <div class="ev-sidebar-tabs">
+          <button id="tab-problems" class="ev-sidebar-tab is-active" aria-controls="problems-panel">📂 문제</button>
+          <button id="tab-models" class="ev-sidebar-tab" aria-controls="models-panel">🤖 모델</button>
+        </div>
+        <button id="sidebar-toggle" class="ev-sidebar-toggle" aria-label="Toggle sidebar">◀</button>
+      </header>
+
+      <div class="ev-sidebar-body">
+        <!-- Problems Panel -->
+        <div id="problems-panel" class="ev-sidebar-panel">
+          <div class="ev-stress-filter">
+            <button class="ev-chip active" data-stress="all">전체</button>
+            <button class="ev-chip" data-stress="false_premise">거짓 전제</button>
+            <button class="ev-chip" data-stress="fabricated_concept">가짜 개념</button>
+            <button class="ev-chip" data-stress="legacy_enforcement">레거시 강요</button>
+            <button class="ev-chip" data-stress="self_contradiction">자기 모순</button>
+          </div>
+          <div id="problem-tree" class="ev-tree">
+            <p class="ev-tree-loading">문제 로딩 중...</p>
+          </div>
+
+          <!-- Problem detail panel -->
+          <div id="problem-detail" class="ev-problem-detail" hidden>
+            <div class="ev-detail-header">
+              <h3 id="detail-subject" class="ev-detail-subject"></h3>
+              <button id="detail-close" class="ev-detail-close">✕</button>
+            </div>
+            <dl class="ev-detail-meta">
+              <div><dt>ID</dt><dd id="detail-id"></dd></div>
+              <div><dt>유형</dt><dd id="detail-stress-cat"></dd></div>
+              <div><dt>난이도</dt><dd id="detail-difficulty"></dd></div>
+            </dl>
+            <div id="detail-purpose" class="ev-detail-purpose"></div>
+            <div id="detail-rubric" class="ev-detail-rubric"></div>
+          </div>
+        </div>
+
+        <!-- Models Panel -->
+        <div id="models-panel" class="ev-sidebar-panel" hidden>
+          <!-- Presets Section -->
+          <div class="ev-sidebar-presets">
+            <div class="ev-sidebar-presets-header">
+              <span class="ev-presets-title">🔖 Saved Presets</span>
+              <div class="ev-presets-actions">
+                <button id="btn-export-presets" class="ev-preset-action" title="JSON 내보내기">📤</button>
+                <label class="ev-preset-action" title="JSON 불러오기 (덮어쓰기)">
+                  📥 <input type="file" id="input-import-presets" accept=".json" hidden />
+                </label>
+              </div>
+            </div>
+            <div class="ev-sidebar-presets-save">
+              <input type="text" id="preset-name-input" class="ev-input ev-preset-input" placeholder="새 프리셋 이름..." autocomplete="off" />
+              <button id="btn-save-preset" class="ev-btn ev-btn-primary ev-preset-save-btn">저장</button>
+            </div>
+            <div id="preset-list-container" class="ev-preset-list"></div>
+          </div>
+          
+          <div class="ev-sidebar-divider"></div>
+
+          <div class="ev-model-search-row">
+            <input type="text" id="model-search" class="ev-input ev-model-search" placeholder="모델 검색..." autocomplete="off" />
+          </div>
+          <div class="ev-model-tag-chips">
+            <button class="ev-chip active" data-tag="all">전체</button>
+            <button class="ev-chip" data-tag="Premium">Premium</button>
+            <button class="ev-chip" data-tag="Mid">Mid</button>
+            <button class="ev-chip" data-tag="Budget">Budget</button>
+            <button class="ev-chip" data-tag="Coding">Coding</button>
+          </div>
+          <div id="model-list" class="ev-model-list"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <main class="ev-main">
+
+      <!-- HERO -->
+      <header class="ev-hero">
+        <div class="ev-hero-inner">
+          <p class="ev-hero-meta">
+            <span><b>STRESS TEST EVALUATOR</b> · Automated Grading</span>
+            <span>v1.0</span>
+          </p>
+          <h1 class="ev-title">
+            AI의 <mark>신뢰성</mark>을<br>자동으로 검증한다.
+          </h1>
+          <p class="ev-desc">
+            거짓 전제, 가짜 개념, 폐기된 패턴, 자기 모순 — 4가지 스트레스 유형으로<br>
+            복수 LLM의 환각/동조 행동을 실시간 자동 채점합니다.
+          </p>
+        </div>
+      </header>
+
+      <!-- STEP 1: API KEY -->
+      <section class="ev-step">
+        <div class="ev-wrap">
+          <header class="ev-step-head">
+            <span class="ev-step-num">01</span>
+            <h2 class="ev-step-title">SAM API 키</h2>
+          </header>
+          <div class="ev-key-row">
+            <input type="password" id="api-key" class="ev-input" placeholder="sam-..." autocomplete="off" />
+            <button id="save-key" class="ev-btn ev-btn-primary">저장</button>
+            <button id="clear-key" class="ev-btn ev-btn-ghost">삭제</button>
+          </div>
+          <p id="key-status" class="ev-key-status"></p>
+        </div>
+      </section>
+
+      <!-- STEP 2: PROBLEM + PROMPT -->
+      <section class="ev-step ev-step-dark">
+        <div class="ev-wrap">
+          <header class="ev-step-head">
+            <span class="ev-step-num">02</span>
+            <h2 class="ev-step-title">문제 선택</h2>
+            <p class="ev-step-desc">좌측 사이드바에서 스트레스 테스트 문제를 선택하세요.</p>
+          </header>
+
+          <div id="selected-badge" class="ev-selected-badge" hidden>
+            <span id="badge-icon" class="ev-badge-icon">📋</span>
+            <span id="badge-text"></span>
+            <button id="badge-clear" class="ev-badge-clear">✕</button>
+          </div>
+
+          <textarea id="prompt" class="ev-textarea" rows="5" readonly
+            placeholder="좌측 문제 트리에서 스트레스 테스트를 선택하세요..."></textarea>
+        </div>
+      </section>
+
+      <!-- STEP 3: MODEL SELECTION -->
+      <section class="ev-step">
+        <div class="ev-wrap">
+          <header class="ev-step-head">
+            <span class="ev-step-num">03</span>
+            <h2 class="ev-step-title">모델 선택</h2>
+            <p class="ev-step-desc">평가할 모델을 2~5개 선택하세요. 사이드바 Models 탭에서 추가/제거할 수 있습니다.</p>
+          </header>
+          <div id="model-grid" class="ev-model-grid"></div>
+        </div>
+      </section>
+
+      <!-- STEP 4: RUN & GRADE -->
+      <section class="ev-step ev-step-dark">
+        <div class="ev-wrap">
+          <header class="ev-step-head">
+            <span class="ev-step-num">04</span>
+            <h2 class="ev-step-title">실행 & 자동 채점</h2>
+          </header>
+
+          <button id="run-btn" class="ev-btn ev-btn-primary ev-run-btn" disabled>
+            ⚡ Run Evaluation
+          </button>
+          <p id="run-status" class="ev-run-status"></p>
+
+          <div id="results" class="ev-results" aria-live="polite"></div>
+
+          <!-- Run Actions -->
+          <div id="run-actions" class="ev-run-actions" hidden>
+            <button id="download-btn" class="ev-btn ev-btn-primary ev-action-btn">📥 결과 다운로드 (JSON)</button>
+            <button id="save-server-btn" class="ev-btn ev-btn-ghost ev-action-btn">💾 서버에 저장</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 5: HEATMAP REPORT -->
+      <section class="ev-step" id="report-section" hidden>
+        <div class="ev-wrap">
+          <header class="ev-step-head">
+            <span class="ev-step-num">05</span>
+            <h2 class="ev-step-title">종합 리포트</h2>
+            <p class="ev-step-desc">모델 × 루브릭 교차 분석 히트맵</p>
+          </header>
+          <div id="heatmap-container" class="ev-heatmap-container"></div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="ev-footer">
+        <div class="ev-wrap">
+          <span>© 2025 soonsoonLABS · MIT License</span>
+          <span>wemeet-uni-bench / eval v1.0</span>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="data/models.js" defer></script>
+  <script src="grader.js" defer></script>
+  <script src="eval.js" defer></script>
+</body>
+</html>

@@ -19,6 +19,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).parent.parent
 CATEGORIES_DIR = PROJECT_ROOT / "benchmarks" / "categories"
 OUTPUT_DIR = PROJECT_ROOT / "website" / "playground_ktw" / "data"
+EVAL_OUTPUT_DIR = PROJECT_ROOT / "website" / "eval" / "data"
 LABELS_FILE = PROJECT_ROOT / "benchmarks" / "category_labels.json"
 
 # 기본 카테고리 라벨 매핑
@@ -133,11 +134,17 @@ def generate_index(problems, tree):
 def copy_files(problems):
     """개별 문제 파일을 data/ 디렉토리로 복사"""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    EVAL_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     for p in problems:
         src = p["path"]
         dst = OUTPUT_DIR / p["filename"]
         shutil.copy2(src, dst)
+        
+        # stress_category가 있는 경우 eval/data/ 에도 복사
+        if "stress_category" in p["data"]:
+            eval_dst = EVAL_OUTPUT_DIR / p["filename"]
+            shutil.copy2(src, eval_dst)
 
 
 def main():
@@ -181,6 +188,7 @@ def main():
     index = generate_index(problems, tree)
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    EVAL_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     # 인덱스 저장
     index_path = OUTPUT_DIR / "problems.json"
@@ -188,13 +196,25 @@ def main():
         json.dump(index, f, ensure_ascii=False, indent=2)
     print(f"      → {index_path}")
 
+    # 스트레스 테스트 전용 인덱스 저장
+    stress_problems = [p["data"] for p in problems if "stress_category" in p["data"]]
+    stress_index = {
+        "generated_at": datetime.now().isoformat(),
+        "total": len(stress_problems),
+        "problems": stress_problems
+    }
+    stress_index_path = EVAL_OUTPUT_DIR / "stress_problems.json"
+    with open(stress_index_path, "w", encoding="utf-8") as f:
+        json.dump(stress_index, f, ensure_ascii=False, indent=2)
+    print(f"      → {stress_index_path} (스트레스 문제: {len(stress_problems)}개)")
+
     # 파일 복사
     copy_files(problems)
     print(f"      → {len(problems)}개 파일 복사 완료")
 
     print()
     print("=" * 60)
-    print(f"[DONE] Build complete! {len(problems)} problems, {len(tree)} categories")
+    print(f"[DONE] Build complete! {len(problems)} problems, {len(stress_problems)} stress tests")
     print("=" * 60)
 
 
