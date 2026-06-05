@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-25T23:32:54.224959",
-  "total": 17,
+  "generated_at": "2026-06-05T12:54:02.753970",
+  "total": 26,
   "tree": {
     "coding": {
       "label": "코딩",
@@ -97,27 +97,64 @@
       "label": "일반",
       "problems": [
         {
+          "id": "cs_taewoon_008",
+          "subject": "System Programming",
+          "difficulty": "L2",
+          "file": "cs_taewoon_008.json"
+        },
+        {
+          "id": "cs_taewoon_010",
+          "subject": "Artificial Intelligence",
+          "difficulty": "L3",
+          "file": "cs_taewoon_010.json"
+        },
+        {
           "id": "cs_taewoon_011",
           "subject": "Programming",
           "difficulty": "L2",
           "file": "cs_kim_taewoon_011.json"
-        }
-      ]
-    },
-    "algorithms": {
-      "label": "알고리즘",
-      "problems": [
-        {
-          "id": "cs_tester_001",
-          "subject": "이진 탐색 트리 구현",
-          "difficulty": "L2",
-          "file": "cs_tester_001.json"
         },
         {
-          "id": "cs_tester_002",
-          "subject": "동적계획법 — 최대 부분배열 합",
+          "id": "cs_taewoon_011",
+          "subject": "Programming",
           "difficulty": "L2",
-          "file": "cs_tester_002.json"
+          "file": "cs_taewoon_011.json"
+        },
+        {
+          "id": "cs_taewoon_012",
+          "subject": "Data Structures",
+          "difficulty": "L2",
+          "file": "cs_taewoon_012.json"
+        },
+        {
+          "id": "cs_taewoon_013",
+          "subject": "Logic Design",
+          "difficulty": "L3",
+          "file": "cs_taewoon_013.json"
+        },
+        {
+          "id": "cs_taewoon_014",
+          "subject": "Artificial Intelligence",
+          "difficulty": "L3",
+          "file": "cs_taewoon_014.json"
+        },
+        {
+          "id": "cs_taewoon_015",
+          "subject": "Computer Programming",
+          "difficulty": "L3",
+          "file": "cs_taewoon_015.json"
+        },
+        {
+          "id": "cs_taewoon_016",
+          "subject": "Game Engineering",
+          "difficulty": "L3",
+          "file": "cs_taewoon_016.json"
+        },
+        {
+          "id": "cs_taewoon_017",
+          "subject": "Logic Design",
+          "difficulty": "L3",
+          "file": "cs_taewoon_017.json"
         }
       ]
     },
@@ -146,6 +183,23 @@
           "subject": "친전자성 첨가 반응 — 프로펜 + HBr",
           "difficulty": "L2",
           "file": "mat_kim_hoyoon_002.json"
+        }
+      ]
+    },
+    "algorithms": {
+      "label": "알고리즘",
+      "problems": [
+        {
+          "id": "cs_tester_001",
+          "subject": "이진 탐색 트리 구현",
+          "difficulty": "L2",
+          "file": "cs_tester_001.json"
+        },
+        {
+          "id": "cs_tester_002",
+          "subject": "동적계획법 — 최대 부분배열 합",
+          "difficulty": "L2",
+          "file": "cs_tester_002.json"
         }
       ]
     }

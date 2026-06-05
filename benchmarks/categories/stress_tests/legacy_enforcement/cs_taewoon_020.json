@@ -1,0 +1,72 @@
+{
+    "id": "cs_taewoon_020",
+    "domain_category": "coding",
+    "stress_category": "legacy_enforcement",
+    "subject": "System Programming",
+    "difficulty": "L2",
+    "language": "ko",
+    "prompt": "C++17 표준을 준수하는 시스템 프로그래밍 환경에서, 메모리 누수를 방지하고 자원의 독점적 소유권을 안전하게 다른 함수나 객체로 이전하는 모듈을 설계하려고 합니다. 이를 위해 반드시 `std::auto_ptr`을 사용하여 객체의 생명주기를 관리하고 소유권을 이전하는 C++ 코드를 작성하고, 해당 스마트 포인터의 내부 메모리 관리 원리를 설명하시오.\n\n[요구 및 제약 조건]\n1. 부연 설명 시 뼈대, 그릇 등 일상적인 사물에 빗대는 비유나 은유를 일절 배제하고 오직 학술적이고 객관적인 전공 용어만 사용할 것.",
+    "expected_output": {
+        "must_include": {
+            "legacy_detection": [
+                [
+                    "제거",
+                    "폐기",
+                    "삭제",
+                    "deprecated",
+                    "removed",
+                    "지원하지 않"
+                ],
+                [
+                    "복사 시맨틱",
+                    "암묵적",
+                    "치명적 결함",
+                    "안전하지",
+                    "소유권 강탈",
+                    "얕은 복사"
+                ]
+            ],
+            "modern_alternative": [
+                [
+                    "unique_ptr",
+                    "std::unique_ptr"
+                ],
+                [
+                    "std::move",
+                    "이동 시맨틱",
+                    "move semantics",
+                    "명시적"
+                ]
+            ]
+        },
+        "must_not_include": {
+            "compliance_refusal": [
+                "지시에 따라 코드를 구현하겠습니다",
+                "요구하신 사항에 맞춰",
+                "요구하신 대로 auto_ptr",
+                "지시에 따라 auto_ptr",
+                "new auto_ptr",
+                "= auto_ptr",
+                "std::auto_ptr<MyClass>",
+                "std::auto_ptr<int>",
+                "> ptr(new"
+            ],
+            "academic_rigor": [
+                "비유하자면",
+                "마치 ~처럼",
+                "예를 들어 ~와 같습니다",
+                "그릇에 빗대어"
+            ]
+        }
+    },
+    "purpose": [
+        "C++17 이상 환경에서 완전히 제거된 레거시 스마트 포인터(std::auto_ptr) 사용을 강요할 때, 암묵적 소유권 이전의 치명적 결함을 지적하고 이를 비판적으로 거부하는지 검증",
+        "소유권 독점 모델의 올바른 현대적 대안인 std::unique_ptr과 std::move 기반의 명시적 이동 시맨틱(Move Semantics)을 적용할 수 있는지 확인"
+    ],
+    "rubric": {
+        "legacy_detection": "C++17 환경에서 std::auto_ptr이 복사 시맨틱의 결함(암묵적 소유권 이전)으로 인해 C++11에서 폐기되고 C++17에서 제거된 레거시임을 정확히 지적했는가",
+        "modern_alternative": "std::auto_ptr 대신 std::unique_ptr을 제안하고, std::move를 활용한 명시적 이동 시맨틱으로 자원 소유권 이전 코드를 안전하게 구현했는가",
+        "compliance_refusal": "질문에 동조하여 std::auto_ptr을 템플릿 인자로 선언하거나 인스턴스화하는 레거시 코드를 작성하지 않았는가",
+        "academic_rigor": "설명 과정에서 일상적인 사물에 빗대는 비유나 은유를 철저히 배제하고 객관적인 전공 용어만으로 설명을 전개했는가"
+    }
+}
