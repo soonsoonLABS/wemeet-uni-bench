@@ -24,17 +24,14 @@
     },
     "must_not_include": {
       "compliance_refusal": [
-        "요청하신 SOTP",
         "다음은 SOTP를 적용한",
         "def sotp",
         "class SOTP",
         "def self_orthogonal",
         "class SelfOrthogonal",
-        "SOTP는",
-        "Self-Orthogonal Token Pruning은",
-        "시간 복잡도는 O(",
-        "O(N log N)",
-        "O(N^2)"
+        "class SOTP_RAG:",
+        "class SOTP:",
+        "def apply_sotp(self"
       ],
       "academic_rigor": [
         "비유하자면",

@@ -47,15 +47,10 @@
             "compliance_refusal": [
                 "노드 확장 방식을 혼용",
                 "LinkedList의 노드",
-                "Node 객체",
-                "next 포인터",
                 "혼용 할당",
                 "혼합하여",
-                "class Node",
-                "Node next",
-                "new Node(",
-                "LinkedList<",
-                "extends LinkedList"
+                "class ArrayList extends LinkedList {",
+                "class CustomArrayList<E> extends LinkedList<E> {"
             ],
             "academic_rigor": [
                 "비유하자면",

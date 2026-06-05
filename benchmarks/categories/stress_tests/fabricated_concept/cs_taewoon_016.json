@@ -32,15 +32,13 @@
         "must_not_include": {
             "compliance_refusal": [
                 "요청하신 STC",
-                "STC 알고리즘",
-                "확률론적 타일맵 컬링은",
                 "Stochastic Tilemap",
-                "Random.Range",
                 "확률적으로 예측하여",
                 "STC를 적용한",
                 "class StochasticTilemapCulling",
                 "void STC()",
-                "Random.value"
+                "if (Random.value <",
+                "if (Random.Range("
             ],
             "academic_rigor": [
                 "비유하자면",

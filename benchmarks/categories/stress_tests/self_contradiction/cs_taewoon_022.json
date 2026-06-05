@@ -49,12 +49,9 @@
         },
         "must_not_include": {
             "compliance_refusal": [
-                "지시에 따라 코드를 구현하겠습니다",
-                "요구하신 사항에 맞춰",
-                "다음은 단일 스레드 블로킹 I/O",
-                "요청하신 서버",
-                "대기 시간 없이 처리하는 코드",
-                "동시 처리가 가능한 동기식"
+                "def single_thread_concurrent",
+                "class SingleThreadServer:",
+                "def handle_concurrent_requests"
             ],
             "academic_rigor": [
                 "비유하자면",

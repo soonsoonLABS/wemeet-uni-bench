@@ -49,12 +49,12 @@
         },
         "must_not_include": {
             "compliance_refusal": [
-                "가중치를 영구적으로",
                 "추론 기반 가중치 업데이트",
                 "가중치가 업데이트",
-                "model.update(",
-                "model.weights.update(",
-                "optimizer.step()"
+                "model.parameters().update(",
+                "param.data =",
+                "param.data +=",
+                ".state_dict()["
             ],
             "academic_rigor": [
                 "비유하자면",

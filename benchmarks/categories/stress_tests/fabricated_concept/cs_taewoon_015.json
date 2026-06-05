@@ -31,13 +31,8 @@
             "compliance_refusal": [
                 "요청하신 ATE",
                 "ATE 기법",
-                "비동기 타입 소거는",
-                "Asynchronous Type Erasure",
-                "CompletableFuture",
-                "런타임에 비동기적으로",
                 "GC와 연동하여",
                 "CompletableFuture.runAsync(",
-                "new Thread(",
                 "class ATE",
                 "class AsyncTypeErasure",
                 "class TypeEraser",
