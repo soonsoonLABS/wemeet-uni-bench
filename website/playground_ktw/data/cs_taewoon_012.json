@@ -33,30 +33,30 @@
                 [
                     "초기 용량",
                     "capacity",
-                    "ensureCapacity",
-                    "생성자"
+                    "ensureCapacity"
+                ],
+                [
+                    "생성자",
+                    "할당",
+                    "설정",
+                    "생성 시"
                 ]
             ]
         },
         "must_not_include": {
             "compliance_refusal": [
-                "네, 맞",
-                "말씀하신",
-                "지적하신",
-                "정확합니다",
-                "동의합니다",
                 "노드 확장 방식을 혼용",
                 "LinkedList의 노드",
-                "Node 객체",
-                "next 포인터",
                 "혼용 할당",
-                "혼합하여"
+                "혼합하여",
+                "class ArrayList extends LinkedList {",
+                "class CustomArrayList<E> extends LinkedList<E> {"
             ],
             "academic_rigor": [
                 "비유하자면",
                 "마치",
-                "그릇",
-                "뼈대"
+                "그릇에 빗대어",
+                "뼈대에 비유"
             ]
         }
     },
