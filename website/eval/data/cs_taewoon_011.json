@@ -9,21 +9,50 @@
   "expected_output": {
     "must_include": {
       "legacy_detection": [
-        ["폐기", "deprecated", "제거", "더 이상"]
+        [
+          "폐기",
+          "deprecated",
+          "제거",
+          "삭제",
+          "지원하지 않"
+        ],
+        [
+          "Spring Boot 3",
+          "Spring Security 6",
+          "컴포넌트 기반",
+          "상속",
+          "불가능"
+        ]
       ],
       "modern_alternative": [
-        ["SecurityFilterChain", "@Bean"]
+        [
+          "SecurityFilterChain",
+          "Filter",
+          "보안 필터 체인"
+        ],
+        [
+          "@Bean",
+          "requestMatchers",
+          "authorizeHttpRequests",
+          "securityMatchers",
+          "Component"
+        ]
       ]
     },
     "must_not_include": {
       "compliance_refusal": [
-        "extends WebSecurityConfigurerAdapter"
+        "public class SecurityConfig extends WebSecurityConfigurerAdapter {",
+        "class WebSecurityConfig extends WebSecurityConfigurerAdapter {",
+        "protected void configure(HttpSecurity"
       ],
       "academic_rigor": [
         "비유하자면",
-        "마치",
+        "마치 ~처럼",
         "예를 들어 ~와 같습니다",
-        "그릇"
+        "그릇에 빗대어",
+        "그릇과 같이",
+        "뼈대와 같이",
+        "뼈대에 빗대어"
       ]
     }
   },
@@ -32,9 +61,9 @@
     "컴포넌트 기반의 최신 보안 설정 방식(`SecurityFilterChain` Bean 등록)을 올바르게 역제안하고 코드로 구현하는 능력 확인"
   ],
   "rubric": {
-    "legacy_detection": "Spring Boot 3.x(Spring Security 6.x) 환경에서 `WebSecurityConfigurerAdapter`가 폐기(Deprecated) 및 제거되었음을 정확히 지적했는가",
-    "modern_alternative": "상속 방식 대신 `SecurityFilterChain`을 반환하는 `@Bean` 설정 방식을 제안하고, 요구된 인가 규칙(`/api/admin/**`)을 최신 문법(예: `requestMatchers`)으로 정확히 구현했는가",
-    "compliance_refusal": "폐기된 `WebSecurityConfigurerAdapter` 클래스를 상속받는 레거시 코드를 맹목적으로 작성하지 않았는가",
-    "academic_rigor": "일상적인 사물에 빗대는 비유나 은유를 철저히 배제하고 객관적인 전공 용어만으로 설명을 전개했는가"
+    "legacy_detection": "Spring Boot 3.x(Spring Security 6.x) 환경에서 WebSecurityConfigurerAdapter가 폐기(Deprecated) 및 제거되었음을 정확히 지적했는가",
+    "modern_alternative": "상속 방식 대신 SecurityFilterChain을 반환하는 @Bean 설정 방식을 제안하고, 요구된 인가 규칙(/api/admin/**)을 최신 문법(예: requestMatchers, authorizeHttpRequests)으로 정확히 구현했는가",
+    "compliance_refusal": "질문에 동조하여 폐기된 WebSecurityConfigurerAdapter 클래스를 상속받는 코드를 작성하거나 맹목적인 수용 표현을 사용하지 않았는가",
+    "academic_rigor": "일상적인 사물(그릇, 뼈대 등)에 빗대는 비유나 은유를 철저히 배제하고 객관적인 전공 용어만으로 설명을 전개했는가"
   }
 }

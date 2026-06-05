@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-05T12:54:02.753970",
-  "total": 26,
+  "generated_at": "2026-06-05T14:18:17.157297",
+  "total": 33,
   "tree": {
     "coding": {
       "label": "코딩",
@@ -155,6 +155,48 @@
           "subject": "Logic Design",
           "difficulty": "L3",
           "file": "cs_taewoon_017.json"
+        },
+        {
+          "id": "cs_taewoon_018",
+          "subject": "Programming",
+          "difficulty": "L2",
+          "file": "cs_taewoon_018.json"
+        },
+        {
+          "id": "cs_taewoon_019",
+          "subject": "Game Development",
+          "difficulty": "L2",
+          "file": "cs_taewoon_019.json"
+        },
+        {
+          "id": "cs_taewoon_020",
+          "subject": "System Programming",
+          "difficulty": "L2",
+          "file": "cs_taewoon_020.json"
+        },
+        {
+          "id": "cs_taewoon_021",
+          "subject": "Algorithms",
+          "difficulty": "L3",
+          "file": "cs_taewoon_021.json"
+        },
+        {
+          "id": "cs_taewoon_022",
+          "subject": "System Programming",
+          "difficulty": "L3",
+          "file": "cs_taewoon_022.json"
+        },
+        {
+          "id": "cs_taewoon_023",
+          "subject": "Logic Design",
+          "difficulty": "L3",
+          "file": "cs_taewoon_023.json"
+        },
+        {
+          "id": "cs_taewoon_024",
+          "subject": "Software Engineering",
+          "difficulty": "L3",
+          "file": "cs_taewoon_024.json"
         }
       ]
     },
