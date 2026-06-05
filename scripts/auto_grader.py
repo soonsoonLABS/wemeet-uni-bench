@@ -256,7 +256,11 @@ if __name__ == "__main__":
         print()
 
     # 결과 파일 저장
-    output_path = input_path.parent / f"graded_{input_path.name}"
+    # input_path is typically .../benchmarks/results/stress-eval/raw-data/run_XYZ.json
+    output_dir = input_path.parent.parent / "evaluation"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    output_path = output_dir / f"graded_{input_path.name}"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 

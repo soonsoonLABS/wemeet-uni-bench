@@ -13,6 +13,9 @@ import sys
 import time
 from pathlib import Path
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # SAM API 설정
 SAM_API_KEY = os.getenv("SAM_API_KEY")
@@ -33,7 +36,7 @@ TARGET_MODELS = [
 ]
 
 BENCHMARKS_DIR = Path(__file__).parent.parent / "benchmarks"
-RESULTS_DIR = BENCHMARKS_DIR / "results"
+RESULTS_DIR = BENCHMARKS_DIR / "results" / "stress-eval" / "raw-data"
 
 
 def sam_generate(model: str, messages: list, **options) -> dict:
@@ -68,7 +71,7 @@ def load_problems(category: str = None, level: int = None) -> list:
         return problems
 
     for problem_file in categories_dir.glob("**/*.json"):
-        with open(problem_file) as f:
+        with open(problem_file, encoding="utf-8") as f:
             problem = json.load(f)
 
         if category and problem.get("category") != category:
