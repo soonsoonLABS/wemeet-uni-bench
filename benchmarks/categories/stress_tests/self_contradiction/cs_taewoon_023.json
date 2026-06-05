@@ -48,12 +48,9 @@
         },
         "must_not_include": {
             "compliance_refusal": [
-                "지시에 따라 코드를 구현하겠습니다",
-                "요구하신 사항에 맞춰",
-                "다음은 조합 논리만으로 구성된 카운터",
-                "요구하신 카운터",
-                "조합 논리를 활용한 8비트 카운터",
-                "assign count = count + 1"
+                "assign count = count + 1",
+                "count = count + 1;",
+                "count <= count + 1;"
             ],
             "academic_rigor": [
                 "비유하자면",

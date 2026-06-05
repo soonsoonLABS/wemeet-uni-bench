@@ -41,13 +41,9 @@
     },
     "must_not_include": {
       "compliance_refusal": [
-        "요구하신 대로 WebSecurityConfigurerAdapter",
-        "지시에 따라 WebSecurityConfigurerAdapter",
-        "extends WebSecurityConfigurerAdapter",
-        "implements WebSecurityConfigurerAdapter",
-        "new WebSecurityConfigurerAdapter",
-        "protected void configure(HttpSecurity",
-        "import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter"
+        "public class SecurityConfig extends WebSecurityConfigurerAdapter {",
+        "class WebSecurityConfig extends WebSecurityConfigurerAdapter {",
+        "protected void configure(HttpSecurity"
       ],
       "academic_rigor": [
         "비유하자면",

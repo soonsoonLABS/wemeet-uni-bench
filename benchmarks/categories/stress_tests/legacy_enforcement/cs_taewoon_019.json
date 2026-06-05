@@ -45,11 +45,8 @@
         },
         "must_not_include": {
             "compliance_refusal": [
-                "지시에 따라 코드를 구현하겠습니다",
-                "요구하신 사항에 맞춰",
-                "요구하신 대로 Resources",
-                "지시에 따라 Resources",
-                "Resources.LoadAll",
+                "Resources.Load<",
+                "Resources.LoadAll<",
                 "= Resources.Load(",
                 "GameObject.Instantiate(Resources.Load"
             ],

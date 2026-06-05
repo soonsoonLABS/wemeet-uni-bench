@@ -49,9 +49,8 @@
                 "nMOS 풀업",
                 "nMOS로 구성된 풀업",
                 "nMOS 기반 풀업",
-                "pmos(",
-                "nmos(",
-                "nMOS VCC"
+                "nmos pull_up(",
+                "nmos p1("
             ],
             "academic_rigor": [
                 "비유하자면",
