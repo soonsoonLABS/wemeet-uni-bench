@@ -128,19 +128,10 @@ def auto_grade(problem: dict, response: str) -> dict:
     }
 
 
-def grade_batch(results_data: dict, problems_map: dict = None) -> dict:
-    """
-    배치 채점: 평가 결과 JSON 전체를 채점합니다.
-
-    Args:
-        results_data: 평가 결과 JSON (dict)
-            - evaluations: list[dict] (각각 model, response 포함)
-            - problem: dict (문제 정보) 또는 problem_id
-        problems_map: 문제 ID → 문제 dict 매핑 (선택)
-
-    Returns:
-        dict: 채점 완료 결과
-    """
+def grade_batch(results_data, problems_map: dict = None) -> dict:
+    if isinstance(results_data, list):
+        results_data = {"evaluations": results_data}
+        
     problem = results_data.get("problem")
     evaluations = results_data.get("evaluations", [])
 
@@ -228,7 +219,16 @@ if __name__ == "__main__":
     with open(input_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    result = grade_batch(data)
+    # Load problems map
+    problems_map = {}
+    categories_dir = input_path.parent.parent.parent.parent / "categories"
+    if categories_dir.exists():
+        for problem_file in categories_dir.glob("**/*.json"):
+            with open(problem_file, encoding="utf-8") as f:
+                prob = json.load(f)
+                problems_map[prob["id"]] = prob
+
+    result = grade_batch(data, problems_map=problems_map)
 
     # 결과 출력
     print(f"\n{'=' * 60}")
