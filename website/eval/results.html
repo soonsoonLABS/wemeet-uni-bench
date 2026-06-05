@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluation Results — wemeet-uni-bench</title>
+  <meta name="description" content="Final evaluation results for the LLM stress tests." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Eval Dashboard styles -->
+  <link rel="stylesheet" href="eval.css" />
+
+  <style>
+    :root {
+      --rs-bg: #030305;
+      --rs-glass-bg: rgba(255, 255, 255, 0.02);
+      --rs-glass-border: rgba(255, 255, 255, 0.06);
+      --rs-glow: rgba(99, 102, 241, 0.15);
+      --rs-text-main: #f8fafc;
+      --rs-text-dim: #94a3b8;
+      --rs-accent-1: #6366f1;
+      --rs-accent-2: #a855f7;
+      --rs-accent-3: #ec4899;
+    }
+
+    body {
+      background-color: var(--rs-bg);
+      color: var(--rs-text-main);
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.08), transparent 25%);
+      background-attachment: fixed;
+    }
+
+    /* Layout & Container */
+    .rs-layout {
+      padding-top: 60px; /* offset for nav */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rs-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* Hero Section */
+    .rs-hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .rs-hero-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+
+    .rs-hero-title-gradient {
+      background: linear-gradient(135deg, var(--rs-accent-1), var(--rs-accent-2), var(--rs-accent-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.4));
+    }
+
+    .rs-hero-desc {
+      font-size: 1.1rem;
+      color: var(--rs-text-dim);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Action Buttons */
+    .rs-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 40px;
+      margin-bottom: 60px;
+    }
+
+    .rs-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .rs-btn-primary {
+      background: linear-gradient(135deg, var(--rs-accent-1), var(--rs-accent-2));
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .rs-btn-primary:hover {
+      box-shadow: 0 6px 25px rgba(168, 85, 247, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .rs-btn-secondary {
+      background: var(--rs-glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--rs-glass-border);
+      color: var(--rs-text-main);
+    }
+
+    .rs-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Dashboard Grid */
+    .rs-dashboard {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    }
+
+    @media (max-width: 900px) {
+      .rs-dashboard {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rs-card {
+      background: var(--rs-glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--rs-glass-border);
+      border-radius: 24px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .rs-card:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-4px);
+    }
+
+    /* subtle glow in the corner of cards */
+    .rs-card::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: var(--rs-accent-1);
+      filter: blur(80px);
+      opacity: 0.15;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .rs-card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--rs-text-main);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .rs-card-title-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .rs-chart-wrapper {
+      position: relative;
+      width: 100%;
+      z-index: 2;
+    }
+
+    /* Markdown Section */
+    .rs-markdown-container {
+      background: var(--rs-glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--rs-glass-border);
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 80px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    }
+
+    .ev-markdown-body {
+      color: var(--rs-text-dim);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .ev-markdown-body h1 {
+      font-size: 2rem;
+      color: var(--rs-text-main);
+      margin-bottom: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 16px;
+    }
+
+    .ev-markdown-body h2 {
+      font-size: 1.5rem;
+      color: var(--rs-text-main);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .ev-markdown-body h3 {
+      font-size: 1.2rem;
+      color: var(--rs-text-main);
+      margin-top: 32px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .ev-markdown-body p {
+      margin-bottom: 16px;
+    }
+
+    .ev-markdown-body strong {
+      color: var(--rs-text-main);
+      font-weight: 600;
+    }
+
+    /* Premium Table Styling */
+    .ev-markdown-body table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 32px 0;
+      font-size: 0.95rem;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(0,0,0,0.2);
+    }
+
+    .ev-markdown-body th, 
+    .ev-markdown-body td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .ev-markdown-body th {
+      background: rgba(255,255,255,0.03);
+      color: var(--rs-text-main);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .ev-markdown-body tr:last-child td {
+      border-bottom: none;
+    }
+
+    .ev-markdown-body tr {
+      transition: background 0.2s ease;
+    }
+
+    .ev-markdown-body tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .ev-markdown-body ul {
+      padding-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    .ev-markdown-body li {
+      margin-bottom: 8px;
+      position: relative;
+    }
+    
+    .ev-markdown-body li::marker {
+      color: var(--rs-accent-1);
+    }
+
+    .ev-markdown-body code {
+      background: rgba(255,255,255,0.05);
+      color: #e2e8f0;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <!-- Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js" defer></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+</head>
+<body>
+
+  <!-- =============== NAV =============== -->
+  <nav class="ev-nav">
+    <div class="ev-nav-inner">
+      <a href="./" class="ev-nav-logo">
+        <span class="ev-nav-logo-icon">⚡</span>
+        uni-bench <span class="ev-nav-logo-sep">/</span> <strong>stress-eval</strong>
+      </a>
+      <div class="ev-nav-links">
+        <a href="../">← project</a>
+        <a href="./">dashboard</a>
+        <a href="results.html" style="color: #fff; font-weight: 600;">results</a>
+        <a href="../playground_ktw/">legacy playground</a>
+        <a href="https://sam.soonsoon.ai" target="_blank" rel="noopener">SAM ↗</a>
+        <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank" rel="noopener" class="ev-nav-cta">GITHUB →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =============== LAYOUT =============== -->
+  <div class="rs-layout">
+    
+    <!-- Hero Area -->
+    <header class="rs-hero">
+      <h1 class="rs-hero-title">
+        Performance <span class="rs-hero-title-gradient">Analytics</span>
+      </h1>
+      <p class="rs-hero-desc">
+        LLM 스트레스 테스트의 최종 평가 결과 및 모델별 방어 성능을 비교 분석합니다.<br>
+        하단 버튼을 통해 원본 JSON 데이터를 다운로드할 수 있습니다.
+      </p>
+      
+      <div class="rs-actions">
+        <a href="data/latest_raw.json" download class="rs-btn rs-btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Raw JSON
+        </a>
+        <a href="data/latest_graded.json" download class="rs-btn rs-btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Graded JSON
+        </a>
+      </div>
+    </header>
+
+    <main class="rs-container">
+      
+      <!-- Charts Grid -->
+      <div class="rs-dashboard">
+        <!-- Doughnut Chart -->
+        <div class="rs-card">
+          <h3 class="rs-card-title">
+            <div class="rs-card-title-icon">⚠️</div>
+            Critical Failures
+          </h3>
+          <div class="rs-chart-wrapper" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+            <canvas id="failureReasonChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Stacked Bar Chart -->
+        <div class="rs-card">
+          <h3 class="rs-card-title">
+            <div class="rs-card-title-icon">📊</div>
+            Pass Count by Category
+          </h3>
+          <div class="rs-chart-wrapper" style="height: 400px;">
+            <canvas id="passRateChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Markdown Summary -->
+      <div class="rs-markdown-container">
+        <div id="summary-content" class="ev-markdown-body">
+          <div style="display: flex; align-items: center; justify-content: center; height: 200px; color: var(--rs-text-dim);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite; margin-right: 12px;"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+            <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
+            Loading Results Data...
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="ev-footer" style="margin-top: auto; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+      <div class="rs-container">
+        <span style="color: var(--rs-text-dim); font-size: 0.85rem; margin-right: 20px;">© 2025 soonsoonLABS · MIT License</span>
+        <span style="color: var(--rs-text-dim); font-size: 0.85rem;">wemeet-uni-bench / eval v1.0</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="results.js" defer></script>
+</body>
+</html>

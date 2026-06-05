@@ -77,7 +77,7 @@ def load_problems(category: str = None, level: int = None) -> list:
         print(f"Error: {categories_dir} 디렉토리가 없습니다.")
         return problems
 
-    for problem_file in categories_dir.glob("**/*.json"):
+    for problem_file in categories_dir.glob("stress_tests/**/*.json"):
         with open(problem_file, encoding="utf-8") as f:
             problem = json.load(f)
 
