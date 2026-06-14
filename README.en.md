@@ -42,19 +42,23 @@ Seoul National University's WE-Meet (위밋) is an industry-academia collaborati
 
 ## Project Structure
 
-```
+```text
 ├── README.md                    # Project intro (Korean)
 ├── README.en.md                 # Project intro (English)
 ├── docs/
 │   ├── project-plan.md          # Project plan
 │   ├── benchmark-survey.md      # Existing benchmark survey
-│   └── evaluation-criteria.md   # Evaluation criteria design
+│   ├── evaluation-criteria.md   # Evaluation criteria design
+│   └── SNUN/                    # 1st Cohort (SNUN team) progress records and docs
 ├── benchmarks/
 │   ├── categories/              # Benchmark problems by category
 │   └── results/                 # Benchmark execution results
 ├── scripts/
-│   └── run_benchmark.py         # Benchmark execution script
-├── website/                     # Project website (GitHub Pages)
+│   ├── run_benchmark.py         # Benchmark execution script
+│   └── auto_grader.py           # Auto-grading and utility scripts
+├── website/                     # Project website & Playground (GitHub Pages)
+│   ├── index.html               # Main page
+│   └── playground_ktw/          # Web benchmark playground, etc.
 └── .github/
     └── ISSUE_TEMPLATE/          # Issue templates
 ```
