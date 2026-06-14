@@ -263,6 +263,74 @@
           Stress Eval 결과를 같은 모델 단위로 맞춰보면, 순위의 양상이 그대로 유지되지 않았다.
         </p>
 
+        <div class="fr-rank-boards" aria-label="SAM 랭킹과 학생 문제 기반 랭킹 좌우 비교">
+          <article class="fr-rank-board">
+            <header>
+              <span>SAM Ranking Snapshot</span>
+              <b>공개 벤치마크 기반 순서</b>
+            </header>
+            <ol class="fr-rank-list">
+              <li>
+                <span class="fr-rank-no">#1</span>
+                <div><b>Claude Opus 4.7</b><small>OVR 94.0</small></div>
+              </li>
+              <li>
+                <span class="fr-rank-no">#2</span>
+                <div><b>GPT-5.4 Pro</b><small>OVR 92.7</small></div>
+              </li>
+              <li>
+                <span class="fr-rank-no">#4</span>
+                <div><b>Gemini 3.1 Pro</b><small>OVR 90.8</small></div>
+              </li>
+              <li>
+                <span class="fr-rank-no">#7</span>
+                <div><b>Kimi K2.6</b><small>OVR 84.0</small></div>
+              </li>
+              <li class="is-up">
+                <span class="fr-rank-no">#10</span>
+                <div><b>DeepSeek V4 Flash</b><small>OVR 72.7</small></div>
+              </li>
+              <li>
+                <span class="fr-rank-no">#12</span>
+                <div><b>DeepSeek V3.2</b><small>OVR 68.6</small></div>
+              </li>
+            </ol>
+          </article>
+
+          <article class="fr-rank-board is-student">
+            <header>
+              <span>Student Stress Eval</span>
+              <b>학생 문제 자동점수 기준 순서</b>
+            </header>
+            <ol class="fr-rank-list">
+              <li>
+                <span class="fr-rank-no">#4</span>
+                <div><b>Claude Opus 4.7</b><small>6/16 pass · avg 0.740</small></div>
+              </li>
+              <li class="is-up">
+                <span class="fr-rank-no">#8</span>
+                <div><b>DeepSeek V4 Flash</b><small>5/16 pass · avg 0.688</small></div>
+              </li>
+              <li>
+                <span class="fr-rank-no">#22</span>
+                <div><b>DeepSeek V3.2</b><small>3/16 pass · avg 0.625</small></div>
+              </li>
+              <li>
+                <span class="fr-rank-no">#24</span>
+                <div><b>Kimi K2.6</b><small>3/16 pass · avg 0.552</small></div>
+              </li>
+              <li class="is-muted">
+                <span class="fr-rank-no">—</span>
+                <div><b>GPT-5.4 Pro</b><small>응답 실패 · excluded</small></div>
+              </li>
+              <li class="is-muted">
+                <span class="fr-rank-no">—</span>
+                <div><b>Gemini 3.1 Pro</b><small>응답 실패 · excluded</small></div>
+              </li>
+            </ol>
+          </article>
+        </div>
+
         <div class="fr-compare-grid">
           <article class="fr-compare-card">
             <span>01</span>
