@@ -505,6 +505,135 @@
   gap: 1rem;
 }
 
+.fr-rank-boards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3);
+  margin: var(--s-4) 0;
+}
+
+.fr-rank-board {
+  border: 1px solid rgba(11, 11, 13, 0.18);
+  background: rgba(11, 11, 13, 0.04);
+  color: var(--ink);
+}
+
+.fr-rank-board.is-student {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.fr-rank-board header {
+  min-height: 96px;
+  padding: var(--s-3);
+  border-bottom: 1px solid rgba(11, 11, 13, 0.16);
+  display: grid;
+  align-content: start;
+  gap: 0.4rem;
+}
+
+.fr-rank-board.is-student header {
+  border-bottom-color: rgba(244, 241, 232, 0.16);
+}
+
+.fr-rank-board header span {
+  color: var(--alert);
+  font-family: var(--ff-mono);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fr-rank-board.is-student header span {
+  color: var(--lime);
+}
+
+.fr-rank-board header b {
+  color: inherit;
+  font-family: var(--ff-sans);
+  font-size: 1.45rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.fr-rank-list {
+  list-style: none;
+  display: grid;
+}
+
+.fr-rank-list li {
+  min-height: 82px;
+  padding: 0.95rem var(--s-3);
+  border-bottom: 1px solid rgba(11, 11, 13, 0.12);
+  display: grid;
+  grid-template-columns: 4.8rem 1fr;
+  gap: var(--s-2);
+  align-items: center;
+}
+
+.fr-rank-board.is-student .fr-rank-list li {
+  border-bottom-color: rgba(244, 241, 232, 0.14);
+}
+
+.fr-rank-list li:last-child {
+  border-bottom: 0;
+}
+
+.fr-rank-no {
+  color: var(--alert);
+  font-family: var(--ff-serif);
+  font-size: 2.35rem;
+  font-style: italic;
+  line-height: 1;
+}
+
+.fr-rank-board.is-student .fr-rank-no {
+  color: var(--lime);
+}
+
+.fr-rank-list b {
+  display: block;
+  color: inherit;
+  font-family: var(--ff-sans);
+  font-size: 1.05rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.fr-rank-list small {
+  display: block;
+  margin-top: 0.18rem;
+  color: rgba(11, 11, 13, 0.62);
+  font-family: var(--ff-mono);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.fr-rank-board.is-student .fr-rank-list small {
+  color: var(--paper-dim);
+}
+
+.fr-rank-list li.is-up {
+  background: rgba(212, 255, 58, 0.24);
+}
+
+.fr-rank-board.is-student .fr-rank-list li.is-up {
+  background: rgba(212, 255, 58, 0.14);
+}
+
+.fr-rank-list li.is-muted {
+  color: rgba(244, 241, 232, 0.46);
+}
+
+.fr-rank-list li.is-muted .fr-rank-no,
+.fr-rank-list li.is-muted small {
+  color: rgba(244, 241, 232, 0.36);
+}
+
 .fr-compare-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -745,6 +874,7 @@
   }
 
   .fr-output-grid,
+  .fr-rank-boards,
   .fr-compare-grid,
   .fr-next-grid {
     grid-template-columns: 1fr;
