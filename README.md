@@ -42,17 +42,22 @@
 
 ## 프로젝트 구조
 
-```
+```text
 ├── README.md                    # 프로젝트 소개
 ├── docs/
 │   ├── project-plan.md          # 프로젝트 계획서
 │   ├── benchmark-survey.md      # 기존 벤치마크 조사
-│   └── evaluation-criteria.md   # 평가 기준 설계
+│   ├── evaluation-criteria.md   # 평가 기준 설계
+│   └── SNUN/                    # 1기 (SNUN 팀) 진행 기록 및 문서
 ├── benchmarks/
 │   ├── categories/              # 벤치마크 카테고리별 문제
 │   └── results/                 # 벤치마크 실행 결과
 ├── scripts/
-│   └── run_benchmark.py         # 벤치마크 실행 스크립트
+│   ├── run_benchmark.py         # 벤치마크 실행 스크립트
+│   └── auto_grader.py           # 자동 채점 등 유틸리티 스크립트
+├── website/                     # 프로젝트 소개 및 웹 플레이그라운드 (GitHub Pages)
+│   ├── index.html               # 메인 페이지
+│   └── playground_ktw/          # 웹 벤치마크 플레이그라운드 등
 └── .github/
     └── ISSUE_TEMPLATE/          # 이슈 템플릿
 ```
