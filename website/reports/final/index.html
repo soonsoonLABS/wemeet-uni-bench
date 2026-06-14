@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>최종 결과 보고서 — WE-Meet 1기 SNUN 팀</title>
+  <meta name="description" content="순순팩토리 WE-Meet 1기 SNUN 팀의 대학생을 위한 AI 모델 벤치마크 최종 결론과 산출물." />
+
+  <meta property="og:title" content="WE-Meet 1기 SNUN 팀 최종 결과" />
+  <meta property="og:description" content="대학생용 AI 벤치마크의 구조 설계, 신뢰성 스트레스 테스트, 자동 평가 파이프라인, 그리고 최종 결론." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://soonsoonlabs.github.io/wemeet-uni-bench/reports/final/assets/final-cover.jpg" />
+
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="final.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../../" class="nav-logo">uni-bench / final</a>
+      <div class="nav-links">
+        <a href="../../" class="nav-key">project</a>
+        <a href="../week2/" class="nav-key">week2</a>
+        <a href="../../eval/" class="nav-key">stress-eval</a>
+        <a href="../../playground/versions.html">playground</a>
+        <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank" rel="noopener" class="nav-cta">GITHUB →</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="fr-hero">
+    <div class="wrap fr-hero-grid">
+      <div class="fr-hero-copy">
+        <p class="fr-meta">
+          <span><b>SOONSOONFACTORY WE-MEET 1ST</b> · SNUN TEAM</span>
+          <span>FINAL REPORT · 2026</span>
+        </p>
+
+        <h1 class="fr-title">
+          <span class="serif">순순팩토리 WE-Meet 1기</span>
+          SNUN 팀의<br><mark>최종 결론.</mark>
+        </h1>
+
+        <p class="fr-lead">
+          대학생을 위한 AI 모델 벤치마크는 완성된 순위표가 아니라,
+          <strong>학생에게 실제로 도움이 되는 AI를 어떻게 평가할 것인가</strong>라는
+          질문에서 출발한 첫 번째 구조화 실험이었다.
+        </p>
+
+        <div class="fr-actions" aria-label="주요 링크">
+          <a class="btn btn-primary" href="assets/we-meet-final-report.pdf" target="_blank" rel="noopener">최종 보고서 PDF</a>
+          <a class="btn btn-ghost" href="../../eval/">Stress Eval</a>
+          <a class="btn btn-ghost" href="https://github.com/soonsoonLABS/wemeet-uni-bench/tree/main/docs/SNUN" target="_blank" rel="noopener">SNUN Docs</a>
+        </div>
+      </div>
+
+      <figure class="fr-report-frame">
+        <img src="assets/final-cover.jpg" alt="WE-Meet 결과 보고서 표지" />
+        <figcaption>
+          <b>53 pages</b>
+          <span>학생 종합 발표자료</span>
+        </figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <main>
+    <section id="verdict" class="fr-section fr-section-paper">
+      <div class="wrap">
+        <p class="fr-kicker">§01 · Final Verdict</p>
+        <div class="fr-verdict">
+          <p class="fr-verdict-mark">Conclusion</p>
+          <blockquote>
+            SNUN 팀은 대학생용 AI 벤치마크의 전체 구조를 설계했고,
+            그중 자동화 가능한 <em>모델 신뢰성 스트레스 테스트</em>를
+            실제 문제 세트·평가 파이프라인·웹 대시보드까지 구현했다.
+            다만 현재 자동 채점 랭킹은 키워드 기반 평가의 한계로
+            최종 성능표가 아니라 실험적 결과로 보아야 한다.
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="fr-section">
+      <div class="wrap">
+        <p class="fr-kicker">§02 · Project Arc</p>
+        <h2 class="fr-h2">완성보다 중요한 것은 <em>정확한 결론</em>이었다.</h2>
+        <p class="fr-sub">
+          프로젝트는 넓은 대학생 학업 벤치마크에서 시작했지만,
+          제한된 시간과 평가 병목을 마주한 뒤 자동화 가능한 신뢰성 영역으로 초점을 좁혔다.
+        </p>
+
+        <div class="fr-timeline">
+          <article class="fr-step">
+            <span>01</span>
+            <h3>벤치마크 조사</h3>
+            <p>MMLU, HumanEval, GPQA 등 기존 지표와 대학생 학업 환경 사이의 괴리를 조사했다.</p>
+          </article>
+          <article class="fr-step">
+            <span>02</span>
+            <h3>문제 제작</h3>
+            <p>컴퓨터공학과 재료공학 기반 문제를 만들며 도메인 X축, 능력 Y축, 난이도 Z축을 발견했다.</p>
+          </article>
+          <article class="fr-step">
+            <span>03</span>
+            <h3>병목 확인</h3>
+            <p>설명력, 학습 유도, 비판적 피드백은 전문가 수동 평가 없이는 스케일하기 어렵다고 판단했다.</p>
+          </article>
+          <article class="fr-step">
+            <span>04</span>
+            <h3>신뢰성 집중</h3>
+            <p>함정 감지와 자기 한계 인정 영역을 모델 자체의 신뢰성 스트레스 테스트로 구체화했다.</p>
+          </article>
+          <article class="fr-step">
+            <span>05</span>
+            <h3>유의성 검토</h3>
+            <p>496건의 응답과 28건의 수동 분석을 통해 문제 설계의 가치와 채점 엔진의 한계를 함께 확인했다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="outputs" class="fr-section fr-section-ink">
+      <div class="wrap">
+        <p class="fr-kicker">§03 · Outputs</p>
+        <h2 class="fr-h2">결론은 문서가 아니라 <em>작동하는 산출물</em>로 남았다.</h2>
+
+        <div class="fr-stats">
+          <div><b>16</b><span>스트레스 테스트 문항</span></div>
+          <div><b>4</b><span>신뢰성 하위 유형</span></div>
+          <div><b>31</b><span>SAM 평가 모델</span></div>
+          <div><b>496</b><span>모델 응답</span></div>
+          <div><b>3</b><span>자동화 스크립트</span></div>
+          <div><b>1</b><span>웹 대시보드</span></div>
+        </div>
+
+        <div class="fr-output-grid">
+          <article class="fr-output">
+            <p class="fr-output-tag">Dataset</p>
+            <h3>신뢰성 스트레스 테스트 16문항</h3>
+            <p>거짓 전제, 가짜 개념, 레거시 강요, 자기 모순 감지로 구성된 모델 신뢰성 평가 문제 세트.</p>
+            <a href="https://github.com/soonsoonLABS/wemeet-uni-bench/tree/main/benchmarks/categories/stress_tests" target="_blank" rel="noopener">문제 세트 보기 →</a>
+          </article>
+          <article class="fr-output">
+            <p class="fr-output-tag">Pipeline</p>
+            <h3>자동 평가 파이프라인</h3>
+            <p><code>run_benchmark.py</code>, <code>auto_grader.py</code>, <code>analyze_results.py</code>로 응답 수집, 채점, 요약을 연결했다.</p>
+            <a href="https://github.com/soonsoonLABS/wemeet-uni-bench/tree/main/scripts" target="_blank" rel="noopener">스크립트 보기 →</a>
+          </article>
+          <article class="fr-output">
+            <p class="fr-output-tag">Dashboard</p>
+            <h3>Stress Eval 웹 대시보드</h3>
+            <p>문제 선택, 모델 선택, 자동 채점, 결과 시각화를 웹에서 확인할 수 있는 평가 표면.</p>
+            <a href="../../eval/">대시보드 열기 →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="framework" class="fr-section">
+      <div class="wrap">
+        <p class="fr-kicker">§04 · Stress Framework</p>
+        <h2 class="fr-h2">SNUN 팀이 먼저 구현한 평가는 <em>신뢰성</em>이었다.</h2>
+        <p class="fr-sub">
+          서비스 레이어의 안전장치를 걷어내고 모델에게 직접 함정을 던졌을 때,
+          모델이 스스로 잘못된 전제를 감지할 수 있는지 측정한다.
+        </p>
+
+        <div class="fr-framework-grid">
+          <article>
+            <span>A</span>
+            <h3>거짓 전제</h3>
+            <p>그럴듯하지만 틀린 기술 전제에 동조하지 않고 바로잡는가.</p>
+          </article>
+          <article>
+            <span>B</span>
+            <h3>가짜 개념</h3>
+            <p>존재하지 않는 기법이나 논문을 아는 척하지 않고 한계를 인정하는가.</p>
+          </article>
+          <article>
+            <span>C</span>
+            <h3>레거시 강요</h3>
+            <p>폐기된 기술이나 위험한 패턴을 요구받았을 때 최신 대안을 역제안하는가.</p>
+          </article>
+          <article>
+            <span>D</span>
+            <h3>자기 모순</h3>
+            <p>양립 불가능한 요구사항을 동시에 받았을 때 모순을 감지하는가.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="findings" class="fr-section fr-section-paper">
+      <div class="wrap">
+        <p class="fr-kicker">§05 · Findings</p>
+        <h2 class="fr-h2">가장 중요한 발견은 <em>성공과 한계가 함께 보였다는 것</em>이다.</h2>
+
+        <div class="fr-findings">
+          <article class="fr-finding is-valid">
+            <p class="fr-finding-label">Valid</p>
+            <h3>문제 설계와 관찰된 현상은 유의미했다.</h3>
+            <ul>
+              <li>자기 모순 문제 일부에서 모델 간 실제 변별력이 관찰되었다.</li>
+              <li>가짜 개념과 잘못된 전제에 동조하는 참음성 사례를 포착했다.</li>
+              <li>대학생용 벤치마크에서 “신뢰성”이 독립 평가 축이 될 수 있음을 확인했다.</li>
+            </ul>
+          </article>
+          <article class="fr-finding is-warning">
+            <p class="fr-finding-label">Not Yet Valid</p>
+            <h3>현재 점수와 랭킹은 최종 결론으로 쓰기 어렵다.</h3>
+            <ul>
+              <li>키워드 기반 채점은 부정 문맥, 영어 응답, 동의어 표현을 제대로 구분하지 못했다.</li>
+              <li>수동 분석한 Fail 사례 중 위음성 비율이 높게 나타났다.</li>
+              <li>16문항, 단일 실행, CS 중심 표본으로는 통계적 견고성이 부족하다.</li>
+            </ul>
+          </article>
+        </div>
+
+        <figure class="fr-wide-figure">
+          <img src="assets/validity-findings.jpg" alt="벤치마크 평가 체계의 결함과 위음성 비율을 정리한 발표 슬라이드" />
+          <figcaption>
+            최종 보고서는 공개 랭킹보다 평가 체계의 유효성 검토를 더 중요한 결론으로 제시한다.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="evidence" class="fr-section">
+      <div class="wrap">
+        <p class="fr-kicker">§06 · Evidence</p>
+        <h2 class="fr-h2">대시보드는 결과를 보여주고, 보고서는 <em>그 결과를 의심하는 법</em>을 보여준다.</h2>
+
+        <div class="fr-evidence-grid">
+          <figure>
+            <img src="assets/eval-dashboard.jpg" alt="Stress Eval 결과 대시보드 화면" />
+            <figcaption>31개 모델의 평가 결과를 확인할 수 있는 웹 대시보드.</figcaption>
+          </figure>
+          <div class="fr-evidence-copy">
+            <h3>랭킹보다 중요한 것은 재채점 가능한 원천 데이터다.</h3>
+            <p>
+              SNUN 팀은 모델 응답 원문과 채점 상세를 남겼다.
+              현재 랭킹은 실험적이지만, 496건의 응답 데이터는 더 좋은 채점 엔진으로 다시 평가할 수 있는 자산이다.
+            </p>
+            <div class="fr-link-row">
+              <a href="../../eval/results.html">결과 대시보드 →</a>
+              <a href="../../eval/data/latest_raw.json">Raw JSON →</a>
+              <a href="../../eval/data/latest_graded.json">Graded JSON →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="handoff" class="fr-section fr-section-ink">
+      <div class="wrap">
+        <p class="fr-kicker">§07 · Handoff</p>
+        <h2 class="fr-h2">다음 기수가 이어받아야 할 것은 <em>채점 엔진</em>이다.</h2>
+        <p class="fr-sub">
+          문제를 더 많이 만드는 것보다 먼저, 이미 확보한 응답을 더 정확하게 판단할 방법이 필요하다.
+        </p>
+
+        <div class="fr-next-grid">
+          <article>
+            <span>01</span>
+            <h3>LLM-as-a-Judge 또는 하이브리드 채점</h3>
+            <p>문맥을 이해하는 채점 기준으로 키워드 기반 위음성을 줄인다.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>496건 기존 응답 재채점</h3>
+            <p>새 채점 엔진으로 이미 확보된 데이터를 다시 평가해 실제 랭킹을 재구성한다.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>도메인과 난이도 확장</h3>
+            <p>CS와 재료공학 중심에서 인문, 사회, 경영, 글쓰기와 L1~L4 난이도로 확장한다.</p>
+          </article>
+        </div>
+
+        <figure class="fr-wide-figure is-future">
+          <img src="assets/future-work.jpg" alt="향후 과제와 발전 가능성을 정리한 발표 슬라이드" />
+        </figure>
+      </div>
+    </section>
+
+    <section id="report" class="fr-section fr-section-report">
+      <div class="wrap fr-report-cta">
+        <div>
+          <p class="fr-kicker">§08 · Final Document</p>
+          <h2 class="fr-h2">학생들의 종합보고서는 이 페이지의 <em>원문 근거</em>다.</h2>
+          <p class="fr-sub">
+            53쪽 발표자료에는 문제의식, 주차별 진행, 파이프라인 구축,
+            유의성 검토, 향후 과제가 순서대로 정리되어 있다.
+          </p>
+        </div>
+        <a class="fr-pdf-button" href="assets/we-meet-final-report.pdf" target="_blank" rel="noopener">
+          <span>PDF</span>
+          최종 보고서 열기
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-bot">
+        <span>© 2026 soonsoonLABS · SoonsoonFactory WE-Meet 1st</span>
+        <span>wemeet-uni-bench · final report</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
