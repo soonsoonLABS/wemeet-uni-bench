@@ -22,6 +22,7 @@
       <div class="nav-links">
         <a href="../../" class="nav-key">project</a>
         <a href="../week2/" class="nav-key">week2</a>
+        <a href="#sam-comparison" class="nav-key">compare</a>
         <a href="../../eval/" class="nav-key">stress-eval</a>
         <a href="../../playground/versions.html">playground</a>
         <a href="https://github.com/soonsoonLABS/wemeet-uni-bench" target="_blank" rel="noopener" class="nav-cta">GITHUB →</a>
@@ -253,9 +254,118 @@
       </div>
     </section>
 
+    <section id="sam-comparison" class="fr-section fr-section-paper">
+      <div class="wrap">
+        <p class="fr-kicker">§07 · SAM Comparison</p>
+        <h2 class="fr-h2"><em>좋은 모델</em>은 기준에 따라 달라졌다.</h2>
+        <p class="fr-sub">
+          SAM의 공개 벤치마크 기반 랭킹 스냅샷과 SNUN 팀의 학생 문제 기반
+          Stress Eval 결과를 같은 모델 단위로 맞춰보면, 순위의 양상이 그대로 유지되지 않았다.
+        </p>
+
+        <div class="fr-compare-grid">
+          <article class="fr-compare-card">
+            <span>01</span>
+            <h3>SAM 상위 모델이 항상 학생 문제 상위는 아니었다.</h3>
+            <p>Claude Opus 4.7은 SAM 스냅샷 #1이지만, 16개 학생 스트레스 문항 자동점수에서는 #4로 집계되었다.</p>
+          </article>
+          <article class="fr-compare-card">
+            <span>02</span>
+            <h3>저비용 모델이 특정 학생 과제에서는 올라왔다.</h3>
+            <p>DeepSeek V4 Flash는 SAM 스냅샷 #10이지만, 학생 문제 기준으로는 정상 응답 모델 중 #8이었다.</p>
+          </article>
+          <article class="fr-compare-card is-warning">
+            <span>!</span>
+            <h3>이 표는 최종 성능표가 아니라 차이를 보여주는 증거다.</h3>
+            <p>GPT-5.4 Pro와 Gemini 3.1 Pro는 당시 응답 실패로 제외했고, 나머지도 키워드 채점 위음성 문제가 있다.</p>
+          </article>
+        </div>
+
+        <div class="fr-comparison-table-wrap">
+          <table class="fr-comparison-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>SAM Rank</th>
+                <th>SAM OVR</th>
+                <th>Student Stress Rank</th>
+                <th>Pass</th>
+                <th>Avg Score</th>
+                <th>Shift</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Claude Opus 4.7</b></td>
+                <td>#1</td>
+                <td>94.0</td>
+                <td>#4</td>
+                <td>6/16 · 37.5%</td>
+                <td>0.740</td>
+                <td class="is-down">↓ 3</td>
+              </tr>
+              <tr class="is-muted">
+                <td><b>GPT-5.4 Pro</b></td>
+                <td>#2</td>
+                <td>92.7</td>
+                <td>응답 실패</td>
+                <td>excluded</td>
+                <td>—</td>
+                <td>n/a</td>
+              </tr>
+              <tr class="is-muted">
+                <td><b>Gemini 3.1 Pro</b></td>
+                <td>#4</td>
+                <td>90.8</td>
+                <td>응답 실패</td>
+                <td>excluded</td>
+                <td>—</td>
+                <td>n/a</td>
+              </tr>
+              <tr>
+                <td><b>Kimi K2.6</b></td>
+                <td>#7</td>
+                <td>84.0</td>
+                <td>#24</td>
+                <td>3/16 · 18.8%</td>
+                <td>0.552</td>
+                <td class="is-down">↓ 17</td>
+              </tr>
+              <tr class="is-highlight">
+                <td><b>DeepSeek V4 Flash</b></td>
+                <td>#10</td>
+                <td>72.7</td>
+                <td>#8</td>
+                <td>5/16 · 31.2%</td>
+                <td>0.688</td>
+                <td class="is-up">↑ 2</td>
+              </tr>
+              <tr>
+                <td><b>DeepSeek V3.2</b></td>
+                <td>#12</td>
+                <td>68.6</td>
+                <td>#22</td>
+                <td>3/16 · 18.8%</td>
+                <td>0.625</td>
+                <td class="is-down">↓ 10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="fr-compare-note">
+          SAM Rank는 프로젝트 메인 페이지에 반영된 SAM Platform 랭킹 스냅샷 기준이다.
+          Student Stress Rank는 <code>latest_graded.json</code>의 496건 평가 중
+          16/16 응답 실패 모델을 제외한 29개 정상 응답 모델의 자동 채점 순위다.
+          따라서 이 표의 결론은 “SNUN 순위가 더 정확하다”가 아니라
+          “학생 맥락으로 평가하면 기존 랭킹만으로는 부족하다”이다.
+        </p>
+      </div>
+    </section>
+
     <section id="handoff" class="fr-section fr-section-ink">
       <div class="wrap">
-        <p class="fr-kicker">§07 · Handoff</p>
+        <p class="fr-kicker">§08 · Handoff</p>
         <h2 class="fr-h2">다음 기수가 이어받아야 할 것은 <em>채점 엔진</em>이다.</h2>
         <p class="fr-sub">
           문제를 더 많이 만드는 것보다 먼저, 이미 확보한 응답을 더 정확하게 판단할 방법이 필요하다.
@@ -288,7 +398,7 @@
     <section id="report" class="fr-section fr-section-report">
       <div class="wrap fr-report-cta">
         <div>
-          <p class="fr-kicker">§08 · Final Document</p>
+          <p class="fr-kicker">§09 · Final Document</p>
           <h2 class="fr-h2">학생들의 종합보고서는 이 페이지의 <em>원문 근거</em>다.</h2>
           <p class="fr-sub">
             53쪽 발표자료에는 문제의식, 주차별 진행, 파이프라인 구축,
