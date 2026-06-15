@@ -505,6 +505,61 @@
   gap: 1rem;
 }
 
+.fr-protocol-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-3);
+  margin: 0 0 var(--s-4);
+}
+
+.fr-protocol-card {
+  min-height: 210px;
+  padding: var(--s-3);
+  border: 1px solid rgba(11, 11, 13, 0.18);
+  background: rgba(11, 11, 13, 0.04);
+  display: grid;
+  align-content: space-between;
+  gap: var(--s-2);
+}
+
+.fr-protocol-card span {
+  color: var(--alert);
+  font-family: var(--ff-mono);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fr-protocol-card b {
+  color: var(--ink);
+  font-family: var(--ff-sans);
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.fr-protocol-card p {
+  color: #39393f;
+  font-size: 0.92rem;
+  line-height: 1.62;
+}
+
+.fr-protocol-card.is-dark {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.fr-protocol-card.is-dark span,
+.fr-protocol-card.is-dark b {
+  color: var(--lime);
+}
+
+.fr-protocol-card.is-dark p {
+  color: var(--paper-dim);
+}
+
 .fr-rank-boards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -993,6 +1048,7 @@
   }
 
   .fr-output-grid,
+  .fr-protocol-grid,
   .fr-rank-boards,
   .fr-compare-grid,
   .fr-product-points,

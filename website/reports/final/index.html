@@ -265,6 +265,29 @@
           같은 표에 놓으면, 공개 종합점수와 학생 과제 맥락의 순위가 그대로 일치하지 않았다.
         </p>
 
+        <div class="fr-protocol-grid" aria-label="SAM 재실행 테스트 방법과 핵심 결과">
+          <article class="fr-protocol-card">
+            <span>Test Set</span>
+            <b>16 student stress prompts</b>
+            <p>SNUN 팀이 만든 거짓 전제, 가짜 개념, 레거시 강요, 자기 모순 감지 문항을 그대로 사용했다.</p>
+          </article>
+          <article class="fr-protocol-card">
+            <span>Run Scope</span>
+            <b>12 models × 16 = 192 calls</b>
+            <p>2026년 6월 15일 SAM 수정 후 주요 모델을 동일 조건으로 재실행했다.</p>
+          </article>
+          <article class="fr-protocol-card">
+            <span>Control</span>
+            <b>max_tokens 2048 · retry 1</b>
+            <p>GPT/Gemini provider 설정 문제를 수정한 뒤 동일 프롬프트, 동일 자동 채점기로 비교했다.</p>
+          </article>
+          <article class="fr-protocol-card is-dark">
+            <span>Result</span>
+            <b>CP Sonnet 4.6 ranked #1</b>
+            <p>9/16 통과, 평균점수 0.781. GPT-5.4 Pro는 13/16 응답했지만 자동 통과는 0건이었다.</p>
+          </article>
+        </div>
+
         <div class="fr-rank-boards" aria-label="SAM 랭킹과 학생 문제 기반 랭킹 좌우 비교">
           <article class="fr-rank-board">
             <header>
@@ -336,13 +359,13 @@
         <div class="fr-compare-grid">
           <article class="fr-compare-card">
             <span>01</span>
-            <h3>응답 실패를 걷어낸 뒤에도 순위는 달라졌다.</h3>
-            <p>2026년 6월 15일 재실행은 12개 모델, 16문항, 192회 호출로 진행했고, 실패는 GPT-5.4 Pro의 3건뿐이었다.</p>
+            <h3>테스트는 학생 문항을 그대로 SAM에 다시 던지는 방식이었다.</h3>
+            <p>각 모델은 같은 16문항을 받았고, 응답 원문을 저장한 뒤 문제별 루브릭 키워드로 자동 채점했다.</p>
           </article>
           <article class="fr-compare-card">
             <span>02</span>
-            <h3>최상위 OVR 모델보다 Sonnet 계열이 앞섰다.</h3>
-            <p>학생 스트레스 문항 자동점수에서는 CP Sonnet 4.6이 9/16 통과로 1위였고, CP Opus 4.7이 2위였다.</p>
+            <h3>원래 SAM 상위권이 학생 문제 상위권을 보장하지 않았다.</h3>
+            <p>SAM OVR #2인 GPT-5.4 Pro는 13/16 응답했지만 0/16 통과였고, #6 계열 Sonnet이 학생 문제 1위가 되었다.</p>
           </article>
           <article class="fr-compare-card is-warning">
             <span>!</span>
