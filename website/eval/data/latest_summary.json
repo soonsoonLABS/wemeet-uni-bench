@@ -1,0 +1,465 @@
+{
+  "source_run_id": "run_20260615_191036_major-12-fixed-sam",
+  "graded_at": "2026-06-15T19:36:10.433657",
+  "total_evaluations": 192,
+  "models": 12,
+  "problems": 16,
+  "ranking": [
+    {
+      "model": "cp-sonnet-4.6",
+      "total": 16,
+      "passed": 9,
+      "pass_rate": 0.5625,
+      "avg_score": 0.781,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 32.5,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 3,
+          "avg_score": 0.875,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 2,
+          "avg_score": 0.75,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 1,
+          "avg_score": 0.562,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 3,
+          "avg_score": 0.938,
+          "errors": 0
+        }
+      },
+      "rank": 1
+    },
+    {
+      "model": "cp-opus-4.7",
+      "total": 16,
+      "passed": 7,
+      "pass_rate": 0.4375,
+      "avg_score": 0.75,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 31.8,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 2,
+          "avg_score": 0.875,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 2,
+          "avg_score": 0.75,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 1,
+          "avg_score": 0.562,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 2,
+          "avg_score": 0.812,
+          "errors": 0
+        }
+      },
+      "rank": 2
+    },
+    {
+      "model": "claude-sonnet-4.6",
+      "total": 16,
+      "passed": 6,
+      "pass_rate": 0.375,
+      "avg_score": 0.786,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 30.2,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 1,
+          "avg_score": 0.812,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 2,
+          "avg_score": 0.833,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 1,
+          "avg_score": 0.625,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 2,
+          "avg_score": 0.875,
+          "errors": 0
+        }
+      },
+      "rank": 3
+    },
+    {
+      "model": "claude-opus-4.6",
+      "total": 16,
+      "passed": 5,
+      "pass_rate": 0.3125,
+      "avg_score": 0.682,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 32.3,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 2,
+          "avg_score": 0.875,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.417,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.5,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 3,
+          "avg_score": 0.938,
+          "errors": 0
+        }
+      },
+      "rank": 4
+    },
+    {
+      "model": "gemini-3.1-pro-preview",
+      "total": 16,
+      "passed": 3,
+      "pass_rate": 0.1875,
+      "avg_score": 0.646,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 24.1,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.562,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.584,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 1,
+          "avg_score": 0.625,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 2,
+          "avg_score": 0.812,
+          "errors": 0
+        }
+      },
+      "rank": 5
+    },
+    {
+      "model": "grok-4.3",
+      "total": 16,
+      "passed": 3,
+      "pass_rate": 0.1875,
+      "avg_score": 0.604,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 13.7,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.562,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 1,
+          "avg_score": 0.667,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.438,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 2,
+          "avg_score": 0.75,
+          "errors": 0
+        }
+      },
+      "rank": 6
+    },
+    {
+      "model": "deepseek-v3.2",
+      "total": 16,
+      "passed": 2,
+      "pass_rate": 0.125,
+      "avg_score": 0.604,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 23.3,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.625,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.417,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.562,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 2,
+          "avg_score": 0.812,
+          "errors": 0
+        }
+      },
+      "rank": 7
+    },
+    {
+      "model": "deepseek-v4-flash",
+      "total": 16,
+      "passed": 2,
+      "pass_rate": 0.125,
+      "avg_score": 0.562,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 26.6,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.5,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.5,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 1,
+          "avg_score": 0.562,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 1,
+          "avg_score": 0.688,
+          "errors": 0
+        }
+      },
+      "rank": 8
+    },
+    {
+      "model": "gpt-5.5",
+      "total": 16,
+      "passed": 1,
+      "pass_rate": 0.0625,
+      "avg_score": 0.589,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 34.4,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.562,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.667,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.5,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 1,
+          "avg_score": 0.625,
+          "errors": 0
+        }
+      },
+      "rank": 9
+    },
+    {
+      "model": "kimi-k2.6",
+      "total": 16,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_score": 0.557,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 27.5,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.5,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.667,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.5,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.562,
+          "errors": 0
+        }
+      },
+      "rank": 10
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "total": 16,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_score": 0.542,
+      "ok": 16,
+      "ok_rate": 1.0,
+      "errors": 0,
+      "avg_latency_seconds": 18.2,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.5,
+          "errors": 0
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.667,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.5,
+          "errors": 0
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.5,
+          "errors": 0
+        }
+      },
+      "rank": 11
+    },
+    {
+      "model": "gpt-5.4-pro",
+      "total": 16,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_score": 0.479,
+      "ok": 13,
+      "ok_rate": 0.8125,
+      "errors": 3,
+      "avg_latency_seconds": 74.4,
+      "by_category": {
+        "false_premise": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.375,
+          "errors": 1
+        },
+        "fabricated_concept": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.667,
+          "errors": 0
+        },
+        "legacy_enforcement": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.438,
+          "errors": 1
+        },
+        "self_contradiction": {
+          "total": 4,
+          "passed": 0,
+          "avg_score": 0.438,
+          "errors": 1
+        }
+      },
+      "rank": 12
+    }
+  ]
+}
