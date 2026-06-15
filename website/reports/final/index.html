@@ -242,13 +242,14 @@
           <div class="fr-evidence-copy">
             <h3>랭킹보다 중요한 것은 재채점 가능한 원천 데이터다.</h3>
             <p>
-              SNUN 팀은 모델 응답 원문과 채점 상세를 남겼다.
-              현재 랭킹은 실험적이지만, 496건의 응답 데이터는 더 좋은 채점 엔진으로 다시 평가할 수 있는 자산이다.
+              SNUN 팀은 모델 응답 원문과 채점 상세를 남겼고, 이번 최종 페이지는
+              SAM 설정 수정 후 12개 주요 모델을 16개 학생 문항에 다시 실행한 192건의 결과를 함께 반영했다.
+              현재 랭킹은 실험적이지만, 원천 응답 데이터는 더 좋은 채점 엔진으로 다시 평가할 수 있는 자산이다.
             </p>
             <div class="fr-link-row">
               <a href="../../eval/results.html">결과 대시보드 →</a>
-              <a href="../../eval/data/latest_raw.json">Raw JSON →</a>
-              <a href="../../eval/data/latest_graded.json">Graded JSON →</a>
+              <a href="../../eval/data/latest_raw.json">Re-run Raw JSON →</a>
+              <a href="../../eval/data/latest_graded.json">Re-run Graded JSON →</a>
             </div>
           </div>
         </div>
@@ -260,8 +261,8 @@
         <p class="fr-kicker">§07 · SAM Comparison</p>
         <h2 class="fr-h2"><em>좋은 모델</em>은 기준에 따라 달라졌다.</h2>
         <p class="fr-sub">
-          SAM의 공개 벤치마크 기반 랭킹 스냅샷과 SNUN 팀의 학생 문제 기반
-          Stress Eval 결과를 같은 모델 단위로 맞춰보면, 순위의 양상이 그대로 유지되지 않았다.
+          SAM의 공개 벤치마크 기반 랭킹 스냅샷과 학생 문제 기반 Stress Eval 재실행 결과를
+          같은 표에 놓으면, 공개 종합점수와 학생 과제 맥락의 순위가 그대로 일치하지 않았다.
         </p>
 
         <div class="fr-rank-boards" aria-label="SAM 랭킹과 학생 문제 기반 랭킹 좌우 비교">
@@ -280,20 +281,20 @@
                 <div><b>GPT-5.4 Pro</b><small>OVR 92.7</small></div>
               </li>
               <li>
+                <span class="fr-rank-no">#3</span>
+                <div><b>Claude Opus 4.6</b><small>OVR 91.35</small></div>
+              </li>
+              <li>
                 <span class="fr-rank-no">#4</span>
                 <div><b>Gemini 3.1 Pro</b><small>OVR 90.8</small></div>
               </li>
               <li>
-                <span class="fr-rank-no">#7</span>
-                <div><b>Kimi K2.6</b><small>OVR 84.0</small></div>
-              </li>
-              <li class="is-up">
-                <span class="fr-rank-no">#10</span>
-                <div><b>DeepSeek V4 Flash</b><small>OVR 72.7</small></div>
+                <span class="fr-rank-no">#5</span>
+                <div><b>GPT-5.5</b><small>OVR 89.75</small></div>
               </li>
               <li>
-                <span class="fr-rank-no">#12</span>
-                <div><b>DeepSeek V3.2</b><small>OVR 68.6</small></div>
+                <span class="fr-rank-no">#6</span>
+                <div><b>Claude Sonnet 4.6</b><small>OVR 87.8</small></div>
               </li>
             </ol>
           </article>
@@ -304,29 +305,29 @@
               <b>학생 문제 자동점수 기준 순서</b>
             </header>
             <ol class="fr-rank-list">
-              <li>
-                <span class="fr-rank-no">#4</span>
-                <div><b>Claude Opus 4.7</b><small>6/16 pass · avg 0.740</small></div>
+              <li class="is-up">
+                <span class="fr-rank-no">#1</span>
+                <div><b>CP Sonnet 4.6</b><small>9/16 pass · avg 0.781</small></div>
               </li>
               <li class="is-up">
-                <span class="fr-rank-no">#8</span>
-                <div><b>DeepSeek V4 Flash</b><small>5/16 pass · avg 0.688</small></div>
+                <span class="fr-rank-no">#2</span>
+                <div><b>CP Opus 4.7</b><small>7/16 pass · avg 0.750</small></div>
               </li>
               <li>
-                <span class="fr-rank-no">#22</span>
-                <div><b>DeepSeek V3.2</b><small>3/16 pass · avg 0.625</small></div>
+                <span class="fr-rank-no">#3</span>
+                <div><b>Claude Sonnet 4.6</b><small>6/16 pass · avg 0.786</small></div>
               </li>
               <li>
-                <span class="fr-rank-no">#24</span>
-                <div><b>Kimi K2.6</b><small>3/16 pass · avg 0.552</small></div>
+                <span class="fr-rank-no">#4</span>
+                <div><b>Claude Opus 4.6</b><small>5/16 pass · avg 0.682</small></div>
               </li>
-              <li class="is-muted">
-                <span class="fr-rank-no">—</span>
-                <div><b>GPT-5.4 Pro</b><small>응답 실패 · excluded</small></div>
+              <li>
+                <span class="fr-rank-no">#5</span>
+                <div><b>Gemini 3.1 Pro</b><small>3/16 pass · avg 0.646</small></div>
               </li>
-              <li class="is-muted">
-                <span class="fr-rank-no">—</span>
-                <div><b>Gemini 3.1 Pro</b><small>응답 실패 · excluded</small></div>
+              <li>
+                <span class="fr-rank-no">#6</span>
+                <div><b>Grok 4.3</b><small>3/16 pass · avg 0.604</small></div>
               </li>
             </ol>
           </article>
@@ -335,18 +336,18 @@
         <div class="fr-compare-grid">
           <article class="fr-compare-card">
             <span>01</span>
-            <h3>SAM 상위 모델이 항상 학생 문제 상위는 아니었다.</h3>
-            <p>Claude Opus 4.7은 SAM 스냅샷 #1이지만, 16개 학생 스트레스 문항 자동점수에서는 #4로 집계되었다.</p>
+            <h3>응답 실패를 걷어낸 뒤에도 순위는 달라졌다.</h3>
+            <p>2026년 6월 15일 재실행은 12개 모델, 16문항, 192회 호출로 진행했고, 실패는 GPT-5.4 Pro의 3건뿐이었다.</p>
           </article>
           <article class="fr-compare-card">
             <span>02</span>
-            <h3>저비용 모델이 특정 학생 과제에서는 올라왔다.</h3>
-            <p>DeepSeek V4 Flash는 SAM 스냅샷 #10이지만, 학생 문제 기준으로는 정상 응답 모델 중 #8이었다.</p>
+            <h3>최상위 OVR 모델보다 Sonnet 계열이 앞섰다.</h3>
+            <p>학생 스트레스 문항 자동점수에서는 CP Sonnet 4.6이 9/16 통과로 1위였고, CP Opus 4.7이 2위였다.</p>
           </article>
           <article class="fr-compare-card is-warning">
             <span>!</span>
-            <h3>이 표는 최종 성능표가 아니라 차이를 보여주는 증거다.</h3>
-            <p>GPT-5.4 Pro와 Gemini 3.1 Pro는 당시 응답 실패로 제외했고, 나머지도 키워드 채점 위음성 문제가 있다.</p>
+            <h3>자동점수는 최종 진실이 아니라 라우팅 신호다.</h3>
+            <p>키워드 채점의 위음성 한계는 여전히 있으므로, 이 표는 학생 맥락에서 모델 선택 기준이 달라질 수 있음을 보여주는 증거로 읽어야 한다.</p>
           </article>
         </div>
 
@@ -360,62 +361,109 @@
                 <th>Student Stress Rank</th>
                 <th>Pass</th>
                 <th>Avg Score</th>
+                <th>OK</th>
                 <th>Shift</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><b>Claude Opus 4.7</b></td>
+              <tr class="is-highlight">
+                <td><b>CP Sonnet 4.6</b></td>
+                <td>#6 family</td>
+                <td>87.8</td>
+                <td>#1</td>
+                <td>9/16 · 56.2%</td>
+                <td>0.781</td>
+                <td>16/16</td>
+                <td class="is-up">↑ 5</td>
+              </tr>
+              <tr class="is-highlight">
+                <td><b>CP Opus 4.7</b></td>
                 <td>#1</td>
                 <td>94.0</td>
-                <td>#4</td>
+                <td>#2</td>
+                <td>7/16 · 43.8%</td>
+                <td>0.750</td>
+                <td>16/16</td>
+                <td class="is-down">↓ 1</td>
+              </tr>
+              <tr>
+                <td><b>Claude Sonnet 4.6</b></td>
+                <td>#6</td>
+                <td>87.8</td>
+                <td>#3</td>
                 <td>6/16 · 37.5%</td>
-                <td>0.740</td>
+                <td>0.786</td>
+                <td>16/16</td>
+                <td class="is-up">↑ 3</td>
+              </tr>
+              <tr>
+                <td><b>Claude Opus 4.6</b></td>
+                <td>#3</td>
+                <td>91.35</td>
+                <td>#4</td>
+                <td>5/16 · 31.2%</td>
+                <td>0.682</td>
+                <td>16/16</td>
+                <td class="is-down">↓ 1</td>
+              </tr>
+              <tr>
+                <td><b>Gemini 3.1 Pro</b></td>
+                <td>#4</td>
+                <td>90.75</td>
+                <td>#5</td>
+                <td>3/16 · 18.8%</td>
+                <td>0.646</td>
+                <td>16/16</td>
+                <td class="is-down">↓ 1</td>
+              </tr>
+              <tr>
+                <td><b>DeepSeek V3.2</b></td>
+                <td>#12</td>
+                <td>68.55</td>
+                <td>#7</td>
+                <td>2/16 · 12.5%</td>
+                <td>0.604</td>
+                <td>16/16</td>
+                <td class="is-up">↑ 5</td>
+              </tr>
+              <tr>
+                <td><b>DeepSeek V4 Flash</b></td>
+                <td>#10</td>
+                <td>72.7</td>
+                <td>#8</td>
+                <td>2/16 · 12.5%</td>
+                <td>0.562</td>
+                <td>16/16</td>
+                <td class="is-up">↑ 2</td>
+              </tr>
+              <tr>
+                <td><b>GPT-5.5</b></td>
+                <td>#5</td>
+                <td>89.75</td>
+                <td>#9</td>
+                <td>1/16 · 6.2%</td>
+                <td>0.589</td>
+                <td>16/16</td>
+                <td class="is-down">↓ 4</td>
+              </tr>
+              <tr>
+                <td><b>Kimi K2.6</b></td>
+                <td>#7</td>
+                <td>84.0</td>
+                <td>#10</td>
+                <td>0/16 · 0.0%</td>
+                <td>0.557</td>
+                <td>16/16</td>
                 <td class="is-down">↓ 3</td>
               </tr>
               <tr class="is-muted">
                 <td><b>GPT-5.4 Pro</b></td>
                 <td>#2</td>
                 <td>92.7</td>
-                <td>응답 실패</td>
-                <td>excluded</td>
-                <td>—</td>
-                <td>n/a</td>
-              </tr>
-              <tr class="is-muted">
-                <td><b>Gemini 3.1 Pro</b></td>
-                <td>#4</td>
-                <td>90.8</td>
-                <td>응답 실패</td>
-                <td>excluded</td>
-                <td>—</td>
-                <td>n/a</td>
-              </tr>
-              <tr>
-                <td><b>Kimi K2.6</b></td>
-                <td>#7</td>
-                <td>84.0</td>
-                <td>#24</td>
-                <td>3/16 · 18.8%</td>
-                <td>0.552</td>
-                <td class="is-down">↓ 17</td>
-              </tr>
-              <tr class="is-highlight">
-                <td><b>DeepSeek V4 Flash</b></td>
-                <td>#10</td>
-                <td>72.7</td>
-                <td>#8</td>
-                <td>5/16 · 31.2%</td>
-                <td>0.688</td>
-                <td class="is-up">↑ 2</td>
-              </tr>
-              <tr>
-                <td><b>DeepSeek V3.2</b></td>
                 <td>#12</td>
-                <td>68.6</td>
-                <td>#22</td>
-                <td>3/16 · 18.8%</td>
-                <td>0.625</td>
+                <td>0/16 · 0.0%</td>
+                <td>0.479</td>
+                <td>13/16</td>
                 <td class="is-down">↓ 10</td>
               </tr>
             </tbody>
@@ -424,10 +472,10 @@
 
         <p class="fr-compare-note">
           SAM Rank는 프로젝트 메인 페이지에 반영된 SAM Platform 랭킹 스냅샷 기준이다.
-          Student Stress Rank는 <code>latest_graded.json</code>의 496건 평가 중
-          16/16 응답 실패 모델을 제외한 29개 정상 응답 모델의 자동 채점 순위다.
-          따라서 이 표의 결론은 “SNUN 순위가 더 정확하다”가 아니라
-          “학생 맥락으로 평가하면 기존 랭킹만으로는 부족하다”이다.
+          Student Stress Rank는 2026년 6월 15일 SAM 수정 후 재실행한
+          <code>latest_graded.json</code>의 12개 주요 모델 × 16개 학생 스트레스 문항,
+          총 192건 자동 채점 결과다. CP 계열은 SAM에서 분리된 라우팅 alias로,
+          동일 모델 계열이라도 공급자/라우팅 경로가 학생 경험에 영향을 줄 수 있음을 함께 보여준다.
         </p>
       </div>
     </section>
