@@ -5,11 +5,14 @@ import base64
 import os
 from pathlib import Path
 
-API_KEY = "YOUR_SAM_API_KEY"
+API_KEY = os.getenv("SAM_API_KEY")
 BASE_URL = "https://sam.soonsoon.ai"
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "website" / "slides" / "week2" / "img"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+if not API_KEY:
+    raise RuntimeError("SAM_API_KEY 환경 변수를 설정하세요.")
 
 # Common style suffix for all images
 STYLE = (

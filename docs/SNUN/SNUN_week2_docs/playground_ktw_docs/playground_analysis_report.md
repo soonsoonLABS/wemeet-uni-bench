@@ -301,7 +301,7 @@ mindmap
 ### 8.2 코드 품질 개선
 
 > [!WARNING]
-> 현재 `run_benchmark.py`에 API 키가 하드코딩되어 있다 (L18). 비록 `.env.example`에서 환경 변수 사용을 안내하지만, 기본값으로 실제 키가 들어가 있어 보안 위험이 있다.
+> 이전 버전의 `run_benchmark.py`에는 API 키 기본값이 하드코딩되어 있어 보안 위험이 있었다. 현재 버전에서는 `SAM_API_KEY` 환경 변수만 읽도록 수정했다.
 
 ```diff
 # scripts/run_benchmark.py L18
